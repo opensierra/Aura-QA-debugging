@@ -1,0 +1,8 @@
+[  1] Wi-Fi, Desactivado                                          | FrameLayout | Wi-Fi, Desactivado                                          | 
+[  2] Bluetooth, Desactivado                                      | FrameLayout | Bluetooth, Desactivado                                      | 
+[  3] Red móvil                                                   | FrameLayout | Red móvil                                                   | 
+[  4] Más conexiones                                              | FrameLayout | Más conexiones                                              | 
+[  5] Notificaciones y barra de estado                            | FrameLayout | Notificaciones y barra de estado                            | 
+[  6] Sonidos y vibración                                         | FrameLayout | Sonidos y vibración                                         | 
+[  7] Pantalla, brillo y protección ocular                        | FrameLayout | Pantalla, brillo y protección ocular                        | 
+[  8] Pantalla de inicio, pantalla de bloqueo y fondo de pantalla | FrameLayout | Pantalla de inicio, pantalla de bloqueo y fondo de pantalla | 

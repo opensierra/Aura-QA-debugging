@@ -1,0 +1,139 @@
+{
+  "before_finish": {
+    "wz-filter-t": {
+      "present": true,
+      "taValueLines": 19,
+      "annLineCount": 19,
+      "annVisible": true,
+      "states": [
+        "known_package",
+        "known_package",
+        "known_package",
+        "known_package",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "unknown",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery"
+      ],
+      "sample": "com.android.deskclock\n→\nClock\ncom.vivo.calculator\n→\nCalculator\ncom.vivo.feedback\n→\nFeedback\ncom.vivo.imanager\n→\niManager\ncom.android.filemanager\nno installed association (pending discovery)\ncom.bbk.theme\nno installed association (pending discovery)\ncom.vivo.compass\nno installed association (pending discovery)\ncom.vivo.simplelauncher\nnot found in catalog or device\ncom.vivo.gallery\nno installed asso"
+    },
+    "wz-filter-e": {
+      "present": true,
+      "taValueLines": 1,
+      "annLineCount": 1,
+      "annVisible": true,
+      "states": [
+        "pending_extraction"
+      ],
+      "sample": "com.android.bbk.lockscreen3\ninstalled, not in catalog (pending extraction)"
+    },
+    "pipe-filter-t": {
+      "present": true,
+      "taValueLines": 0,
+      "annLineCount": 0,
+      "annVisible": false,
+      "states": [],
+      "sample": ""
+    },
+    "pipe-filter-e": {
+      "present": true,
+      "taValueLines": 0,
+      "annLineCount": 0,
+      "annVisible": false,
+      "states": [],
+      "sample": ""
+    },
+    "__dialogOpen": true
+  },
+  "after_finish": {
+    "wz-filter-t": {
+      "present": true,
+      "taValueLines": 19,
+      "annLineCount": 19,
+      "annVisible": false,
+      "states": [
+        "known_package",
+        "known_package",
+        "known_package",
+        "known_package",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "unknown",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery"
+      ],
+      "sample": "com.android.deskclock→Clockcom.vivo.calculator→Calculatorcom.vivo.feedback→Feedbackcom.vivo.imanager→iManagercom.android.filemanagerno installed association (pending discovery)com.bbk.themeno installed association (pending discovery)com.vivo.compassno installed association (pending discovery)com.vivo.simplelaunchernot found in catalog or devicecom.vivo.galleryno installed association (pending disc"
+    },
+    "wz-filter-e": {
+      "present": true,
+      "taValueLines": 1,
+      "annLineCount": 1,
+      "annVisible": false,
+      "states": [
+        "pending_extraction"
+      ],
+      "sample": "com.android.bbk.lockscreen3installed, not in catalog (pending extraction)"
+    },
+    "pipe-filter-t": {
+      "present": true,
+      "taValueLines": 19,
+      "annLineCount": 19,
+      "annVisible": false,
+      "states": [
+        "known_package",
+        "known_package",
+        "known_package",
+        "known_package",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "unknown",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery",
+        "pending_discovery"
+      ],
+      "sample": "com.android.deskclock→Clockcom.vivo.calculator→Calculatorcom.vivo.feedback→Feedbackcom.vivo.imanager→iManagercom.android.filemanagerno installed association (pending discovery)com.bbk.themeno installed association (pending discovery)com.vivo.compassno installed association (pending discovery)com.vivo.simplelaunchernot found in catalog or devicecom.vivo.galleryno installed association (pending disc"
+    },
+    "pipe-filter-e": {
+      "present": true,
+      "taValueLines": 1,
+      "annLineCount": 1,
+      "annVisible": false,
+      "states": [
+        "pending_extraction"
+      ],
+      "sample": "com.android.bbk.lockscreen3installed, not in catalog (pending extraction)"
+    },
+    "__dialogOpen": false
+  },
+  "console": []
+}

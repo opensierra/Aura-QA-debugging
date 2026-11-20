@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "started": "2026-11-18T10:42:08",
+  "finished": "2026-11-18T10:42:46",
+  "duration_s": 38,
+  "stages": {
+    "listing": {
+      "state": "skipped",
+      "duration_s": 0,
+      "count": 22
+    },
+    "crawl": {
+      "state": "active",
+      "duration_s": 14.36
+    },
+    "qa": {
+      "state": "skipped",
+      "duration_s": 0
+    }
+  },
+  "stage_order": [
+    "listing",
+    "crawl",
+    "qa"
+  ],
+  "progress": {
+    "stage": "crawl",
+    "current": 3,
+    "total": null,
+    "package": null,
+    "item": null
+  },
+  "packages": [],
+  "pair": "es-es",
+  "config": {
+    "extOut": "C:\\Users\\ADMIN\\Desktop\\fiixxing\\TEST02",
+    "pair": "es-es",
+    "fromScreenshot": false,
+    "filterT": [
+      "com.android.settings"
+    ],
+    "filterE": [
+      "com.android.bbk.lockscreen3"
+    ],
+    "filterO": [],
+    "stages": [
+      "crawl"
+    ],
+    "exportLang": "es",
+    "newSession": false
+  },
+  "exit_code": null,
+  "error": null
+}

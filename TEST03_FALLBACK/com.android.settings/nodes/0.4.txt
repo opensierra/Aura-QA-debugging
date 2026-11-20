@@ -1,0 +1,16 @@
+[  1] Hotspot personal                     | ViewGroup |  | 
+[  2] Uso de datos                         | ViewGroup |  | 
+[  3] VPN                                  | ViewGroup |  | 
+[  4] DNS privado                          | ViewGroup |  | 
+[  5] Servicio de conexión de dispositivos | ViewGroup |  | 
+[  6] Android Auto                         | ViewGroup |  | 
+[  7] Centro de conexiones                 | ViewGroup |  | 
+[  8] Duplicado de pantalla                | ViewGroup |  | 
+[  9] Imprimir                             | ViewGroup |  | 
+[ 10] Enlace a Windows                     | ViewGroup |  | 
+[ 11] Kit de oficina                       | ViewGroup |  | 
+[ 12] Chromebook                           | ViewGroup |  | 
+[ 13] NFC                                  | ViewGroup |  | 
+[ 14] Servicios multidispositivo           | ViewGroup |  | 
+[ 15] vivoshare                            | ViewGroup |  | 
+[ 16] Quick Share                          | ViewGroup |  | 

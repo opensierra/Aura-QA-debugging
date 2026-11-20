@@ -1,0 +1,144 @@
+{
+  "measure": {
+    "#run-console": {
+      "present": true,
+      "clientW": 862,
+      "scrollW": 862,
+      "offsetW": 862,
+      "rectW": 862,
+      "rectH": 394,
+      "overflowX": false,
+      "display": "block",
+      "overflowX_css": "hidden",
+      "overflowY_css": "auto"
+    },
+    "#run-pane-crawl": {
+      "present": true,
+      "clientW": 846,
+      "scrollW": 846,
+      "offsetW": 846,
+      "rectW": 846,
+      "rectH": 378,
+      "overflowX": false,
+      "display": "block",
+      "overflowX_css": "visible",
+      "overflowY_css": "visible"
+    },
+    ".run-crawl-view": {
+      "present": true,
+      "clientW": 846,
+      "scrollW": 846,
+      "offsetW": 846,
+      "rectW": 846,
+      "rectH": 378,
+      "overflowX": false,
+      "display": "flex",
+      "overflowX_css": "visible",
+      "overflowY_css": "visible"
+    },
+    ".run-crawl-shot": {
+      "present": true,
+      "clientW": 198,
+      "scrollW": 198,
+      "offsetW": 200,
+      "rectW": 200,
+      "rectH": 362,
+      "overflowX": false,
+      "display": "grid",
+      "overflowX_css": "hidden",
+      "overflowY_css": "hidden"
+    },
+    ".run-crawl-nodes": {
+      "present": true,
+      "clientW": 620,
+      "scrollW": 620,
+      "offsetW": 620,
+      "rectW": 620,
+      "rectH": 362,
+      "overflowX": false,
+      "display": "flex",
+      "overflowX_css": "hidden",
+      "overflowY_css": "hidden"
+    },
+    ".run-crawl-list": {
+      "present": true,
+      "clientW": 620,
+      "scrollW": 620,
+      "offsetW": 620,
+      "rectW": 620,
+      "rectH": 316,
+      "overflowX": false,
+      "display": "flex",
+      "overflowX_css": "auto",
+      "overflowY_css": "auto"
+    },
+    ".run-crawl-item": {
+      "present": true,
+      "clientW": 620,
+      "scrollW": 620,
+      "offsetW": 620,
+      "rectW": 620,
+      "rectH": 23,
+      "overflowX": false,
+      "display": "flex",
+      "overflowX_css": "visible",
+      "overflowY_css": "visible"
+    },
+    ".run-crawl-res": {
+      "present": true,
+      "clientW": 272,
+      "scrollW": 379,
+      "offsetW": 272,
+      "rectW": 272,
+      "rectH": 14,
+      "overflowX": true,
+      "display": "block",
+      "overflowX_css": "hidden",
+      "overflowY_css": "hidden"
+    },
+    "#right-col": {
+      "present": true,
+      "clientW": 318,
+      "scrollW": 318,
+      "offsetW": 318,
+      "rectW": 318,
+      "rectH": 868,
+      "overflowX": false,
+      "display": "flex",
+      "overflowX_css": "visible",
+      "overflowY_css": "visible"
+    },
+    ".sidebar-main": {
+      "present": true,
+      "clientW": 906,
+      "scrollW": 906,
+      "offsetW": 906,
+      "rectW": 906,
+      "rectH": 868,
+      "overflowX": false,
+      "display": "flex",
+      "overflowX_css": "visible",
+      "overflowY_css": "visible"
+    },
+    ".app-root .row": {
+      "present": true,
+      "clientW": 1272,
+      "scrollW": 1272,
+      "offsetW": 1272,
+      "rectW": 1272,
+      "rectH": 868,
+      "overflowX": false,
+      "display": "flex",
+      "overflowX_css": "visible",
+      "overflowY_css": "visible"
+    },
+    "__doc": {
+      "docScrollW": 1280,
+      "docClientW": 1280,
+      "bodyScrollW": 1280,
+      "bodyClientW": 1280,
+      "docOverflow": false
+    }
+  },
+  "console": []
+}

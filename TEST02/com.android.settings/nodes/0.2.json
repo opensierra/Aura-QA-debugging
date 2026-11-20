@@ -1,0 +1,42 @@
+{
+  "pkg": "com.android.settings",
+  "node_id": "0.2",
+  "parent_id": "0",
+  "depth": 1,
+  "timestamp": "2026-11-18T10:42:43",
+  "trigger": {
+    "index": 2,
+    "label": "Bluetooth, Desactivado",
+    "text": "",
+    "contentDescription": "Bluetooth, Desactivado",
+    "className": "android.widget.FrameLayout",
+    "resourceName": ""
+  },
+  "status": "leaf_depth_limit",
+  "screenshots": [
+    "screenshots/0.2.png"
+  ],
+  "clickables": [
+    {
+      "text": "Nombre del dispositivo",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Archivos recibidos por Bluetooth",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "",
+      "contentDescription": "Ayuda",
+      "className": "android.widget.Button",
+      "resourceName": "",
+      "occurrence": 0
+    }
+  ]
+}

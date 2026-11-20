@@ -1,0 +1,43 @@
+{
+  "theme": "blender-dark",
+  "accent": "#4a90e2",
+  "sidebarMode": "expanded",
+  "compact": true,
+  "animations": false,
+  "uiLanguage": "en",
+  "pipeline": {
+    "filterT": [
+      "com.android.settings"
+    ],
+    "filterE": [
+      "com.android.bbk.lockscreen3"
+    ],
+    "pairSource": "es",
+    "pairTarget": "es",
+    "maxDepth": 2,
+    "maxScroll": 15,
+    "speedFactor": 1,
+    "similarityThreshold": 0.85,
+    "ghostThreshold": 0.95,
+    "maxBack": 2,
+    "maxRelaunch": 2,
+    "marginTop": 0.3,
+    "marginBottom": 0.1,
+    "marginLeft": 0.2,
+    "marginRight": 0.2,
+    "duration": 0.3,
+    "sleepStable": 0.7,
+    "sleepBack": 0.3,
+    "sleepExit": 0.1,
+    "sleepStart": 1,
+    "enableCapture": true,
+    "rootName": "0",
+    "docOrientation": false,
+    "docUnwarping": false,
+    "textlineOrientation": false,
+    "bcHost": "127.0.0.1",
+    "bcPort": 0,
+    "bcTimeout": 120,
+    "qaPasses": 3
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "pkg": "com.android.settings",
+  "node_id": "0.4",
+  "parent_id": "0",
+  "depth": 1,
+  "timestamp": "2026-11-18T10:45:47",
+  "trigger": {
+    "index": 4,
+    "label": "Más conexiones",
+    "text": "",
+    "contentDescription": "Más conexiones",
+    "className": "android.widget.FrameLayout",
+    "resourceName": ""
+  },
+  "status": "leaf_depth_limit",
+  "screenshots": [
+    "screenshots/0.4_0.png",
+    "screenshots/0.4_1.png"
+  ],
+  "clickables": [
+    {
+      "text": "Hotspot personal",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Uso de datos",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "VPN",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "DNS privado",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Servicio de conexión de dispositivos",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Android Auto",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Centro de conexiones",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Duplicado de pantalla",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Imprimir",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Enlace a Windows",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Kit de oficina",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Chromebook",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "NFC",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Servicios multidispositivo",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "vivoshare",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    },
+    {
+      "text": "Quick Share",
+      "contentDescription": "",
+      "className": "android.view.ViewGroup",
+      "resourceName": "",
+      "occurrence": 0
+    }
+  ]
+}

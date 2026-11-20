@@ -1,0 +1,52 @@
+10:42:08	INFO	Test iniciado | salida=C:\Users\ADMIN\Desktop\fiixxing\TEST02 | par=es-es | etapas=['listing']
+10:42:08	INFO	Cargando lista de paquetes (Plis)...
+10:42:08	INFO	ANDROID PACKAGE SUMMARY
+10:42:08	INFO	Total packages : 406
+10:42:08	INFO	system         : 206
+10:42:08	INFO	system_ext     : 33
+10:42:08	INFO	product        : 109
+10:42:08	INFO	vendor         : 15
+10:42:08	INFO	data           : 9
+10:42:08	INFO	other          : 34
+10:42:08	INFO	Missing paths : 0
+10:42:08	INFO	Filter by package ...
+10:42:08	INFO	1     com.android.deskclock                                   /system/app/BBKTimer/BBKTimer.apk
+10:42:08	INFO	2     com.bbk.theme                                           /system/app/BBKTheme/BBKTheme.apk
+10:42:08	INFO	3     com.vivo.exhealth                                       /system/custom/app/ihealthex/ihealthex.apk
+10:42:08	INFO	...   19 more
+10:42:08	INFO	Paquetes objetivo (22): ['com.android.deskclock', 'com.bbk.theme', 'com.vivo.exhealth', 'com.vivo.website.gdpr', 'com.vivo.calculator', 'com.vivo.feedback', 'com.vivo.imanager', 'com.android.settings.overlay.common', 'com.android.filemanager', 'com.vivo.compass', 'com.vivo.gallery', 'com.android.bbkmusic', 'com.vivo.easyshare', 'com.android.camera', 'com.vivo.weather.provider', 'com.vivo.soundrecorder', 'com.vivo.weather', 'com.android.cameraextensions', 'com.android.settings', 'com.bbk.theme.resources', 'com.vivo.Tips', 'com.vivo.notes']
+10:42:08	SUCCESS	Pipeline finalizado correctamente.
+10:42:31	INFO	Test iniciado | salida=C:\Users\ADMIN\Desktop\fiixxing\TEST02 | par=es-es | etapas=['crawl']
+10:42:31	INFO	Iniciando crawleo (Crw)...
+10:42:33	INFO	[  1] OK ENV: settings put system user_rotation 0
+10:42:33	INFO	[  2] OK ENV: settings put system accelerometer_rotation 0
+10:42:33	INFO	[  3] OK ENV: settings put global window_animation_scale 0
+10:42:33	INFO	[  4] OK ENV: settings put global transition_animation_scale 0
+10:42:33	INFO	[  5] OK ENV: settings put global animator_duration_scale 0
+10:42:33	INFO	[  6] OK ENV: settings put global stay_on_while_plugged_in 3
+10:42:33	INFO	[  7] OK ENV: settings put system screen_off_timeout 2147483647
+10:42:34	INFO	[  8] OK ENV: input keyevent KEYCODE_WAKEUP
+10:42:34	INFO	OK   com.android.settings               
+10:42:37	INFO	  Node: 0 (L0)
+10:42:37	INFO	  Clickables: 8
+10:42:37	INFO	  Scrollable: yes
+10:42:37	INFO	  [  1] Wi-Fi, Desactivado                  FrameLayout     Wi-Fi, Desactivado
+10:42:37	INFO	  [  2] Bluetooth, Desactivado              FrameLayout     Bluetooth, Desactiv
+10:42:37	INFO	  [  3] Red móvil                           FrameLayout     Red móvil
+10:42:37	INFO	  [  4] Más conexiones                      FrameLayout     Más conexiones
+10:42:37	INFO	  [  5] Notificaciones y barra de estado    FrameLayout     Notificaciones y ba
+10:42:37	INFO	  [  6] Sonidos y vibración                 FrameLayout     Sonidos y vibración
+10:42:37	INFO	  [  7] Pantalla, brillo y protección ocul  FrameLayout     Pantalla, brillo y
+10:42:37	INFO	  [  8] Pantalla de inicio, pantalla de bl  FrameLayout     Pantalla de inicio,
+10:42:39	INFO	  Node: 0.1 (L1)
+10:42:39	INFO	  Clickables: 3
+10:42:39	INFO	  Scrollable: no
+10:42:39	INFO	  [  1] Asistente de red                    ViewGroup
+10:42:39	INFO	  [  2] Datos Wi-Fi                         ViewGroup
+10:42:39	INFO	  [  3] Escanear para conectarse a Wi-Fi    Button          Escanear para conec
+10:42:43	INFO	  Node: 0.2 (L1)
+10:42:43	INFO	  Clickables: 3
+10:42:43	INFO	  Scrollable: no
+10:42:43	INFO	  [  1] Nombre del dispositivo              ViewGroup
+10:42:43	INFO	  [  2] Archivos recibidos por Bluetooth    ViewGroup
+10:42:43	INFO	  [  3] Ayuda                               Button          Ayuda
