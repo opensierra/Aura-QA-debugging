@@ -1,0 +1,1381 @@
+import os
+import sys
+import json
+import re
+import time
+import shutil
+import datetime
+import subprocess
+import threading
+import webview
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+if BASE not in sys.path:
+    sys.path.insert(0, BASE)
+from Customlib import qa_export            # noqa: E402
+from Customlib.UiBrowser import UiBrowser  # noqa: E402
+
+CONFIG_PATH = os.path.join(BASE, "UI", "settings.json")
+RECENT_PATH = os.path.join(BASE, "UI", "recent.json")
+
+_NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0) if os.name == "nt" else 0
+
+
+def _run(cmd, timeout=5):
+    return subprocess.run(cmd, capture_output=True, text=True, timeout=timeout,
+                          creationflags=_NO_WINDOW)
+
+
+def _adb_shell(prop, serial=None):
+    cmd = ["adb"] + (["-s", serial] if serial else []) + ["shell", "getprop", prop]
+    try:
+        return _run(cmd).stdout.strip()
+    except Exception:
+        return ""
+
+
+def _adb_devices():
+    try:
+        out = []
+        for line in _run(["adb", "devices"]).stdout.strip().splitlines():
+            parts = line.split()
+            if len(parts) >= 2 and parts[1] == "device":
+                out.append(parts[0])
+        return out
+    except Exception:
+        return []
+
+
+def _adb_wm(serial, what, label):
+    try:
+        for line in _run(["adb", "-s", serial, "shell", "wm", what]).stdout.strip().splitlines():
+            if label in line:
+                return line.split(":")[-1].strip()
+    except Exception:
+        pass
+    return None
+
+
+def _http_alive(url, timeout=1.5):
+    import urllib.request
+    import urllib.error
+    try:
+        urllib.request.urlopen(url, timeout=timeout).close()
+        return True
+    except urllib.error.HTTPError:
+        return True
+    except Exception:
+        return False
+
+
+_ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
+
+
+# ================================================================ device checks
+from Customlib.sgna_dut import (  # noqa: E402
+    DeviceError,
+    DC_CHECKS,
+    DC_TARGET_SERIAL,
+    get_checks as _dc_get_checks,
+    configure as _dc_configure_checks,
+)
+
+
+class Api(UiBrowser):
+    """Puente pywebview. Todo método público (sin '_') queda expuesto a JS."""
+
+    _bc_proc = None
+    _bc_url = None
+    _bc_project = False
+    _bc_lock = threading.Lock()
+    _bc_log = os.path.join(BASE, ".bc_server.log")
+
+    def __init__(self):
+        self._project = None
+        self._recent = []
+        self._recent_loaded = False
+        self._last_export = None
+        self._dev_cache = {}
+        self._thumb_cache = {}
+        self._window = None
+        self._is_max = False
+        self._ready = False
+        self._docs_window = None
+        self._docs_max = False
+        self._prune_recent()
+
+    # ------------------------------------------------------------ recientes
+    def _load_recent(self):
+        self._recent_loaded = True
+        self._recent = []
+        try:
+            with open(RECENT_PATH, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            return
+        if not isinstance(data, list):
+            return
+        for x in data:
+            x = str(x)
+            if not os.path.isabs(x):
+                x = os.path.join(BASE, "Test", x)
+            x = os.path.normpath(x)
+            if x not in self._recent:
+                self._recent.append(x)
+
+    def _save_recent(self):
+        try:
+            os.makedirs(os.path.dirname(RECENT_PATH), exist_ok=True)
+            tmp = RECENT_PATH + ".tmp"
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump(self._recent[:10], f, ensure_ascii=False, indent=2)
+            os.replace(tmp, RECENT_PATH)
+        except Exception:
+            pass
+
+    def _prune_recent(self):
+        """Tarea 2: elimina de recent.json las rutas que ya no existen."""
+        if not self._recent_loaded:
+            self._load_recent()
+        alive = [p for p in self._recent if os.path.isdir(p)]
+        if len(alive) != len(self._recent):
+            self._recent = alive
+            self._save_recent()
+
+    def _push_recent(self, path):
+        if not self._recent_loaded:
+            self._load_recent()
+        path = os.path.normpath(path)
+        if path in self._recent:
+            self._recent.remove(path)
+        self._recent.insert(0, path)
+        self._recent = self._recent[:10]
+        self._save_recent()
+
+    def getRecentProjects(self):
+        self._prune_recent()
+        out = []
+        for p in self._recent:
+            try:
+                mtime = os.path.getmtime(p)
+            except OSError:
+                mtime = None
+            out.append({"name": os.path.basename(p) or p, "path": p, "mtime": mtime})
+        return out
+
+    def removeRecentProject(self, path):
+        if not self._recent_loaded:
+            self._load_recent()
+        path = os.path.normpath(path)
+        if path in self._recent:
+            self._recent.remove(path)
+            self._save_recent()
+            return True
+        return False
+
+    # ------------------------------------------------------------- BlueCode
+    def _bc_register_project(self):
+        import urllib.request
+        import urllib.parse
+        url = self._bc_url
+        if not url:
+            return
+        try:
+            enc = urllib.parse.quote(BASE, safe="")
+            req = urllib.request.Request(
+                "{}/project/current?directory={}".format(url, enc),
+                headers={"Accept": "application/json"},
+            )
+            urllib.request.urlopen(req, timeout=5).close()
+            self._bc_project = True
+        except Exception:
+            pass
+
+    def _bc_scan(self):
+        try:
+            with open(self._bc_log, "r", encoding="utf-8", errors="replace") as f:
+                content = _ANSI.sub("", f.read())
+            host = re.search(r'hostname:\s*"([^"]+)"', content)
+            port = re.search(r'port:\s*(\d+)', content)
+            if host and port:
+                with self._bc_lock:
+                    self._bc_url = "http://{}:{}".format(host.group(1), port.group(1))
+        except Exception:
+            pass
+
+    def _bc_tail(self, n=500):
+        try:
+            with open(self._bc_log, "r", encoding="utf-8", errors="replace") as f:
+                return _ANSI.sub("", f.read())[-n:].strip()
+        except Exception:
+            return ""
+
+    def _bc_exe(self):
+        import shutil
+        shim = shutil.which("bluecode")
+        if not shim:
+            return None
+        try:
+            with open(shim, encoding="utf-8", errors="replace") as f:
+                for line in f:
+                    m = re.search(r"cmd-shim-target=(\S+)", line)
+                    if m:
+                        return m.group(1).replace("/", os.sep)
+        except Exception:
+            pass
+        return None
+
+    def startBlueCode(self):
+        with self._bc_lock:
+            if self._bc_proc and self._bc_proc.poll() is None:
+                return {"ok": True, "already": True}
+            self._bc_url = None
+            self._bc_project = False
+            try:
+                os.remove(self._bc_log)
+            except OSError:
+                pass
+            try:
+                log = open(self._bc_log, "w", encoding="utf-8")
+            except OSError as e:
+                return {"ok": False, "error": str(e)}
+            exe = self._bc_exe()
+            env = os.environ.copy()
+            kwargs = dict(stdout=log, stderr=subprocess.STDOUT, cwd=BASE)
+            if os.name == "nt":
+                kwargs["creationflags"] = _NO_WINDOW
+            else:
+                kwargs["start_new_session"] = True
+            try:
+                if exe:
+                    noop = os.path.join(BASE, ".bc_noop.bat")
+                    if not os.path.isfile(noop):
+                        with open(noop, "w") as f:
+                            f.write("@exit /b 0\r\n")
+                    env["ComSpec"] = noop
+                    env["BROWSER"] = os.path.join(BASE, ".bc_noop.bat")
+                    self._bc_proc = subprocess.Popen([exe, "serve"], env=env, **kwargs)
+                else:
+                    self._bc_proc = subprocess.Popen("bluecode serve", shell=True, env=env, **kwargs)
+            except Exception as e:
+                self._bc_proc = None
+                return {"ok": False, "error": str(e)}
+            finally:
+                log.close()
+            return {"ok": True}
+
+    def getBlueCodeStatus(self):
+        with self._bc_lock:
+            proc = self._bc_proc
+        if proc is None:
+            return {"state": "idle"}
+        rc = proc.poll()
+        if rc is not None:
+            return {"state": "exited", "code": rc, "log": self._bc_tail()}
+        self._bc_scan()
+        with self._bc_lock:
+            url = self._bc_url
+        if not url:
+            return {"state": "starting", "stage": "launch"}
+        if not _http_alive(url):
+            return {"state": "starting", "stage": "wait_http"}
+        if not self._bc_project:
+            self._bc_register_project()
+        import urllib.parse
+        return {"state": "ready", "url": "{}/{}/session".format(url, urllib.parse.quote(BASE, safe=""))}
+
+    def getBlueCodeUrl(self):
+        st = self.getBlueCodeStatus()
+        return {"url": st.get("url") if st.get("state") == "ready" else None}
+
+    def stopBlueCode(self):
+        with self._bc_lock:
+            proc = self._bc_proc
+            self._bc_proc = None
+            self._bc_url = None
+            self._bc_project = False
+        if proc and proc.poll() is None:
+            try:
+                if os.name == "nt":
+                    _run(["taskkill", "/F", "/T", "/PID", str(proc.pid)], timeout=10)
+                else:
+                    import signal
+                    os.killpg(os.getpgid(proc.pid), signal.SIGTERM)
+            except Exception:
+                try:
+                    proc.terminate()
+                except Exception:
+                    pass
+            try:
+                proc.wait(timeout=5)
+            except Exception:
+                try:
+                    proc.kill()
+                except Exception:
+                    pass
+
+    def ping(self):
+        return "pong"
+
+    @staticmethod
+    def _rel_to_base(path):
+        """Ruta relativa a BASE; si esta en otro disco (Windows) usa la absoluta."""
+        try:
+            return os.path.relpath(path, BASE).replace(os.sep, "/")
+        except ValueError:
+            return path.replace(os.sep, "/")
+
+    # ------------------------------------------------------------- proyecto
+    def newProject(self, name, path):
+        try:
+            name = (name or "").strip()
+            if not name:
+                return {"ok": False, "error": "empty_name"}
+            name = re.sub(r'[\\/:*?"<>|]', "_", name)
+            base_dir = path if (path and os.path.isdir(path)) else os.path.join(BASE, "Test")
+            project_dir = os.path.join(base_dir, name)
+            if os.path.exists(project_dir):
+                return {"ok": False, "error": "exists", "path": project_dir}
+            os.makedirs(project_dir, exist_ok=True)
+            if not os.path.isdir(project_dir):
+                return {"ok": False, "error": "create_failed", "path": project_dir}
+            self._project = project_dir
+            self._last_export = None
+            self._push_recent(project_dir)
+            rel = self._rel_to_base(project_dir)
+            return {"ok": True, "project": name, "path": project_dir, "rel": rel}
+        except Exception as e:
+            return {"ok": False, "error": str(e)}
+
+    def openProject(self, path):
+        if os.path.isabs(path):
+            project_dir = path
+        else:
+            project_dir = os.path.join(BASE, "Test", path)
+        project_dir = os.path.normpath(project_dir)
+        if not os.path.isdir(project_dir):
+            self._prune_recent()
+            return {"ok": False, "error": "not_found"}
+        self._project = project_dir
+        self._last_export = None
+        self._push_recent(project_dir)
+        rel = self._rel_to_base(project_dir)
+        return {"ok": True, "project": os.path.basename(project_dir), "path": project_dir, "rel": rel}
+
+    def getCurrentProject(self):
+        return {"path": self._project}
+
+    def getProjectLog(self):
+        if not self._project:
+            return {"ok": False, "error": "no_project"}
+        log_path = os.path.join(self._project, ".log")
+        if not os.path.isfile(log_path):
+            return {"ok": True, "lines": []}
+        try:
+            with open(log_path, "r", encoding="utf-8", errors="replace") as f:
+                lines = [l.rstrip("\n") for l in f if l.strip()]
+            return {"ok": True, "lines": lines}
+        except Exception as e:
+            return {"ok": False, "error": str(e)}
+
+    def getQaReport(self):
+        if not getattr(self, "_project", None):
+            return {"ok": False, "error": "no_project"}
+        pkgs = []
+        try:
+            names = sorted(os.listdir(self._project))
+        except OSError:
+            return {"ok": False, "error": "unreadable"}
+        for name in names:
+            pkg_dir = os.path.join(self._project, name)
+            if not os.path.isdir(pkg_dir):
+                continue
+            report_path = os.path.join(pkg_dir, "qa_report.json")
+            if not os.path.isfile(report_path):
+                continue
+            try:
+                with open(report_path, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+            except Exception:
+                continue
+            for p in data.get("paquetes", []):
+                pkg_name = p.get("paquete", name)
+                resultados = []
+                for r in p.get("resultados", []):
+                    resultados.append({
+                        "imagen": r.get("imagen", ""),
+                        "ok": r.get("ok", False),
+                        "regiones": r.get("regiones", 0),
+                        "quality": r.get("quality", "N/A"),
+                        "issues": r.get("issues", []),
+                        "ocr_warnings": r.get("ocr_warnings", []),
+                        "qa_passes": r.get("qa_passes", 0),
+                        "qa_pass_counts": r.get("qa_pass_counts", []),
+                        "summary": r.get("summary", ""),
+                        "tiempo_ocr": r.get("tiempo_ocr", 0),
+                        "tiempo_qa": r.get("tiempo_qa", 0),
+                        "ocr_texts": r.get("ocr_texts", []),
+                    })
+                pkgs.append({
+                    "paquete": pkg_name,
+                    "qa_ok": p.get("qa_ok", False),
+                    "total_imagenes": p.get("total_imagenes", len(resultados)),
+                    "resultados": resultados,
+                })
+        return {"ok": True, "project": os.path.basename(self._project),
+                "path": self._project, "paquetes": pkgs}
+
+    # ------------------------------------------- Tarea 3: estado de ejecución
+    def getRunState(self):
+        """Lee run_state.json del proyecto activo. Lo escribe run_pipeline.py
+        a través de Customlib.run_state.RunStateWriter."""
+        proj = getattr(self, "_project", None)
+        if not proj or not os.path.isdir(proj):
+            return {"ok": False, "error": "no_project"}
+        path = os.path.join(proj, "run_state.json")
+        if not os.path.isfile(path):
+            return {"ok": False, "error": "no_run_state"}
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                state = json.load(f)
+        except Exception as e:
+            return {"ok": False, "error": "unreadable", "detail": str(e)}
+        if not isinstance(state, dict):
+            return {"ok": False, "error": "bad_format"}
+        return {"ok": True, "state": state, "path": path}
+
+    def _resolve_in_project(self, rel):
+        if not self._project or not rel:
+            return None
+        base = os.path.realpath(self._project)
+        p = os.path.realpath(os.path.join(base, str(rel).replace("/", os.sep)))
+        try:
+            if os.path.commonpath([base, p]) != base:
+                return None
+        except ValueError:
+            return None
+        return p if os.path.isfile(p) else None
+
+    def getImageData(self, relPath, maxWidth=0):
+        import base64
+        abs_path = self._resolve_in_project(relPath)
+        if not abs_path:
+            return None
+        try:
+            maxWidth = int(maxWidth or 0)
+            if maxWidth > 0:
+                key = (abs_path, os.path.getmtime(abs_path), maxWidth)
+                hit = self._thumb_cache.get(key)
+                if hit:
+                    return hit
+                try:
+                    import io
+                    from PIL import Image as PILImage
+                    with PILImage.open(abs_path) as im:
+                        im = im.convert("RGB")
+                        if im.width > maxWidth:
+                            im = im.resize((maxWidth, max(1, int(im.height * maxWidth / im.width))), PILImage.LANCZOS)
+                        buf = io.BytesIO()
+                        im.save(buf, format="JPEG", quality=80)
+                    data = "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode("ascii")
+                    if len(self._thumb_cache) > 400:
+                        self._thumb_cache.clear()
+                    self._thumb_cache[key] = data
+                    return data
+                except Exception:
+                    pass
+            ext = os.path.splitext(abs_path)[1].lower()
+            mime = {".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}.get(ext, "image/png")
+            with open(abs_path, "rb") as f:
+                return "data:{};base64,{}".format(mime, base64.b64encode(f.read()).decode("ascii"))
+        except Exception:
+            return None
+
+    def getCrawlLatest(self):
+        """Devuelve el nodo de crawl mas reciente (por mtime) de todos los
+        paquetes del proyecto, con sus clickables y screenshots. Para el
+        live-view del tab Crawl."""
+        if not self._project:
+            return {"ok": False, "error": "no_project"}
+        base = os.path.realpath(self._project)
+        best = None
+        try:
+            for pkg in os.listdir(base):
+                nodes_dir = os.path.join(base, pkg, "nodes")
+                if not os.path.isdir(nodes_dir):
+                    continue
+                for fname in os.listdir(nodes_dir):
+                    if not fname.endswith(".json"):
+                        continue
+                    fp = os.path.join(nodes_dir, fname)
+                    try:
+                        mt = os.path.getmtime(fp)
+                    except OSError:
+                        continue
+                    if best is None or mt > best[0]:
+                        best = (mt, pkg, fname[:-5], fp)
+        except OSError:
+            return {"ok": False, "error": "scan"}
+        if not best:
+            return {"ok": True, "node": None}
+        _mt, pkg, node_id, fp = best
+        try:
+            with open(fp, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            return {"ok": True, "node": None}
+        data["pkg"] = pkg
+        data["node_id"] = node_id
+        return {"ok": True, "node": data}
+
+    # ------------------------------------------------------------- export
+    def previewExport(self, opts):
+        if not self._project:
+            return {"ok": False, "error": "no_project"}
+        try:
+            return qa_export.preview(self._project, opts or {})
+        except Exception as e:
+            return {"ok": False, "error": "unexpected", "detail": str(e)}
+
+    def exportXlsx(self, opts):
+        if not self._project:
+            return {"ok": False, "error": "no_project"}
+        opts = dict(opts or {})
+        dest = (opts.get("destination") or "").strip() or self._project
+        fname = qa_export.safe_filename(opts.get("filename"), os.path.basename(self._project) or "report")
+        try:
+            res = qa_export.export_xlsx(self._project, opts, dest, fname)
+        except Exception as e:
+            return {"ok": False, "error": "unexpected", "detail": str(e)}
+        if res.get("ok"):
+            self._last_export = res["path"]
+        return res
+
+    def openExport(self, kind="folder"):
+        path = self._last_export
+        if not path or not os.path.isfile(path):
+            return {"ok": False, "error": "not_found"}
+        try:
+            if sys.platform.startswith("win"):
+                if kind == "file":
+                    os.startfile(path)
+                else:
+                    subprocess.Popen(["explorer", "/select,", os.path.normpath(path)])
+            elif sys.platform == "darwin":
+                subprocess.Popen(["open", path] if kind == "file" else ["open", "-R", path])
+            else:
+                subprocess.Popen(["xdg-open", path if kind == "file" else os.path.dirname(path)])
+            return {"ok": True}
+        except Exception as e:
+            return {"ok": False, "error": str(e)}
+
+    # ------------------------------------------------------------- config
+    def loadConfig(self):
+        try:
+            with open(CONFIG_PATH, "r", encoding="utf-8") as f:
+                return f.read()
+        except FileNotFoundError:
+            return None
+
+    def saveConfig(self, data):
+        _dbg = os.path.join(BASE, "UI", ".save_debug.log")
+
+        def _log(msg):
+            try:
+                with open(_dbg, "a", encoding="utf-8") as f:
+                    f.write("%s %s\n" % (datetime.datetime.now().isoformat(), msg))
+            except Exception:
+                pass
+
+        _log("saveConfig called, len=%d" % len(data or ""))
+        try:
+            json.loads(data)
+        except (ValueError, TypeError) as e:
+            _log("JSON invalid: %s" % e)
+            return False
+        try:
+            os.makedirs(os.path.dirname(CONFIG_PATH), exist_ok=True)
+            tmp = CONFIG_PATH + ".tmp"
+            with open(tmp, "w", encoding="utf-8") as f:
+                f.write(data)
+            os.replace(tmp, CONFIG_PATH)
+            _log("OK -> %s" % CONFIG_PATH)
+            return True
+        except Exception as e:
+            _log("ERROR: %s: %s" % (type(e).__name__, e))
+            return False
+
+    # ------------------------------------------------------------- device
+    def getDeviceInfo(self):
+        serials = _adb_devices()
+        if not serials:
+            self._dev_cache.clear()
+            return {"connected": False}
+        serial = serials[0]
+        now = time.time()
+        entry = self._dev_cache.get(serial)
+        if not entry or now - entry["t"] > 60 or not entry["info"].get("model"):
+            info = {
+                "serial": serial,
+                "model": _adb_shell("ro.product.model", serial),
+                "release": _adb_shell("ro.build.version.release", serial),
+                "build_id": _adb_shell("ro.build.display.id", serial),
+                "resolution": _adb_wm(serial, "size", "Physical size"),
+                "density": _adb_wm(serial, "density", "Physical density"),
+            }
+            entry = self._dev_cache[serial] = {"t": now, "info": info}
+        out = dict(entry["info"])
+        out["connected"] = True
+        out["language"] = _adb_shell("persist.sys.locale", serial) or _adb_shell("ro.product.locale", serial)
+        return out
+
+    # ------------------------------------------------------- device checks
+    def getDeviceChecks(self):
+        return _dc_get_checks()
+
+    def applyDeviceChecks(self):
+        return _dc_configure_checks(reset=False)
+
+    def resetDeviceChecks(self):
+        return _dc_configure_checks(reset=True)
+
+    def getModelInfo(self):
+        models_dir = os.path.join(BASE, "models", "paddlex", "official_models")
+        models = []
+        if os.path.isdir(models_dir):
+            for d in os.listdir(models_dir):
+                full = os.path.join(models_dir, d)
+                if os.path.isdir(full) and d.startswith("PP-OCR"):
+                    models.append(d)
+        return {"models": models, "dir": models_dir}
+
+    def listPackages(self):
+        try:
+            r = _run(["adb", "shell", "pm", "list", "packages", "-f"], timeout=15)
+        except Exception:
+            return {"ok": False, "error": "adb"}
+        out = []
+        for line in r.stdout.strip().splitlines():
+            if not line.startswith("package:"):
+                continue
+            contenido = line[len("package:"):].strip()
+            if "=" in contenido:
+                ruta, nombre = contenido.rsplit("=", 1)
+            else:
+                ruta, nombre = "", contenido
+            out.append({"name": nombre, "path": ruta})
+        return {"ok": True, "packages": out}
+
+    # ------------------------------------------------------------ psdns
+    _psdns_lock = threading.Lock()
+    _psdns_task = None
+    _psdns_task_seq = 0
+
+    def _psdns_push_event(self, kind, task_id, **extra):
+        payload = {"kind": kind, "taskId": task_id}
+        payload.update(extra)
+        try:
+            js = "window.onPsdnsEvent && window.onPsdnsEvent(%s)" % json.dumps(
+                payload, ensure_ascii=False)
+            webview.windows[0].evaluate_js(js)
+        except Exception:
+            pass
+
+    def _psdns_installed(self):
+        try:
+            r = _run(["adb", "shell", "pm", "list", "packages"], timeout=15)
+        except Exception:
+            return None
+        out = set()
+        for line in r.stdout.strip().splitlines():
+            if line.startswith("package:"):
+                out.add(line[len("package:"):].strip())
+        return out
+
+    def _psdns_load_catalog(self):
+        path = os.path.join(BASE, "Customlib", "psdns.json")
+        try:
+            with open(path, "r", encoding="utf-8-sig") as f:
+                return json.load(f)
+        except Exception:
+            return {}
+
+    def _psdns_pick_label(self, translations, lang):
+        from Customlib import psdns2
+        if not isinstance(translations, dict):
+            return None, []
+        all_names = []
+        for names in translations.values():
+            if isinstance(names, list):
+                for n in names:
+                    if isinstance(n, str) and n.strip() and n not in all_names:
+                        all_names.append(n)
+        norm = psdns2._normalize_language(lang or "en")
+        base = norm.split("-")[0] if norm != "default" else None
+
+        def first_of(key):
+            names = translations.get(key)
+            if isinstance(names, list):
+                for n in names:
+                    if isinstance(n, str) and n.strip():
+                        return n
+            return None
+
+        for key in [k for k in (norm, base, "default") if k]:
+            label = first_of(key)
+            if label:
+                return label, all_names
+        return None, all_names
+
+    def refreshPsdns(self):
+        catalog = self._psdns_load_catalog()
+        installed = self._psdns_installed()
+        serials = _adb_devices()
+        serial = serials[0] if serials else None
+        if installed is None:
+            return {"ok": False, "error": "dut_unavailable",
+                    "serial": serial, "catalog": catalog,
+                    "installed": None,
+                    "catalogPackages": len(catalog)}
+        return {"ok": True, "serial": serial, "catalog": catalog,
+                "installed": sorted(installed),
+                "catalogPackages": len(catalog)}
+
+    def updatePsdns(self, entries=None, refresh=False):
+        with self._psdns_lock:
+            if self._psdns_task is not None:
+                return {"ok": False, "error": "already_running",
+                        "taskId": self._psdns_task}
+            self._psdns_task_seq += 1
+            task_id = "psdns-%d" % self._psdns_task_seq
+            self._psdns_task = task_id
+        threading.Thread(
+            target=self._psdns_update_worker, args=(task_id, entries, refresh),
+            daemon=True).start()
+        return {"ok": True, "taskId": task_id}
+
+    def _psdns_update_worker(self, task_id, entries, refresh):
+        from Customlib import psdns2
+
+        def on_log(message):
+            self._psdns_push_event("progress", task_id, message=message)
+
+        psdns2.set_log_callback(on_log)
+        try:
+            data = psdns2.update_catalog(
+                entries=entries if entries is not None else None,
+                refresh=bool(refresh),
+                languages=["es", "en", "id", "pt", "th", "ur", "vi", "default"],
+            )
+            self._psdns_push_event("done", task_id,
+                                   count=len(data) if isinstance(data, dict) else 0)
+        except Exception as e:
+            self._psdns_push_event("error", task_id, message=str(e))
+        finally:
+            psdns2.set_log_callback(None)
+            with self._psdns_lock:
+                if self._psdns_task == task_id:
+                    self._psdns_task = None
+
+    # ------------------------------------------------------------ pipeline
+    _pipe_proc = None
+    _pipe_lock = threading.Lock()
+    _pipe_session = {"start": None, "base_issues": 0, "base_warnings": 0}
+    _pipe_state = {
+        "status": "idle", "stage": None,
+        "current_package": None, "current_item": None,
+        "current": 0, "total_items": None,
+        "issues": 0, "warnings": 0,
+        "started": None, "elapsed": 0,
+        "exit_code": None, "error": None, "extOut": None,
+        "running": False,
+    }
+
+    def _pipe_push(self, js):
+        try:
+            webview.windows[0].evaluate_js(js)
+        except Exception:
+            pass
+
+    def _pipe_state_snapshot(self):
+        with self._pipe_lock:
+            st = dict(self._pipe_state)
+            sess_start = self._pipe_session.get("start")
+        if sess_start and st["status"] == "running":
+            st["elapsed"] = int(time.time() - sess_start)
+        return st
+
+    def _pipe_count_issues(self, project_dir):
+        issues = warnings = 0
+        if not project_dir or not os.path.isdir(project_dir):
+            return issues, warnings
+        try:
+            names = os.listdir(project_dir)
+        except OSError:
+            return issues, warnings
+        for name in names:
+            rp = os.path.join(project_dir, name, "qa_report.json")
+            if not os.path.isfile(rp):
+                continue
+            try:
+                with open(rp, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+            except Exception:
+                continue
+            for p in data.get("paquetes", []):
+                for r in p.get("resultados", []):
+                    issues += len(r.get("issues", []) or [])
+                    warnings += len(r.get("ocr_warnings", []) or [])
+        return issues, warnings
+
+    def _pipe_update(self, **kw):
+        with self._pipe_lock:
+            self._pipe_state.update(kw)
+        self._pipe_emit_counters()
+
+    def _pipe_emit_counters(self):
+        st = self._pipe_state_snapshot()
+        payload = {
+            "status": st.get("status", "idle"),
+            "stage": st.get("stage"),
+            "current": st.get("current", 0),
+            "total": st.get("total_items"),
+            "issues": st.get("issues", 0),
+            "warnings": st.get("warnings", 0),
+            "elapsed": st.get("elapsed", 0),
+        }
+        self._pipe_push("window.onCounters && window.onCounters(%s)" % json.dumps(payload, ensure_ascii=False))
+
+    def _pipe_reader(self, proc):
+        for raw in iter(proc.stdout.readline, ""):
+            if not raw:
+                break
+            raw = raw.strip()
+            if not raw:
+                continue
+            try:
+                ev = json.loads(raw)
+            except Exception:
+                self._pipe_push("window.onPipelineLog && window.onPipelineLog({msg: %s, level:'INFO'})"
+                                % json.dumps(raw, ensure_ascii=False))
+                continue
+            etype = ev.get("event")
+            if etype == "log":
+                self._pipe_push("window.onPipelineLog && window.onPipelineLog({msg: %s, level: %s})" % (
+                    json.dumps(ev.get("msg", ""), ensure_ascii=False),
+                    json.dumps(ev.get("level", "INFO"))))
+            elif etype == "step":
+                step = ev.get("step", "")
+                state = ev.get("state", "")
+                if state == "active":
+                    self._pipe_update(stage=step)
+                elif state in ("done", "skipped"):
+                    if step == "qa":
+                        iss, wrn = self._pipe_count_issues(self._pipe_state.get("extOut"))
+                        self._pipe_update(issues=iss, warnings=wrn)
+                self._pipe_push("window.onPipelineStep && window.onPipelineStep(%s, %s)" % (
+                    json.dumps(step), json.dumps(state)))
+            elif etype == "progress":
+                upd = dict(
+                    stage=ev.get("stage"),
+                    current=ev.get("current", 0),
+                    current_package=ev.get("package"),
+                    current_item=ev.get("item"),
+                )
+                # Tarea 5: nunca pisar con null un total ya conocido.
+                if ev.get("total") is not None:
+                    upd["total_items"] = ev.get("total")
+                if ev.get("issues") is not None:
+                    upd["issues"] = ev.get("issues")
+                if ev.get("warnings") is not None:
+                    upd["warnings"] = ev.get("warnings")
+                self._pipe_update(**upd)
+                self._pipe_push("window.onPipelineProgress && window.onPipelineProgress(%s)"
+                                % json.dumps(ev, ensure_ascii=False))
+            elif etype == "done":
+                iss, wrn = self._pipe_count_issues(self._pipe_state.get("extOut"))
+                self._pipe_update(status="done", issues=iss, warnings=wrn)
+                self._pipe_push("window.onPipelineDone && window.onPipelineDone(%s)"
+                                % json.dumps(ev, ensure_ascii=False))
+            elif etype == "packages":
+                self._pipe_push("window.onPipelinePackages && window.onPipelinePackages(%s)"
+                                % json.dumps(ev.get("packages", []), ensure_ascii=False))
+            elif etype == "error":
+                self._pipe_update(status="error", error=ev.get("msg", ""))
+                self._pipe_push("window.onPipelineError && window.onPipelineError(%s)"
+                                % json.dumps(ev.get("msg", ""), ensure_ascii=False))
+        proc.wait()
+        with self._pipe_lock:
+            code = proc.returncode
+            if self._pipe_state["status"] not in ("done", "error", "cancelled"):
+                self._pipe_state["status"] = "done" if code == 0 else "error"
+            self._pipe_state["exit_code"] = code
+            self._pipe_state["running"] = False
+            sess_start = self._pipe_session.get("start")
+            if sess_start:
+                self._pipe_state["elapsed"] = int(time.time() - sess_start)
+        self._pipe_emit_counters()
+        if code == 0 and "autoexport" in (self._pipe_state.get("stages") or []):
+            try:
+                from Customlib import qa_export
+                proj = self._pipe_state.get("extOut") or self._project
+                pair = self._pipe_state.get("pair") or ""
+                # Idioma del reporte = target del par de ejecucion (es-vi -> vi).
+                # Si no hay par, cae al idioma de la UI.
+                exp_lang = pair.split("-")[-1].strip().lower()[:2] or "en"
+                if exp_lang not in ("en", "es", "vi", "id", "ur", "pt", "th"):
+                    exp_lang = (self._pipe_state.get("exportLang") or "en").strip()[:2] or "en"
+                fname = qa_export.safe_filename(os.path.basename(proj), "report")
+                res = qa_export.export_xlsx(proj, {"lang": exp_lang, "includeScreenshots": True, "thumbSize": "l"}, proj, fname)
+                if res and res.get("ok"):
+                    self._last_export = res["path"]
+                    self._pipe_push("window.onExportDone && window.onExportDone(%s)"
+                                    % json.dumps(res, ensure_ascii=False))
+                else:
+                    self._pipe_push("window.onExportDone && window.onExportDone(%s)"
+                                    % json.dumps({"ok": False, "error": (res or {}).get("error", "export_failed")}, ensure_ascii=False))
+            except Exception as e:
+                self._pipe_push("window.onExportDone && window.onExportDone(%s)"
+                                % json.dumps({"ok": False, "error": "unexpected", "detail": str(e)}, ensure_ascii=False))
+        self._pipe_push("window.onPipelineExit && window.onPipelineExit(%d)" % (code or 0))
+
+    def startPipeline(self, cfg):
+        with self._pipe_lock:
+            if self._pipe_proc and self._pipe_proc.poll() is None:
+                return {"ok": False, "error": "already_running"}
+            extOut = (cfg.get("extOut") or "").strip()
+            if not extOut:
+                return {"ok": False, "error": "no_extout"}
+            out_dir = extOut if os.path.isabs(extOut) else os.path.join(BASE, extOut)
+            try:
+                os.makedirs(out_dir, exist_ok=True)
+            except Exception as e:
+                return {"ok": False, "error": "extout_invalid", "detail": str(e)}
+            if not os.access(out_dir, os.W_OK):
+                return {"ok": False, "error": "extout_not_writable", "detail": out_dir}
+            proj = self._project
+            if not (proj and os.path.realpath(proj) == os.path.realpath(out_dir)):
+                proj = out_dir
+            self._project = proj
+            self._prune_recent()
+            new_session = bool(cfg.get("newSession", True))
+            if new_session:
+                self._pipe_session = {"start": time.time()}
+                base_issues = 0
+                base_warnings = 0
+            else:
+                if self._pipe_session.get("start") is None:
+                    self._pipe_session["start"] = time.time()
+                base_issues = self._pipe_state.get("issues", 0) or 0
+                base_warnings = self._pipe_state.get("warnings", 0) or 0
+            sess_start = self._pipe_session["start"]
+            self._pipe_state = {
+                "status": "running", "stage": None,
+                "current_package": None, "current_item": None,
+                "current": 0, "total_items": None,
+                "issues": base_issues, "warnings": base_warnings,
+                "started": sess_start, "elapsed": int(time.time() - sess_start),
+                "exit_code": None, "error": None,
+                "extOut": out_dir,
+                "stages": cfg.get("stages") or [],
+                "pair": (cfg.get("pair") or "").strip(),
+                "exportLang": (cfg.get("exportLang") or "en").strip() or "en",
+                "running": True,
+            }
+            flags = subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0
+            # Bug codificación: el hijo heredaba cp1252 en stdout y el padre lee
+            # la pipe como UTF-8 -> acentos se convertían en U+FFFD y CJK/Thai/
+            # Urdu se perdían (UnicodeEncodeError silenciado). Forzar UTF-8 en el
+            # hijo para que coincida con encoding="utf-8" del padre.
+            env = {**os.environ, "PYTHONIOENCODING": "utf-8"}
+            try:
+                self._pipe_proc = subprocess.Popen(
+                    [sys.executable, os.path.join(BASE, "run_pipeline.py"),
+                     json.dumps(cfg, ensure_ascii=True)],
+                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT, cwd=BASE,
+                    creationflags=flags, encoding="utf-8", errors="replace",
+                    env=env,
+                )
+            except Exception as e:
+                self._pipe_state["status"] = "idle"
+                return {"ok": False, "error": str(e)}
+        threading.Thread(target=self._pipe_reader, args=(self._pipe_proc,), daemon=True).start()
+        self._pipe_emit_counters()
+        return {"ok": True, "extOut": out_dir}
+
+    def stopPipeline(self):
+        with self._pipe_lock:
+            proc = self._pipe_proc
+            if proc and proc.poll() is None:
+                self._pipe_state["status"] = "cancelled"
+                self._pipe_state["error"] = "cancelled by user"
+        if proc and proc.poll() is None:
+            try:
+                if os.name == "nt":
+                    subprocess.run(["taskkill", "/F", "/T", "/PID", str(proc.pid)],
+                                   capture_output=True, timeout=10)
+                else:
+                    proc.terminate()
+            except Exception:
+                pass
+            try:
+                proc.wait(timeout=5)
+            except Exception:
+                try:
+                    proc.kill()
+                except Exception:
+                    pass
+        self._pipe_emit_counters()
+        return {"ok": True}
+
+    def getPipelineState(self):
+        st = self._pipe_state_snapshot()
+        self._pipe_emit_counters()
+        return st
+
+    # ------------------------------------------------- start from screenshot
+    _ss_copy_lock = threading.Lock()
+    _ss_copy_seq = 0
+    _ss_img_exts = (".png", ".jpg", ".jpeg")
+
+    def _ss_build_index(self, unstructure):
+        """Genera <unstructure>/screenshots.index: una linea por imagen
+        (ruta relativa con separador /), ordenada, escritura atomica.
+        Escanea TODO unstructure/ (puede acumular varias carpetas copiadas)."""
+        entries = []
+        for root, _dirs, names in os.walk(unstructure):
+            for n in names:
+                if n.lower().endswith(self._ss_img_exts):
+                    rel = os.path.relpath(os.path.join(root, n), unstructure)
+                    entries.append(rel.replace(os.sep, "/"))
+        entries.sort()
+        index_path = os.path.join(unstructure, "screenshots.index")
+        tmp_path = index_path + ".tmp"
+        with open(tmp_path, "w", encoding="utf-8") as f:
+            for e in entries:
+                f.write(e + "\n")
+        os.replace(tmp_path, index_path)
+        return len(entries)
+
+    def _ss_copy_emit(self, seq, kind, **extra):
+        payload = {"seq": seq, "kind": kind}
+        payload.update(extra)
+        try:
+            js = "window.onScreenshotCopy && window.onScreenshotCopy(%s)" % json.dumps(
+                payload, ensure_ascii=False)
+            webview.windows[0].evaluate_js(js)
+        except Exception:
+            pass
+
+    def copyToUnstructure(self, src, dest):
+        """Copia la carpeta de screenshots elegida dentro de <dest>/unstructure
+        en un hilo en segundo plano, emitiendo eventos de progreso a la UI
+        (window.onScreenshotCopy). Devuelve de inmediato {ok, seq} para que la
+        UI pueda bloquear el inicio hasta el evento 'done'."""
+        with self._ss_copy_lock:
+            self._ss_copy_seq += 1
+            seq = self._ss_copy_seq
+        # Capturar los valores ANTES de definir worker: si dentro se
+        # reasignaran src/dest, Python las trataria como locales y el read
+        # previo lanzaria UnboundLocalError.
+        src_raw = str(src or "").strip()
+        dest_raw = str(dest or "").strip()
+
+        def worker():
+            try:
+                dest_p = os.path.normpath(dest_raw)
+                if not dest_p or not os.path.isdir(dest_p):
+                    self._ss_copy_emit(seq, "error", code="dest_invalid", detail=dest_p)
+                    return
+                src_p = os.path.normpath(src_raw)
+                if not src_p:
+                    self._ss_copy_emit(seq, "error", code="src_invalid", detail=src_p)
+                    return
+                # Si la UI envia una ruta relativa (p. ej. "unstructure\vivo"
+                # tras una copia previa), se resuelve contra el proyecto.
+                if not os.path.isabs(src_p):
+                    src_p = os.path.join(dest_p, src_p)
+                if not os.path.isdir(src_p):
+                    self._ss_copy_emit(seq, "error", code="src_invalid", detail=src_p)
+                    return
+                unstructure = os.path.join(dest_p, "unstructure")
+                os.makedirs(unstructure, exist_ok=True)
+                target = os.path.join(unstructure, os.path.basename(src_p.rstrip("\\/")))
+                # Si la fuente ya ES la copia (re-copiar la ruta relativa que
+                # quedo en el campo), no hay nada que hacer: no borrar ni copiar.
+                if os.path.normpath(src_p) == os.path.normpath(target):
+                    self._ss_build_index(unstructure)
+                    self._ss_copy_emit(seq, "done", path=os.path.relpath(target, dest_p))
+                    return
+                if os.path.exists(target):
+                    if os.path.isdir(target) and not os.path.islink(target):
+                        shutil.rmtree(target)
+                    else:
+                        os.remove(target)
+                files = []
+                for root, _dirs, names in os.walk(src_p):
+                    for n in names:
+                        files.append(os.path.join(root, n))
+                total = len(files)
+                done = 0
+                for f in files:
+                    rel = os.path.relpath(f, src_p)
+                    dst = os.path.join(target, rel)
+                    os.makedirs(os.path.dirname(dst), exist_ok=True)
+                    shutil.copy2(f, dst)
+                    done += 1
+                    self._ss_copy_emit(seq, "progress", done=done, total=total,
+                                       name=os.path.basename(f))
+                self._ss_build_index(unstructure)
+                self._ss_copy_emit(seq, "done", path=os.path.relpath(target, dest_p))
+            except Exception as e:
+                self._ss_copy_emit(seq, "error", code="copy_failed", detail=str(e))
+
+        threading.Thread(target=worker, daemon=True).start()
+        return {"ok": True, "seq": seq}
+
+    # ------------------------------------------------------------ ventana
+    def minimize(self):
+        if self._window:
+            self._window.minimize()
+
+    def maximize(self):
+        if not self._window:
+            return
+        # Consulta el estado real de la ventana (IsZoomed) en vez de confiar
+        # en la bandera: la ventana se crea ya maximizada pero _is_max nace
+        # en False, lo que desincronizaba el primer clic.
+        try:
+            import ctypes
+            from ctypes import wintypes
+            user32 = ctypes.windll.user32
+            hwnd = self._window.native.Handle.ToInt64()
+            if user32.IsZoomed(hwnd):
+                self._window.restore()
+                self._is_max = False
+            else:
+                self._window.maximize()
+                self._is_max = True
+        except Exception:
+            if getattr(self, "_is_max", False):
+                self._window.restore()
+                self._is_max = False
+            else:
+                self._window.maximize()
+                self._is_max = True
+
+    _closing = False
+
+    def _cleanup_once(self):
+        if self._closing:
+            return
+        self._closing = True
+        try:
+            self.stopPipeline()
+        except Exception:
+            pass
+        try:
+            self.stopBlueCode()
+        except Exception:
+            pass
+
+    def close(self):
+        threading.Thread(target=self._cleanup_once, daemon=True).start()
+        if self._window:
+            self._window.destroy()
+
+    def moveBy(self, dx, dy):
+        if not self._window:
+            return
+        try:
+            self._window.move(self._window.x + int(dx), self._window.y + int(dy))
+        except Exception:
+            pass
+
+    def appReady(self):
+        # El frontend termino su inicializacion esencial: escribe la senal que
+        # el launcher esta esperando. La ventana NO se muestra aqui: el launcher
+        # destruye el splash primero y despues envia la orden de mostrar.
+        if self._ready:
+            return {"ok": True}
+        self._ready = True
+        try:
+            import tempfile
+            sig = os.path.join(tempfile.gettempdir(), "aura_ready_%d.txt" % os.getpid())
+            with open(sig, "w") as f:
+                f.write("1")
+            threading.Thread(target=self._wait_show_signal, daemon=True).start()
+        except Exception:
+            pass
+        return {"ok": True}
+
+    def _wait_show_signal(self):
+        # Espera la orden del launcher (aura_show_<pid>.txt) para mostrar la
+        # ventana. Fallback: si el launcher muere y no llega en 10s, se muestra
+        # igual para no dejar la app invisible.
+        import tempfile
+        import time
+        show = os.path.join(tempfile.gettempdir(), "aura_show_%d.txt" % os.getpid())
+        deadline = time.time() + 10
+        while time.time() < deadline:
+            if os.path.exists(show):
+                break
+            time.sleep(0.05)
+        try:
+            os.remove(show)
+        except Exception:
+            pass
+        self._fix_maximized_position()
+        if self._window:
+            try:
+                self._window.show()
+            except Exception:
+                pass
+
+    def _fix_maximized_position(self):
+        # Las ventanas frameless maximizadas se posicionan a los bounds del
+        # monitor (cubren la taskbar). Hook de WM_GETMINMAXINFO para que se
+        # maximizen al work area. Se instala antes de maximizar.
+        try:
+            import ctypes
+            from ctypes import wintypes
+            user32 = ctypes.windll.user32
+            # native.Handle es un IntPtr de .NET; se convierte a int de Python.
+            hwnd = self._window.native.Handle.ToInt64()
+            MONITOR_DEFAULTTONEAREST = 2
+            class POINT(ctypes.Structure):
+                _fields_ = [("x", wintypes.LONG), ("y", wintypes.LONG)]
+            class MINMAXINFO(ctypes.Structure):
+                _fields_ = [("ptReserved", POINT), ("ptMaxSize", POINT),
+                            ("ptMaxPosition", POINT), ("ptMinTrackSize", POINT),
+                            ("ptMaxTrackSize", POINT)]
+            class MONITORINFO(ctypes.Structure):
+                _fields_ = [("cbSize", wintypes.DWORD),
+                            ("rcMonitor", wintypes.RECT),
+                            ("rcWork", wintypes.RECT),
+                            ("dwFlags", wintypes.DWORD)]
+            WM_GETMINMAXINFO = 0x0024
+            GWLP_WNDPROC = -4
+            # Tipos correctos para 64-bit (evita truncar punteros a 32 bits).
+            user32.GetWindowLongPtrW.restype = ctypes.c_void_p
+            user32.GetWindowLongPtrW.argtypes = [wintypes.HWND, ctypes.c_int]
+            user32.SetWindowLongPtrW.restype = ctypes.c_void_p
+            user32.SetWindowLongPtrW.argtypes = [wintypes.HWND, ctypes.c_int, ctypes.c_void_p]
+            user32.CallWindowProcW.restype = ctypes.c_ssize_t
+            user32.CallWindowProcW.argtypes = [ctypes.c_void_p, wintypes.HWND,
+                                               wintypes.UINT, ctypes.c_size_t,
+                                               ctypes.c_ssize_t]
+            WNDPROC = ctypes.WINFUNCTYPE(ctypes.c_ssize_t, wintypes.HWND,
+                                         wintypes.UINT, ctypes.c_size_t,
+                                         ctypes.c_ssize_t)
+            orig = user32.GetWindowLongPtrW(hwnd, GWLP_WNDPROC)
+            def _hook(h, msg, wp, lp):
+                if msg == WM_GETMINMAXINFO:
+                    mmi = ctypes.cast(lp, ctypes.POINTER(MINMAXINFO)).contents
+                    mi = MONITORINFO(); mi.cbSize = ctypes.sizeof(MONITORINFO)
+                    hmon = user32.MonitorFromWindow(h, MONITOR_DEFAULTTONEAREST)
+                    if user32.GetMonitorInfoW(hmon, ctypes.byref(mi)):
+                        r = mi.rcWork
+                        mmi.ptMaxSize.x = r.right - r.left
+                        mmi.ptMaxSize.y = r.bottom - r.top
+                        mmi.ptMaxPosition.x = r.left
+                        mmi.ptMaxPosition.y = r.top
+                return user32.CallWindowProcW(orig, h, msg, wp, lp)
+            # Se guarda la referencia para que no se recoja el callback.
+            self._wndproc_hook = WNDPROC(_hook)
+            user32.SetWindowLongPtrW(hwnd, GWLP_WNDPROC, self._wndproc_hook)
+            # La ventana se creo ya maximizada (sin hook, a los bounds del
+            # monitor). Restore -> maximize re-dispara WM_GETMINMAXINFO con el
+            # hook activo, recolocandola al work area. La ventana sigue oculta,
+            # asi que no hay flicker visible.
+            self._window.restore()
+            self._window.maximize()
+        except Exception:
+            pass
+
+    # ------------------------------------------------------------ documentacion
+    def openDocs(self):
+        if self._docs_window is not None:
+            try:
+                self._docs_window.restore()
+                self._docs_window.show()
+                return {"ok": True}
+            except Exception:
+                self._docs_window = None
+        try:
+            self._docs_window = webview.create_window(
+                "AURA QA - Documentation",
+                os.path.join(BASE, "UI", "doc", "Documentation.html"),
+                js_api=self,
+                width=1000,
+                height=700,
+                min_size=(560, 420),
+                frameless=True,
+                shadow=False,
+                easy_drag=False,
+            )
+            return {"ok": True}
+        except Exception as e:
+            self._docs_window = None
+            return {"ok": False, "error": str(e)}
+
+    def closeDocs(self):
+        if self._docs_window is not None:
+            try:
+                self._docs_window.destroy()
+            except Exception:
+                pass
+            self._docs_window = None
+        return {"ok": True}
+
+    def docsMinimize(self):
+        if self._docs_window:
+            try:
+                self._docs_window.minimize()
+            except Exception:
+                pass
+        return {"ok": True}
+
+    def docsMoveBy(self, dx, dy):
+        if not self._docs_window:
+            return
+        try:
+            self._docs_window.move(self._docs_window.x + int(dx), self._docs_window.y + int(dy))
+        except Exception:
+            pass
+
+    def docsMaximize(self):
+        if not self._docs_window:
+            return {"ok": False}
+        try:
+            if getattr(self, "_docs_max", False):
+                self._docs_window.restore()
+                self._docs_max = False
+            else:
+                self._docs_window.maximize()
+                self._docs_max = True
+            return {"ok": True}
+        except Exception as e:
+            return {"ok": False, "error": str(e)}
+
+
+if __name__ == "__main__":
+    api = Api()
+    window = webview.create_window(
+        "AURA QA",
+        os.path.join(BASE, "UI", "index.html"),
+        js_api=api,
+        min_size=(1000, 700),
+        frameless=True,
+        shadow=False,
+        easy_drag=False,
+        hidden=True,
+        maximized=True,
+    )
+    api._window = window
+
+    def _on_close():
+        threading.Thread(target=api._cleanup_once, daemon=True).start()
+
+    window.events.closing += _on_close
+    webview.start(debug=False, icon=r"UI\vendor\icon.ico")

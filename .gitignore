@@ -1,0 +1,39 @@
+# Runtime (generado por setup.bat / instalador)
+Python/
+models/
+wheels/
+setup.log
+
+# Binarios grandes (distribuir por release)
+Aura Qa.exe
+libstdc++-6.dll
+libgcc_s_seh-1.dll
+libwinpthread-1.dll
+Python.rar
+Rar.exe
+Java/
+Tools/adb.exe
+Tools/apktool.jar
+Tools/apktool.bat
+src launcher/launcher.exe
+src launcher/icon.o
+
+# Output / datos de usuario
+Test/
+TEST02/
+TEST03_FALLBACK/
+MODULETEST/
+trash/
+__pycache__/
+*.pyc
+UI/recent.json
+UI/.save_debug.log
+.bc_server.log
+.bc_noop.bat
+
+# Builds de instalador
+inno/stable/
+inno/first trial (failed)/
+
+# Excluido por el usuario
+phoenix

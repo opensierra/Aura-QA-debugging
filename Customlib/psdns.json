@@ -1,0 +1,5893 @@
+{
+    "android": {
+        "default": [
+            "Android System"
+        ],
+        "en": [
+            "Android System"
+        ],
+        "es": [
+            "Sistema Android"
+        ],
+        "id": [
+            "Sistem Android"
+        ],
+        "pt": [
+            "Sistema Android"
+        ],
+        "th": [
+            "ระบบ Android"
+        ],
+        "ur": [
+            "Android سسٹم",
+            "‏Android سسٹم"
+        ],
+        "vi": [
+            "Hệ thống Android"
+        ]
+    },
+    "android.autoinstalls.config.vivo.devices": {
+        "default": [
+            "Device configuration"
+        ]
+    },
+    "com.android.DeviceAsWebcam": {
+        "default": [
+            "Webcam Service"
+        ],
+        "en": [
+            "Webcam service"
+        ],
+        "es": [
+            "Servicio de cámara web"
+        ],
+        "id": [
+            "Layanan Webcam"
+        ],
+        "pt": [
+            "Serviço de câmara Web",
+            "Serviço de webcam"
+        ],
+        "th": [
+            "บริการเว็บแคม"
+        ],
+        "ur": [
+            "ویب کیم سروس"
+        ],
+        "vi": [
+            "Dịch vụ webcam"
+        ]
+    },
+    "com.android.angle": {
+        "default": [
+            "Android System Angle"
+        ]
+    },
+    "com.android.apps.tag": {
+        "default": [
+            "Tags"
+        ],
+        "en": [
+            "Tags"
+        ],
+        "es": [
+            "Etiquetas"
+        ],
+        "id": [
+            "Tag"
+        ],
+        "pt": [
+            "Etiquetas",
+            "Tags"
+        ],
+        "th": [
+            "แท็ก"
+        ],
+        "ur": [
+            "ٹیگز"
+        ],
+        "vi": [
+            "Thẻ"
+        ]
+    },
+    "com.android.bbk.lockscreen3": {
+        "default": [
+            "Lock"
+        ],
+        "en": [
+            "Lock"
+        ],
+        "es": [
+            "Bloquear"
+        ],
+        "id": [
+            "Kunci"
+        ],
+        "pt": [
+            "Bloquear"
+        ],
+        "th": [
+            "ล็อค"
+        ],
+        "ur": [
+            "لاک"
+        ],
+        "vi": [
+            "Khóa"
+        ]
+    },
+    "com.android.bbklog": {
+        "default": [
+            "Log Collection"
+        ],
+        "en": [
+            "Log Collection"
+        ],
+        "es": [
+            "Recopilación de registros"
+        ],
+        "id": [
+            "Pengumpulan Log"
+        ],
+        "pt": [
+            "Coleta de registro",
+            "Recolha de registos"
+        ],
+        "th": [
+            "การจัดเก็บบันทึก"
+        ],
+        "ur": [
+            "لاگ کی جمع آوری"
+        ],
+        "vi": [
+            "Thu thập nhật ký"
+        ]
+    },
+    "com.android.bbkmusic": {
+        "default": [
+            "Music"
+        ],
+        "en": [
+            "Music"
+        ],
+        "es": [
+            "Música"
+        ],
+        "id": [
+            "Musik"
+        ],
+        "pt": [
+            "Música"
+        ],
+        "th": [
+            "เพลง"
+        ],
+        "ur": [
+            "موسیقی"
+        ],
+        "vi": [
+            "Nhạc"
+        ]
+    },
+    "com.android.bips": {
+        "default": [
+            "Print"
+        ],
+        "en": [
+            "Print"
+        ],
+        "es": [
+            "Imprimir"
+        ],
+        "id": [
+            "Cetak"
+        ],
+        "pt": [
+            "Imprimir"
+        ],
+        "th": [
+            "พิมพ์"
+        ],
+        "ur": [
+            "پرنٹ کریں"
+        ],
+        "vi": [
+            "In"
+        ]
+    },
+    "com.android.bluetooth": {
+        "default": [
+            "Bluetooth"
+        ],
+        "en": [
+            "Bluetooth"
+        ],
+        "es": [
+            "Bluetooth"
+        ],
+        "id": [
+            "Bluetooth"
+        ],
+        "pt": [
+            "Bluetooth"
+        ],
+        "th": [
+            "บลูทูธ"
+        ],
+        "ur": [
+            "بلوٹوتھ"
+        ],
+        "vi": [
+            "Bluetooth"
+        ]
+    },
+    "com.android.bluetoothmidiservice": {
+        "default": [
+            "Bluetooth MIDI Service"
+        ]
+    },
+    "com.android.bookmarkprovider": {
+        "default": [
+            "Bookmark Provider"
+        ]
+    },
+    "com.android.calllogbackup": {
+        "default": [
+            "Call Log Backup/Restore"
+        ]
+    },
+    "com.android.camera": {
+        "default": [
+            "Camera"
+        ],
+        "en": [
+            "Camera"
+        ],
+        "es": [
+            "Cámara"
+        ],
+        "id": [
+            "Kamera"
+        ],
+        "pt": [
+            "Câmara",
+            "Câmera"
+        ],
+        "th": [
+            "กล้องถ่ายรูป"
+        ],
+        "ur": [
+            "کیمرہ"
+        ],
+        "vi": [
+            "Máy ảnh"
+        ]
+    },
+    "com.android.cameraextensions": {
+        "default": [
+            "CameraExtensionsProxy"
+        ]
+    },
+    "com.android.carrierdefaultapp": {
+        "default": [
+            "Carrier Communications"
+        ],
+        "en": [
+            "Operator communications"
+        ],
+        "es": [
+            "Comunicaciones de operadores",
+            "Comunicaciones del operador"
+        ],
+        "id": [
+            "Komunikasi Operator"
+        ],
+        "pt": [
+            "Comunicações da operadora",
+            "Comunicações do operador"
+        ],
+        "th": [
+            "การสื่อสารจากผู้ให้บริการ"
+        ],
+        "ur": [
+            "کیریئر سے متعلق مواصلات"
+        ],
+        "vi": [
+            "Thông báo của nhà mạng"
+        ]
+    },
+    "com.android.certinstaller": {
+        "default": [
+            "Certificate Installer"
+        ],
+        "en": [
+            "Certificate Installer"
+        ],
+        "es": [
+            "Instalador de certificado",
+            "Instalador de certificados"
+        ],
+        "id": [
+            "Pemasang Sertifikat"
+        ],
+        "pt": [
+            "Instalador de certificado",
+            "Instalador do certificado"
+        ],
+        "th": [
+            "โปรแกรมติดตั้งใบรับรอง"
+        ],
+        "ur": [
+            "سرٹیفیکیٹ انسٹال کنندہ"
+        ],
+        "vi": [
+            "Trình cài đặt Chứng chỉ"
+        ]
+    },
+    "com.android.chrome": {
+        "default": [
+            "Chrome"
+        ]
+    },
+    "com.android.companiondevicemanager": {
+        "default": [
+            "Companion Device Manager"
+        ],
+        "en": [
+            "Companion Device Manager"
+        ],
+        "es": [
+            "Administrador de dispositivo complementario",
+            "Gestor de dispositivos complementario"
+        ],
+        "id": [
+            "Pengelola Perangkat Pendamping"
+        ],
+        "pt": [
+            "Gerenciador de dispositivos complementar",
+            "Gestor de dispositivos associados"
+        ],
+        "th": [
+            "Companion Device Manager"
+        ],
+        "ur": [
+            "ساتھی آلہ مینیجر"
+        ],
+        "vi": [
+            "Trình quản lý thiết bị đồng hành"
+        ]
+    },
+    "com.android.compos.payload": {
+        "default": [
+            "CompOS"
+        ]
+    },
+    "com.android.contactspicker": {
+        "default": [
+            "Contacts Picker"
+        ],
+        "en": [
+            "Contacts picker"
+        ],
+        "es": [
+            "Selector de contactos"
+        ],
+        "id": [
+            "Pemilih Kontak"
+        ],
+        "pt": [
+            "Seletor de contactos",
+            "Seletor de contatos"
+        ],
+        "th": [
+            "เครื่องมือเลือกรายชื่อติดต่อ"
+        ],
+        "ur": [
+            "رابطے منتخب کنندہ"
+        ],
+        "vi": [
+            "Trình chọn người liên hệ"
+        ]
+    },
+    "com.android.credentialmanager": {
+        "default": [
+            "Credential Manager"
+        ],
+        "en": [
+            "Credential manager"
+        ],
+        "es": [
+            "Credential Manager",
+            "Gestor de credenciales"
+        ],
+        "id": [
+            "Pengelola Kredensial"
+        ],
+        "pt": [
+            "Credential Manager"
+        ],
+        "th": [
+            "เครื่องมือจัดการข้อมูลเข้าสู่ระบบ"
+        ],
+        "ur": [
+            "سند سے متعلق مینیجر"
+        ],
+        "vi": [
+            "Trình quản lý thông tin xác thực"
+        ]
+    },
+    "com.android.deskclock": {
+        "default": [
+            "Clock"
+        ],
+        "en": [
+            "Clock"
+        ],
+        "es": [
+            "Reloj"
+        ],
+        "id": [
+            "Jam"
+        ],
+        "pt": [
+            "Relógio"
+        ],
+        "th": [
+            "นาฬิกา"
+        ],
+        "ur": [
+            "گھڑی"
+        ],
+        "vi": [
+            "Đồng hồ"
+        ]
+    },
+    "com.android.dynsystem": {
+        "default": [
+            "Dynamic System Updates"
+        ]
+    },
+    "com.android.egg": {
+        "default": [
+            "Android Easter Egg"
+        ]
+    },
+    "com.android.externalstorage": {
+        "default": [
+            "External Storage"
+        ],
+        "en": [
+            "External Storage"
+        ],
+        "es": [
+            "Almacenamiento externo"
+        ],
+        "id": [
+            "Penyimpanan Eksternal"
+        ],
+        "pt": [
+            "Armazenamento externo"
+        ],
+        "th": [
+            "ที่จัดเก็บข้อมูลภายนอก"
+        ],
+        "ur": [
+            "بیرونی اسٹوریج"
+        ],
+        "vi": [
+            "Bộ nhớ ngoài"
+        ]
+    },
+    "com.android.eyedropper": {
+        "default": [
+            "EyeDropper"
+        ],
+        "en": [
+            "EyeDropper"
+        ],
+        "es": [
+            "EyeDropper"
+        ],
+        "id": [
+            "EyeDropper"
+        ],
+        "pt": [
+            "EyeDropper"
+        ],
+        "th": [
+            "หลอดดูดสี"
+        ],
+        "ur": [
+            "آئی ڈراپر"
+        ],
+        "vi": [
+            "EyeDropper"
+        ]
+    },
+    "com.android.filemanager": {
+        "default": [
+            "File Manager"
+        ],
+        "en": [
+            "File Manager"
+        ],
+        "es": [
+            "Administrador de archivos",
+            "Gestor de archivos"
+        ],
+        "id": [
+            "Pengelola File"
+        ],
+        "pt": [
+            "Gerenciador de arquivos",
+            "Gestor de ficheiros"
+        ],
+        "th": [
+            "ตัวจัดการไฟล์"
+        ],
+        "ur": [
+            "فائل مینیجر"
+        ],
+        "vi": [
+            "Quản lý tệp"
+        ]
+    },
+    "com.android.htmlviewer": {
+        "default": [
+            "HTML Viewer"
+        ],
+        "en": [
+            "HTML Viewer"
+        ],
+        "es": [
+            "Visor de HTML",
+            "Visualizador de HTML"
+        ],
+        "id": [
+            "Penampil HTML"
+        ],
+        "pt": [
+            "Leitor de HTML",
+            "Visualizador de HTML"
+        ],
+        "th": [
+            "โปรแกรมดู HTML"
+        ],
+        "vi": [
+            "Trình xem HTML"
+        ]
+    },
+    "com.android.inputdevices": {
+        "default": [
+            "Input Devices"
+        ],
+        "en": [
+            "Input Devices"
+        ],
+        "es": [
+            "Dispositivos de entrada",
+            "Dispositivos de introducción de datos"
+        ],
+        "id": [
+            "Perangkat Masukan"
+        ],
+        "pt": [
+            "Dispositivos de entrada"
+        ],
+        "th": [
+            "อุปกรณ์อินพุต"
+        ],
+        "ur": [
+            "ان پٹ آلات"
+        ],
+        "vi": [
+            "Thiết bị đầu vào"
+        ]
+    },
+    "com.android.intentresolver": {
+        "default": [
+            "Share"
+        ],
+        "en": [
+            "Share"
+        ],
+        "es": [
+            "Compartir"
+        ],
+        "id": [
+            "Bagikan"
+        ],
+        "pt": [
+            "Compartilhar",
+            "Partilhar"
+        ],
+        "th": [
+            "แชร์"
+        ],
+        "ur": [
+            "شیئر کریں"
+        ],
+        "vi": [
+            "Chia sẻ"
+        ]
+    },
+    "com.android.internal.display.cutout.emulation.corner": {
+        "default": [
+            "Corner cutout"
+        ],
+        "en": [
+            "Corner cutout"
+        ],
+        "es": [
+            "Corte de la esquina",
+            "Recorte de la esquina"
+        ],
+        "id": [
+            "Potongan sudut"
+        ],
+        "pt": [
+            "Corte de canto",
+            "Recorte nos cantos"
+        ],
+        "th": [
+            "คัตเอาท์แบบมุม"
+        ],
+        "ur": [
+            "کارنر کٹ آؤٹ"
+        ],
+        "vi": [
+            "Vết cắt ở góc"
+        ]
+    },
+    "com.android.internal.display.cutout.emulation.double": {
+        "default": [
+            "Double cutout"
+        ],
+        "en": [
+            "Double cutout"
+        ],
+        "es": [
+            "Corte doble",
+            "Recorte doble"
+        ],
+        "id": [
+            "Potongan ganda"
+        ],
+        "pt": [
+            "Corte duplo",
+            "Recorte duplo"
+        ],
+        "th": [
+            "คัตเอาท์แบบคู่"
+        ],
+        "ur": [
+            "دوہرا کٹ آؤٹ"
+        ],
+        "vi": [
+            "Vết cắt kép"
+        ]
+    },
+    "com.android.internal.display.cutout.emulation.hole": {
+        "default": [
+            "Punch Hole cutout"
+        ],
+        "en": [
+            "Punch hole cutout"
+        ],
+        "es": [
+            "Corte de perforadora",
+            "Recorte redondo"
+        ],
+        "id": [
+            "Potongan Lubang Kertas"
+        ],
+        "pt": [
+            "Recorte da câmera embutida",
+            "Recorte no ecrã"
+        ],
+        "th": [
+            "คัตเอาท์แบบเจาะรู"
+        ],
+        "ur": [
+            "پنچ ہول کٹ آؤٹ"
+        ],
+        "vi": [
+            "Vết cắt trên Punch Hole"
+        ]
+    },
+    "com.android.internal.display.cutout.emulation.tall": {
+        "default": [
+            "Tall cutout"
+        ],
+        "en": [
+            "Tall cutout"
+        ],
+        "es": [
+            "Corte alto",
+            "Recorte alto"
+        ],
+        "id": [
+            "Potongan tinggi"
+        ],
+        "pt": [
+            "Corte alto",
+            "Recorte grande"
+        ],
+        "th": [
+            "คัตเอาท์แบบสูง"
+        ],
+        "ur": [
+            "لمبا کٹ آؤٹ"
+        ],
+        "vi": [
+            "Vết cắt cao"
+        ]
+    },
+    "com.android.internal.display.cutout.emulation.waterfall": {
+        "default": [
+            "Waterfall cutout"
+        ],
+        "en": [
+            "Waterfall cutout"
+        ],
+        "es": [
+            "Corte de cascada",
+            "Recorte de cascada"
+        ],
+        "id": [
+            "Potongan waterfall"
+        ],
+        "pt": [
+            "Design cachoeira",
+            "Recorte no ecrã"
+        ],
+        "th": [
+            "ขอบจอโค้ง"
+        ],
+        "ur": [
+            "واٹر فال کٹ آؤٹ"
+        ],
+        "vi": [
+            "Vết cắt thác nước"
+        ]
+    },
+    "com.android.internal.systemui.navbar.gestural": {
+        "default": [
+            "Gestural Navigation Bar"
+        ]
+    },
+    "com.android.internal.systemui.navbar.threebutton": {
+        "default": [
+            "3 Button Navigation Bar"
+        ]
+    },
+    "com.android.internal.systemui.navbar.transparent": {
+        "default": [
+            "Transparent navigation bar"
+        ]
+    },
+    "com.android.keychain": {
+        "default": [
+            "Key Chain"
+        ],
+        "en": [
+            "Key Chain"
+        ],
+        "es": [
+            "Llavero"
+        ],
+        "id": [
+            "Key Chain"
+        ],
+        "pt": [
+            "Chaveiro",
+            "Porta-Chaves"
+        ],
+        "th": [
+            "พวงกุญแจ"
+        ],
+        "ur": [
+            "کی چین"
+        ],
+        "vi": [
+            "Chuỗi chính"
+        ]
+    },
+    "com.android.launcher3": {
+        "default": [
+            "System Home Screen"
+        ],
+        "en": [
+            "System Home Screen"
+        ],
+        "es": [
+            "Pantalla de inicio del sistema"
+        ],
+        "id": [
+            "Layar Beranda Sistem"
+        ],
+        "pt": [
+            "Ecrã principal do sistema",
+            "Tela inicial do sistema"
+        ],
+        "th": [
+            "หน้าจอหลักของระบบ"
+        ],
+        "ur": [
+            "سسٹم ہوم اسکرین"
+        ],
+        "vi": [
+            "Màn hình chính hệ thống"
+        ]
+    },
+    "com.android.location.fused": {
+        "default": [
+            "Fused Location"
+        ],
+        "en": [
+            "Fused Location"
+        ],
+        "es": [
+            "Ubicación combinada"
+        ],
+        "id": [
+            "Fused Location"
+        ],
+        "pt": [
+            "Localização combinada",
+            "Localização Fundida"
+        ],
+        "th": [
+            "Fused Location"
+        ],
+        "ur": [
+            "فیوزڈ مقام"
+        ],
+        "vi": [
+            "Vị trí được hợp nhất"
+        ]
+    },
+    "com.android.managedprovisioning": {
+        "default": [
+            "Work Setup"
+        ],
+        "en": [
+            "Work Setup"
+        ],
+        "es": [
+            "Configuración de trabajo"
+        ],
+        "id": [
+            "Penyiapan Profil Kerja"
+        ],
+        "pt": [
+            "Configuração de trabalho",
+            "Configuração do trabalho"
+        ],
+        "th": [
+            "โปรไฟล์งาน"
+        ],
+        "ur": [
+            "دفتر کی ترتیب"
+        ],
+        "vi": [
+            "Thiết lập hồ sơ công việc"
+        ]
+    },
+    "com.android.mms.service": {
+        "default": [
+            "MmsService"
+        ]
+    },
+    "com.android.mtp": {
+        "default": [
+            "MTP Host"
+        ],
+        "en": [
+            "MTP Host"
+        ],
+        "es": [
+            "Host de MTP",
+            "Host MTP"
+        ],
+        "id": [
+            "Host MTP"
+        ],
+        "pt": [
+            "Anfitrião MTP",
+            "Host do MTP"
+        ],
+        "th": [
+            "โฮสต์ MTP"
+        ],
+        "ur": [
+            "‏MTP میزبان"
+        ],
+        "vi": [
+            "Máy chủ MTP"
+        ]
+    },
+    "com.android.nfc": {
+        "default": [
+            "NFC Service"
+        ],
+        "en": [
+            "NFC Service"
+        ],
+        "es": [
+            "Servicio NFC"
+        ],
+        "id": [
+            "Layanan NFC"
+        ],
+        "pt": [
+            "Serviço NFC"
+        ],
+        "th": [
+            "บริการ NFC"
+        ],
+        "ur": [
+            "‏NFC سروس"
+        ],
+        "vi": [
+            "Dịch vụ NFC"
+        ]
+    },
+    "com.android.pacprocessor": {
+        "default": [
+            "PacProcessor"
+        ]
+    },
+    "com.android.phone": {
+        "default": [
+            "Phone Services"
+        ],
+        "en": [
+            "Phone Services"
+        ],
+        "es": [
+            "Servicios del teléfono",
+            "Servicios telefónicos"
+        ],
+        "id": [
+            "Layanan Telepon"
+        ],
+        "pt": [
+            "Serviços de telemóvel",
+            "Serviços do smartphone"
+        ],
+        "th": [
+            "บริการโทรศัพท์"
+        ],
+        "ur": [
+            "فون سروسز"
+        ],
+        "vi": [
+            "Dịch vụ điện thoại"
+        ]
+    },
+    "com.android.printspooler": {
+        "default": [
+            "Print Spooler"
+        ],
+        "en": [
+            "Print Spooler"
+        ],
+        "es": [
+            "Cola de impresión"
+        ],
+        "id": [
+            "Print Spooler"
+        ],
+        "pt": [
+            "Print Spooler",
+            "Sp. de impressão"
+        ],
+        "th": [
+            "Print Spooler"
+        ],
+        "ur": [
+            "پرنٹ اسپولر"
+        ],
+        "vi": [
+            "Print Spooler"
+        ]
+    },
+    "com.android.providers.blockednumber": {
+        "default": [
+            "Store blocked number"
+        ],
+        "en": [
+            "Store blocked number"
+        ],
+        "es": [
+            "Almacenamiento de números bloqueados",
+            "Almacenar número bloqueado",
+            "Guardar número bloqueado"
+        ],
+        "id": [
+            "Simpan nomor yang diblokir"
+        ],
+        "pt": [
+            "Armazenamento de números bloqueados",
+            "Armazenar número bloqueado"
+        ],
+        "th": [
+            "จัดเก็บหมายเลขที่ถูกบล็อก"
+        ],
+        "ur": [
+            "مسدود کردہ نمبر اسٹور کریں"
+        ],
+        "vi": [
+            "Lưu số đã chặn"
+        ]
+    },
+    "com.android.providers.calendar": {
+        "default": [
+            "Calendar Storage"
+        ],
+        "en": [
+            "Calendar Storage"
+        ],
+        "es": [
+            "Almacenamiento de calendario",
+            "Almacenamiento en el calendario"
+        ],
+        "id": [
+            "Penyimpanan Kalender"
+        ],
+        "pt": [
+            "Armazenamento de agenda",
+            "Armazenamento do calendário"
+        ],
+        "th": [
+            "การจัดเก็บปฏิทิน"
+        ],
+        "ur": [
+            "کیلنڈر اسٹوریج"
+        ],
+        "vi": [
+            "Dung lượng Lịch"
+        ]
+    },
+    "com.android.providers.contacts": {
+        "default": [
+            "Contacts Storage"
+        ],
+        "en": [
+            "Contacts Storage"
+        ],
+        "es": [
+            "Almacenamiento de contactos"
+        ],
+        "id": [
+            "Penyimpanan Kontak"
+        ],
+        "pt": [
+            "Armazenamento de contactos",
+            "Armazenamento de contatos"
+        ],
+        "th": [
+            "ที่จัดเก็บรายชื่อ"
+        ],
+        "ur": [
+            "روابط کی اسٹوریج"
+        ],
+        "vi": [
+            "Bộ lưu trữ danh bạ"
+        ]
+    },
+    "com.android.providers.downloads": {
+        "default": [
+            "Download Manager"
+        ],
+        "en": [
+            "Download Manager"
+        ],
+        "es": [
+            "Administrador de descargas",
+            "Gestor de descargas"
+        ],
+        "id": [
+            "Pengelola Download"
+        ],
+        "pt": [
+            "Gerenciador de downloads",
+            "Gestor de transferências"
+        ],
+        "th": [
+            "Download Manager"
+        ],
+        "ur": [
+            "ڈاؤن لوڈ مینیجر"
+        ],
+        "vi": [
+            "Trình quản lý Tải xuống"
+        ]
+    },
+    "com.android.providers.settings": {
+        "default": [
+            "Settings Storage"
+        ],
+        "en": [
+            "Settings Storage"
+        ],
+        "es": [
+            "Almacenamiento de configuración"
+        ],
+        "id": [
+            "Setelan Penyimpanan"
+        ],
+        "pt": [
+            "Armazenamento de configurações",
+            "Armazenamento de definições"
+        ],
+        "th": [
+            "ที่เก็บข้อมูลการตั้งค่า"
+        ],
+        "ur": [
+            "ترتیبات کا اسٹوریج"
+        ],
+        "vi": [
+            "Lưu trữ bộ nhớ"
+        ]
+    },
+    "com.android.providers.telephony": {
+        "default": [
+            "Phone and Messaging Storage"
+        ],
+        "en": [
+            "Phone and Messaging Storage"
+        ],
+        "es": [
+            "Alm. mensajes y teléfono",
+            "Almacenamiento de mensajes y teléfono"
+        ],
+        "id": [
+            "Penyimpanan Ponsel dan Pesan"
+        ],
+        "pt": [
+            "Armazenamento de mensagens/smartphone",
+            "Tel. e armaz. de mensag."
+        ],
+        "th": [
+            "ที่จัดเก็บของโทรศัพท์/ข้อความ"
+        ],
+        "ur": [
+            "فون اور پیغام رسانی اسٹوریج"
+        ],
+        "vi": [
+            "Bộ nhớ đ.thoại+tin nhắn"
+        ]
+    },
+    "com.android.providers.userdictionary": {
+        "default": [
+            "User Dictionary"
+        ],
+        "en": [
+            "User Dictionary"
+        ],
+        "es": [
+            "Diccionario del usuario"
+        ],
+        "id": [
+            "Kamus Pengguna"
+        ],
+        "pt": [
+            "Dicionário do usuário",
+            "Dicionário do utilizador"
+        ],
+        "th": [
+            "พจนานุกรมผู้ใช้"
+        ],
+        "ur": [
+            "صارف کی لغت"
+        ],
+        "vi": [
+            "Từ điển người dùng"
+        ]
+    },
+    "com.android.proxyhandler": {
+        "default": [
+            "ProxyHandler"
+        ]
+    },
+    "com.android.role.notes.enabled": {
+        "default": [
+            "Notes Role enabled"
+        ]
+    },
+    "com.android.se": {
+        "default": [
+            "SecureElementApplication"
+        ]
+    },
+    "com.android.server.telecom": {
+        "default": [
+            "Call Management"
+        ],
+        "en": [
+            "Call Management"
+        ],
+        "es": [
+            "Administrador de llamadas",
+            "Gestión de llamadas"
+        ],
+        "id": [
+            "Pengelolaan Panggilan Telepon"
+        ],
+        "pt": [
+            "Gerenciamento de chamadas",
+            "Gestão de chamadas"
+        ],
+        "th": [
+            "การจัดการการโทร"
+        ],
+        "ur": [
+            "کال مینجمنٹ"
+        ],
+        "vi": [
+            "Quản lý cuộc gọi"
+        ]
+    },
+    "com.android.settings": {
+        "default": [
+            "Settings"
+        ],
+        "en": [
+            "Settings"
+        ],
+        "es": [
+            "Ajustes"
+        ],
+        "id": [
+            "Pengaturan"
+        ],
+        "pt": [
+            "Configurações",
+            "Definições"
+        ],
+        "th": [
+            "การตั้งค่า"
+        ],
+        "ur": [
+            "ترتیبات"
+        ],
+        "vi": [
+            "Cài đặt"
+        ]
+    },
+    "com.android.shell": {
+        "default": [
+            "Shell"
+        ],
+        "en": [
+            "Shell"
+        ],
+        "es": [
+            "Shell"
+        ],
+        "id": [
+            "Shell"
+        ],
+        "pt": [
+            "Shell"
+        ],
+        "th": [
+            "Shell"
+        ],
+        "ur": [
+            "شیل"
+        ],
+        "vi": [
+            "Shell"
+        ]
+    },
+    "com.android.simappdialog": {
+        "default": [
+            "Sim App Dialog"
+        ],
+        "en": [
+            "Sim app dialogue"
+        ],
+        "es": [
+            "Cuadro de diálogo de la aplicación de SIM",
+            "Sim App Dialog"
+        ],
+        "id": [
+            "Dialog Aplikasi SIM"
+        ],
+        "pt": [
+            "Caixa de diálogo da app do SIM",
+            "Caixa de diálogo do app do chip"
+        ],
+        "th": [
+            "Sim App Dialog"
+        ],
+        "ur": [
+            "‏Sim ایپ ڈائیلاگ"
+        ],
+        "vi": [
+            "Hộp thoại ứng dụng SIM"
+        ]
+    },
+    "com.android.soundpicker": {
+        "default": [
+            "Sounds"
+        ],
+        "en": [
+            "Sounds"
+        ],
+        "es": [
+            "Sonidos"
+        ],
+        "id": [
+            "Suara"
+        ],
+        "pt": [
+            "Sons"
+        ],
+        "th": [
+            "เสียง"
+        ],
+        "ur": [
+            "آوازیں"
+        ],
+        "vi": [
+            "Âm thanh"
+        ]
+    },
+    "com.android.stk": {
+        "default": [
+            "SIM Toolkit"
+        ],
+        "en": [
+            "SIM Toolkit"
+        ],
+        "es": [
+            "Kit de herramientas de la SIM",
+            "Servicios SIM",
+            "SIM Toolkit"
+        ],
+        "id": [
+            "SIM Toolkit"
+        ],
+        "pt": [
+            "Kit de ferramentas do SIM",
+            "Toolkit do SIM"
+        ],
+        "th": [
+            "ชุดเครื่องมือ SIM"
+        ],
+        "ur": [
+            "SIM ٹول کٹ"
+        ],
+        "vi": [
+            "Ứng dụng trên SIM"
+        ]
+    },
+    "com.android.storagemanager": {
+        "default": [
+            "Storage Manager"
+        ],
+        "en": [
+            "Storage Manager"
+        ],
+        "es": [
+            "Administrador de almacenamiento"
+        ],
+        "id": [
+            "Pengelola Penyimpanan"
+        ],
+        "pt": [
+            "Gerenciador de armazenamento",
+            "Gestor de armazenamento"
+        ],
+        "th": [
+            "ตัวจัดการพื้นที่เก็บข้อมูล"
+        ],
+        "ur": [
+            "اسٹوریج مینیجر"
+        ],
+        "vi": [
+            "Trình quản lý bộ nhớ"
+        ]
+    },
+    "com.android.systemui": {
+        "default": [
+            "System UI"
+        ],
+        "en": [
+            "System UI"
+        ],
+        "es": [
+            "IU del sistema",
+            "UI del sistema"
+        ],
+        "id": [
+            "UI Sistem"
+        ],
+        "pt": [
+            "Interface do sistema",
+            "IU do sistema"
+        ],
+        "th": [
+            "UI ของระบบ"
+        ],
+        "ur": [
+            "‏سسٹم UI"
+        ],
+        "vi": [
+            "Giao diện người dùng hệ thống"
+        ]
+    },
+    "com.android.systemui.accessibility.accessibilitymenu": {
+        "default": [
+            "Accessibility Menu"
+        ],
+        "en": [
+            "Accessibility Menu"
+        ],
+        "es": [
+            "Menú de accesibilidad"
+        ],
+        "id": [
+            "Menu Aksesibilitas"
+        ],
+        "pt": [
+            "Menu Acessibilidade",
+            "Menu de acessibilidade"
+        ],
+        "th": [
+            "เมนูการช่วยเหลือพิเศษ"
+        ],
+        "ur": [
+            "ایکسیسبیلٹی مینیو"
+        ],
+        "vi": [
+            "Trình đơn hỗ trợ tiếp cận"
+        ]
+    },
+    "com.android.theme.font.notoserifsource": {
+        "default": [
+            "Noto Serif / Source Sans Pro"
+        ]
+    },
+    "com.android.traceur": {
+        "default": [
+            "System Tracing"
+        ],
+        "en": [
+            "System Tracing"
+        ],
+        "es": [
+            "Registro del sistema",
+            "Trazado del sistema"
+        ],
+        "id": [
+            "Pelacakan Sistem"
+        ],
+        "pt": [
+            "Rastreamento do sistema",
+            "Rastreio do sistema"
+        ],
+        "th": [
+            "System Tracing"
+        ],
+        "ur": [
+            "سسٹم ٹریسنگ"
+        ],
+        "vi": [
+            "Theo dõi hệ thống"
+        ]
+    },
+    "com.android.vending": {
+        "default": [
+            "Google Play Store"
+        ],
+        "en": [
+            "Google Play Store"
+        ],
+        "es": [
+            "Google Play Store"
+        ],
+        "id": [
+            "Google Play Store"
+        ],
+        "pt": [
+            "Google Play Store"
+        ],
+        "th": [
+            "Google Play Store"
+        ],
+        "ur": [
+            "‫Google Play اسٹور"
+        ],
+        "vi": [
+            "Cửa hàng Google Play"
+        ]
+    },
+    "com.android.virtualization.terminal": {
+        "default": [
+            "Terminal"
+        ],
+        "en": [
+            "Terminal"
+        ],
+        "es": [
+            "Terminal"
+        ],
+        "id": [
+            "Terminal"
+        ],
+        "pt": [
+            "Terminal"
+        ],
+        "th": [
+            "เทอร์มินัล"
+        ],
+        "ur": [
+            "ٹرمینل"
+        ],
+        "vi": [
+            "Terminal"
+        ]
+    },
+    "com.android.vpndialogs": {
+        "default": [
+            "VpnDialogs"
+        ]
+    },
+    "com.android.webapp.service": {
+        "default": [
+            "Web App Service"
+        ],
+        "en": [
+            "Web app service"
+        ],
+        "es": [
+            "Servicio de aplicación web",
+            "Servicio de app web"
+        ],
+        "id": [
+            "Layanan Aplikasi Web"
+        ],
+        "pt": [
+            "Serviço de app da web",
+            "Serviço de apps Web"
+        ],
+        "th": [
+            "บริการเว็บแอป"
+        ],
+        "ur": [
+            "ویب ایپ سروس"
+        ],
+        "vi": [
+            "Dịch vụ ứng dụng web"
+        ]
+    },
+    "com.bbk.SuperPowerSave": {
+        "default": [
+            "Super Battery Saver"
+        ],
+        "en": [
+            "Super Battery Saver"
+        ],
+        "es": [
+            "Superahorro de batería"
+        ],
+        "id": [
+            "Penghemat Baterai Super"
+        ],
+        "pt": [
+            "Super poupança de bateria",
+            "Supereconomia de energia"
+        ],
+        "th": [
+            "ประหยัดแบตเตอรี่สูงสุด"
+        ],
+        "ur": [
+            "سپر بیٹری سیور"
+        ],
+        "vi": [
+            "Siêu tiết kiệm pin"
+        ]
+    },
+    "com.bbk.account": {
+        "default": [
+            "vivo Account"
+        ],
+        "en": [
+            "vivo Account"
+        ],
+        "es": [
+            "Cuenta vivo"
+        ],
+        "id": [
+            "Akun vivo"
+        ],
+        "pt": [
+            "Conta vivo"
+        ],
+        "th": [
+            "บัญชี vivo"
+        ],
+        "ur": [
+            "vivo اکاؤنٹ"
+        ],
+        "vi": [
+            "Tài khoản vivo"
+        ]
+    },
+    "com.bbk.cloud": {
+        "default": [
+            "vivo Cloud"
+        ]
+    },
+    "com.bbk.iqoo.logsystem": {
+        "default": [
+            "Send usage & diagnostic data"
+        ],
+        "en": [
+            "Send usage & diagnostic data"
+        ],
+        "es": [
+            "Enviar datos de uso y diagnóstico",
+            "Enviar información de uso y diagnóstico"
+        ],
+        "id": [
+            "Kirim data penggunaan & diagnostik"
+        ],
+        "pt": [
+            "Enviar dados de consumo e diagnóstico",
+            "Enviar dados de utilização+diagnóstico"
+        ],
+        "th": [
+            "ส่งข้อมูลการใช้งานและการวินิจฉัย"
+        ],
+        "ur": [
+            "استعمال اور تشخیصی ڈیٹا بھیجیں"
+        ],
+        "vi": [
+            "Gửi dữ liệu sử dụng và chẩn đoán"
+        ]
+    },
+    "com.bbk.theme": {
+        "default": [
+            "Themes"
+        ],
+        "en": [
+            "Themes"
+        ],
+        "es": [
+            "Temas"
+        ],
+        "id": [
+            "Tema"
+        ],
+        "pt": [
+            "Temas"
+        ],
+        "th": [
+            "ธีม"
+        ],
+        "ur": [
+            "تھیمز"
+        ],
+        "vi": [
+            "Chủ đề"
+        ]
+    },
+    "com.bbk.theme.resources": {
+        "default": [
+            "ThemeRes"
+        ]
+    },
+    "com.bbk.updater": {
+        "default": [
+            "System update"
+        ],
+        "en": [
+            "System update"
+        ],
+        "es": [
+            "Actualización del sistema"
+        ],
+        "id": [
+            "Pembaruan sistem"
+        ],
+        "pt": [
+            "Atualização do sistema"
+        ],
+        "th": [
+            "การอัปเดตระบบ"
+        ],
+        "ur": [
+            "سسٹم اپ ڈیٹ"
+        ],
+        "vi": [
+            "Cập nhật hệ thống"
+        ]
+    },
+    "com.block.juggle": {
+        "default": [
+            "Block Blast!"
+        ]
+    },
+    "com.booking": {
+        "default": [
+            "Booking.com"
+        ],
+        "en": [
+            "Booking.com"
+        ],
+        "es": [
+            "Booking.com"
+        ],
+        "id": [
+            "Booking.com"
+        ],
+        "pt": [
+            "Booking.com"
+        ],
+        "th": [
+            "Booking.com"
+        ],
+        "vi": [
+            "Booking.com"
+        ]
+    },
+    "com.einnovation.temu": {
+        "default": [
+            "Temu"
+        ]
+    },
+    "com.facebook.appmanager": {
+        "default": [
+            "Meta App Manager"
+        ]
+    },
+    "com.facebook.katana": {
+        "default": [
+            "Facebook"
+        ],
+        "es": [
+            "Facebook"
+        ],
+        "pt": [
+            "Facebook"
+        ]
+    },
+    "com.facebook.services": {
+        "default": [
+            "Meta Services"
+        ]
+    },
+    "com.facebook.system": {
+        "default": [
+            "Meta App Installer"
+        ]
+    },
+    "com.goodix": {
+        "default": [
+            "GTMTest"
+        ]
+    },
+    "com.goodix.deltadiff": {
+        "default": [
+            "GTPDeltaDiff"
+        ]
+    },
+    "com.google.ambient.streaming": {
+        "default": [
+            "Cross-Device Services"
+        ],
+        "en": [
+            "Cross-device services"
+        ],
+        "es": [
+            "Servicios multidispositivo"
+        ],
+        "id": [
+            "Layanan Lintas Perangkat"
+        ],
+        "pt": [
+            "Serviços entre dispositivos",
+            "Serviços multidispositivo"
+        ],
+        "th": [
+            "บริการข้ามอุปกรณ์"
+        ],
+        "ur": [
+            "کراس ڈیوائس سروسز"
+        ],
+        "vi": [
+            "Dịch vụ cho nhiều thiết bị"
+        ]
+    },
+    "com.google.android.accessibility.switchaccess": {
+        "default": [
+            "Switch Access"
+        ],
+        "en": [
+            "Switch Access"
+        ],
+        "es": [
+            "Accesibilidad con interruptores"
+        ],
+        "id": [
+            "Tombol Akses"
+        ],
+        "pt": [
+            "Acesso com interruptor",
+            "Acesso por switch"
+        ],
+        "th": [
+            "การเข้าถึงด้วยสวิตช์"
+        ],
+        "ur": [
+            "سوئچ رسائی"
+        ],
+        "vi": [
+            "Tiếp cận bằng công tắc"
+        ]
+    },
+    "com.google.android.adservices.api": {
+        "default": [
+            "Ad Privacy"
+        ],
+        "en": [
+            "(F)[Åð ÞŕîVåçý one two]",
+            "(M)[Åð ÞŕîVåçý one two]",
+            "(N)[Åð ÞŕîVåçý one two]",
+            "[Åð ÞŕîVåçý one two]",
+            "Ad privacy"
+        ],
+        "es": [
+            "Privacidad en la publicidad",
+            "Privacidad en los anuncios"
+        ],
+        "id": [
+            "Privasi Iklan"
+        ],
+        "pt": [
+            "Privacidade de anúncios",
+            "Privacidade dos anúncios"
+        ],
+        "th": [
+            "ความเป็นส่วนตัวเกี่ยวกับโฆษณา"
+        ],
+        "ur": [
+            "اشتہار کی رازداری"
+        ],
+        "vi": [
+            "Quyền riêng tư trong quảng cáo"
+        ]
+    },
+    "com.google.android.apps.bard": {
+        "default": [
+            "Gemini"
+        ],
+        "en": [
+            "Gemini"
+        ],
+        "es": [
+            "Gemini"
+        ],
+        "id": [
+            "Gemini"
+        ],
+        "pt": [
+            "Gemini"
+        ],
+        "th": [
+            "Gemini"
+        ],
+        "ur": [
+            "Gemini"
+        ],
+        "vi": [
+            "Gemini"
+        ]
+    },
+    "com.google.android.apps.maps": {
+        "default": [
+            "Maps"
+        ],
+        "en": [
+            "Maps"
+        ],
+        "es": [
+            "Maps"
+        ],
+        "id": [
+            "Maps"
+        ],
+        "pt": [
+            "Maps"
+        ],
+        "th": [
+            "Maps"
+        ],
+        "ur": [
+            "Maps"
+        ],
+        "vi": [
+            "Maps"
+        ]
+    },
+    "com.google.android.apps.messaging": {
+        "default": [
+            "Messages"
+        ],
+        "en": [
+            "Messages"
+        ],
+        "es": [
+            "Mensajes"
+        ],
+        "id": [
+            "Message"
+        ],
+        "pt": [
+            "Mensagens"
+        ],
+        "th": [
+            "Messages"
+        ],
+        "ur": [
+            "پیغامات"
+        ],
+        "vi": [
+            "Tin nhắn"
+        ]
+    },
+    "com.google.android.apps.nbu.files": {
+        "default": [
+            "Files by Google"
+        ],
+        "en": [
+            "Files by Google"
+        ],
+        "es": [
+            "Files by Google",
+            "Files de Google"
+        ],
+        "id": [
+            "Files by Google"
+        ],
+        "pt": [
+            "Files by Google",
+            "Files do Google"
+        ],
+        "th": [
+            "Files by Google"
+        ],
+        "ur": [
+            "Files by Google"
+        ],
+        "vi": [
+            "Files by Google"
+        ]
+    },
+    "com.google.android.apps.photos": {
+        "default": [
+            "Photos"
+        ],
+        "en": [
+            "Photos"
+        ],
+        "es": [
+            "Fotos"
+        ],
+        "id": [
+            "Foto"
+        ],
+        "pt": [
+            "Fotos"
+        ],
+        "th": [
+            "Photos"
+        ],
+        "ur": [
+            "تصاویر"
+        ],
+        "vi": [
+            "Photos"
+        ]
+    },
+    "com.google.android.apps.restore": {
+        "default": [
+            "Android Switch"
+        ],
+        "en": [
+            "Android Switch"
+        ],
+        "es": [
+            "Android Switch"
+        ],
+        "id": [
+            "Android Switch"
+        ],
+        "pt": [
+            "Android Switch",
+            "Mudar para Android"
+        ],
+        "th": [
+            "Android Switch"
+        ],
+        "ur": [
+            "Android Switch"
+        ],
+        "vi": [
+            "Android Switch"
+        ]
+    },
+    "com.google.android.apps.safetyhub": {
+        "default": [
+            "Personal Safety"
+        ],
+        "en": [
+            "Personal Safety"
+        ],
+        "es": [
+            "Emergencias",
+            "Seguridad personal"
+        ],
+        "id": [
+            "Keselamatan Pribadi"
+        ],
+        "pt": [
+            "Emergência pessoal",
+            "Segurança pessoal"
+        ],
+        "th": [
+            "ความปลอดภัยส่วนบุคคล"
+        ],
+        "ur": [
+            "ذاتی حفاظت"
+        ],
+        "vi": [
+            "An toàn cá nhân"
+        ]
+    },
+    "com.google.android.apps.setupwizard.searchselector": {
+        "default": [
+            "Search Engine Selector"
+        ],
+        "en": [
+            "Search engine selector"
+        ],
+        "es": [
+            "Selector de motor de búsqueda"
+        ],
+        "id": [
+            "Pemilih Mesin Telusur"
+        ],
+        "pt": [
+            "Seletor de mecanismo de pesquisa",
+            "Seletor do motor de pesquisa"
+        ],
+        "th": [
+            "ตัวเลือกเครื่องมือค้นหา"
+        ],
+        "ur": [
+            "سرچ انجن منتخب کنندہ"
+        ],
+        "vi": [
+            "Trình lựa chọn công cụ tìm kiếm"
+        ]
+    },
+    "com.google.android.apps.tachyon": {
+        "default": [
+            "Meet"
+        ],
+        "en": [
+            "Meet"
+        ],
+        "es": [
+            "Meet"
+        ],
+        "id": [
+            "Meet"
+        ],
+        "pt": [
+            "Meet"
+        ],
+        "th": [
+            "Meet"
+        ],
+        "ur": [
+            "Meet"
+        ],
+        "vi": [
+            "Meet"
+        ]
+    },
+    "com.google.android.apps.wellbeing": {
+        "default": [
+            "Digital Wellbeing"
+        ],
+        "en": [
+            "(F)[Ðîĝîţåļ Ŵéļļɓéîñĝ one two three]",
+            "(M)[Ðîĝîţåļ Ŵéļļɓéîñĝ one two three]",
+            "(N)[Ðîĝîţåļ Ŵéļļɓéîñĝ one two three]",
+            "[Ðîĝîţåļ Ŵéļļɓéîñĝ one two three]",
+            "Digital Wellbeing"
+        ],
+        "es": [
+            "Bienestar digital"
+        ],
+        "id": [
+            "Kesehatan Digital"
+        ],
+        "pt": [
+            "Bem-estar Digital"
+        ],
+        "th": [
+            "ไลฟ์สไตล์ดิจิทัล"
+        ],
+        "ur": [
+            "ڈیجیٹل فلاح و بہبود"
+        ],
+        "vi": [
+            "Digital Wellbeing"
+        ]
+    },
+    "com.google.android.as": {
+        "default": [
+            "Android System Intelligence"
+        ],
+        "en": [
+            "Android System Intelligence"
+        ],
+        "es": [
+            "Android System Intelligence"
+        ],
+        "id": [
+            "Android System Intelligence"
+        ],
+        "pt": [
+            "Android System Intelligence",
+            "Inteligência do Sistema Android"
+        ],
+        "th": [
+            "Android System Intelligence"
+        ],
+        "ur": [
+            "‫Android سسٹم انٹیلی جینس"
+        ],
+        "vi": [
+            "Android System Intelligence"
+        ]
+    },
+    "com.google.android.as.oss": {
+        "default": [
+            "Private Compute Services"
+        ]
+    },
+    "com.google.android.calendar": {
+        "default": [
+            "Calendar"
+        ],
+        "en": [
+            "Calendar"
+        ],
+        "es": [
+            "Calendar",
+            "Calendario"
+        ],
+        "id": [
+            "Kalender"
+        ],
+        "pt": [
+            "Agenda",
+            "Calendário"
+        ],
+        "th": [
+            "ปฏิทิน"
+        ],
+        "ur": [
+            "کیلنڈر"
+        ],
+        "vi": [
+            "Lịch"
+        ]
+    },
+    "com.google.android.captiveportallogin": {
+        "default": [
+            "Captive Portal Login"
+        ],
+        "en": [
+            "(F)[ÇåþţîVé Þöŕţåļ Ļöĝîñ one two three]",
+            "(M)[ÇåþţîVé Þöŕţåļ Ļöĝîñ one two three]",
+            "(N)[ÇåþţîVé Þöŕţåļ Ļöĝîñ one two three]",
+            "[ÇåþţîVé Þöŕţåļ Ļöĝîñ one two three]",
+            "Captive portal login"
+        ],
+        "es": [
+            "Acceso a portal cautivo",
+            "Inicio de sesión en portal cautivo"
+        ],
+        "id": [
+            "Login Captive Portal"
+        ],
+        "pt": [
+            "Início de sessão no portal cativo",
+            "Login do portal cativo"
+        ],
+        "th": [
+            "การเข้าสู่ระบบแคพทีฟพอร์ทัล"
+        ],
+        "ur": [
+            "کیپٹیو پورٹل لاگ ان"
+        ],
+        "vi": [
+            "Đăng nhập trang xác thực"
+        ]
+    },
+    "com.google.android.cellbroadcastreceiver": {
+        "default": [
+            "Emergency alerts",
+            "Wireless Emergency Alerts"
+        ],
+        "en": [
+            "(F)[Éḿéŕĝéñçý åļéŕţš one two three]",
+            "(F)[Ŵîŕéļéšš Éḿéŕĝéñçý Åļéŕţš one two three]",
+            "(M)[Éḿéŕĝéñçý åļéŕţš one two three]",
+            "(M)[Ŵîŕéļéšš Éḿéŕĝéñçý Åļéŕţš one two three]",
+            "(N)[Éḿéŕĝéñçý åļéŕţš one two three]",
+            "(N)[Ŵîŕéļéšš Éḿéŕĝéñçý Åļéŕţš one two three]",
+            "[Éḿéŕĝéñçý åļéŕţš one two three]",
+            "[Ŵîŕéļéšš Éḿéŕĝéñçý Åļéŕţš one two three]",
+            "Emergency alerts",
+            "Wireless emergency alerts"
+        ],
+        "es": [
+            "Alertas de emergencia",
+            "Alertas de emergencia inalámbricas"
+        ],
+        "id": [
+            "Peringatan darurat",
+            "Peringatan Darurat Nirkabel"
+        ],
+        "pt": [
+            "Alertas de emergência",
+            "Alertas de emergência sem fio",
+            "Alertas de emergência sem fios"
+        ],
+        "th": [
+            "การแจ้งเตือนเหตุฉุกเฉิน",
+            "การแจ้งเหตุฉุกเฉินแบบไร้สาย"
+        ],
+        "ur": [
+            "ایمرجنسی الرٹس",
+            "وائرلیس ایمرجنسی الرٹس"
+        ],
+        "vi": [
+            "Cảnh báo khẩn cấp",
+            "Cảnh báo khẩn cấp qua mạng không dây"
+        ]
+    },
+    "com.google.android.cellbroadcastservice": {
+        "default": [
+            "Cell Broadcast Service"
+        ]
+    },
+    "com.google.android.configupdater": {
+        "default": [
+            "ConfigUpdater"
+        ]
+    },
+    "com.google.android.connectivity.resources": {
+        "default": [
+            "System Connectivity Resources"
+        ],
+        "en": [
+            "(F)[Šýšţéḿ ÇöññéçţîVîţý Ŕéšöûŕçéš one two three four]",
+            "(M)[Šýšţéḿ ÇöññéçţîVîţý Ŕéšöûŕçéš one two three four]",
+            "(N)[Šýšţéḿ ÇöññéçţîVîţý Ŕéšöûŕçéš one two three four]",
+            "[Šýšţéḿ ÇöññéçţîVîţý Ŕéšöûŕçéš one two three four]",
+            "System connectivity resources"
+        ],
+        "es": [
+            "Recursos de conectividad del sistema"
+        ],
+        "id": [
+            "Resource Konektivitas Sistem"
+        ],
+        "pt": [
+            "Recursos de conectividade do sistema",
+            "Recursos de conetividade do sistema"
+        ],
+        "th": [
+            "ทรัพยากรการเชื่อมต่อของระบบ"
+        ],
+        "ur": [
+            "سسٹم کنیکٹوٹی کے وسائل"
+        ],
+        "vi": [
+            "Tài nguyên kết nối hệ thống"
+        ]
+    },
+    "com.google.android.contacts": {
+        "default": [
+            "Contacts"
+        ],
+        "en": [
+            "Contacts"
+        ],
+        "es": [
+            "Contactos"
+        ],
+        "id": [
+            "Kontak"
+        ],
+        "pt": [
+            "Contactos",
+            "Contatos"
+        ],
+        "th": [
+            "รายชื่อติดต่อ"
+        ],
+        "ur": [
+            "رابطے"
+        ],
+        "vi": [
+            "Danh bạ"
+        ]
+    },
+    "com.google.android.devicelockcontroller": {
+        "default": [
+            "DeviceLockController"
+        ],
+        "en": [
+            "(F)[ÐéVîçéĻöçķÇöñţŕöļļéŕ one two three]",
+            "(M)[ÐéVîçéĻöçķÇöñţŕöļļéŕ one two three]",
+            "(N)[ÐéVîçéĻöçķÇöñţŕöļļéŕ one two three]",
+            "[ÐéVîçéĻöçķÇöñţŕöļļéŕ one two three]",
+            "DeviceLockController"
+        ],
+        "es": [
+            "DeviceLockController"
+        ],
+        "id": [
+            "DeviceLockController"
+        ],
+        "pt": [
+            "DeviceLockController"
+        ],
+        "th": [
+            "DeviceLockController"
+        ],
+        "ur": [
+            "DeviceLockController"
+        ],
+        "vi": [
+            "DeviceLockController"
+        ]
+    },
+    "com.google.android.dialer": {
+        "default": [
+            "Phone"
+        ],
+        "en": [
+            "Phone"
+        ],
+        "es": [
+            "Teléfono"
+        ],
+        "id": [
+            "Telepon"
+        ],
+        "pt": [
+            "Telefone",
+            "Telemóvel"
+        ],
+        "th": [
+            "โทรศัพท์"
+        ],
+        "ur": [
+            "فون"
+        ],
+        "vi": [
+            "Điện thoại"
+        ]
+    },
+    "com.google.android.documentsui": {
+        "default": [
+            "Files"
+        ],
+        "en": [
+            "(F)[Fîļéš one]",
+            "(M)[Fîļéš one]",
+            "(N)[Fîļéš one]",
+            "[Fîļéš one]",
+            "Files"
+        ],
+        "es": [
+            "Archivos"
+        ],
+        "id": [
+            "File"
+        ],
+        "pt": [
+            "Arquivos",
+            "Ficheiros"
+        ],
+        "th": [
+            "Files"
+        ],
+        "ur": [
+            "فائلیں"
+        ],
+        "vi": [
+            "Files"
+        ]
+    },
+    "com.google.android.euicc": {
+        "default": [
+            "SIM Manager"
+        ],
+        "en": [
+            "SIM Manager"
+        ],
+        "es": [
+            "Administrador de SIM",
+            "Gestor de SIMs"
+        ],
+        "id": [
+            "Pengelola SIM"
+        ],
+        "pt": [
+            "Gerenciador de Chip",
+            "Gestor do SIM"
+        ],
+        "th": [
+            "ตัวจัดการซิม"
+        ],
+        "ur": [
+            "‏SIM مینیجر"
+        ],
+        "vi": [
+            "Trình quản lý SIM"
+        ]
+    },
+    "com.google.android.ext.services": {
+        "default": [
+            "Android Services Library"
+        ]
+    },
+    "com.google.android.ext.shared": {
+        "default": [
+            "<0x10000, type 0x07>"
+        ]
+    },
+    "com.google.android.feedback": {
+        "default": [
+            "Market Feedback Agent"
+        ],
+        "en": [
+            "(F)[Ḿåŕķéţ Fééðɓåçķ Åĝéñţ one two three]",
+            "(M)[Ḿåŕķéţ Fééðɓåçķ Åĝéñţ one two three]",
+            "(N)[Ḿåŕķéţ Fééðɓåçķ Åĝéñţ one two three]",
+            "[Ḿåŕķéţ Fééðɓåçķ Åĝéñţ one two three]",
+            "Market Feedback Agent"
+        ],
+        "es": [
+            "Agente comentarios Market",
+            "Agente de obs. de Market"
+        ],
+        "id": [
+            "Agen Masukan Market"
+        ],
+        "pt": [
+            "Agente Feedback do Market",
+            "Comente sobre o Market"
+        ],
+        "th": [
+            "Market Feedback Agent"
+        ],
+        "ur": [
+            "مارکیٹ فیڈ بیک ایجنٹ"
+        ],
+        "vi": [
+            "Tác nhân p.hồi Market"
+        ]
+    },
+    "com.google.android.gm": {
+        "default": [
+            "Gmail"
+        ],
+        "en": [
+            "(F)[Ĝḿåîļ one]",
+            "(M)[Ĝḿåîļ one]",
+            "(N)[Ĝḿåîļ one]",
+            "[Ĝḿåîļ one]",
+            "Gmail"
+        ],
+        "es": [
+            "Gmail"
+        ],
+        "id": [
+            "Gmail"
+        ],
+        "pt": [
+            "Gmail"
+        ],
+        "th": [
+            "Gmail"
+        ],
+        "ur": [
+            "Gmail"
+        ],
+        "vi": [
+            "Gmail"
+        ]
+    },
+    "com.google.android.gms": {
+        "default": [
+            "Google Play services"
+        ],
+        "en": [
+            "Google Play services"
+        ],
+        "es": [
+            "Servicios de Google Play"
+        ],
+        "id": [
+            "Layanan Google Play"
+        ],
+        "pt": [
+            "Google Play Services",
+            "Serviços do Google Play"
+        ],
+        "th": [
+            "บริการ Google Play"
+        ],
+        "ur": [
+            "‏Google Play سروسز"
+        ],
+        "vi": [
+            "Dịch vụ Google Play"
+        ]
+    },
+    "com.google.android.gms.location.history": {
+        "default": [
+            "Google Location History"
+        ],
+        "en": [
+            "[Ĝööĝļé Ļöçåţîöñ Ĥîšţöŕý one two three]",
+            "Google Location History",
+            "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‏‎‏‏‎‏‎‏‎‏‏‏‏‏‏‏‎‏‏‎‏‎‎‏‎‏‏‏‎‏‏‏‏‏‏‎‎‏‏‏‏‏‏‏‎‏‎‏‏‎‎‎‏‎‎‎‏‎‎‎‎‎‎‎‎‎‏‏‏‎‏‎‎‏‏‏‎‎‎‎Google Location History‎‏‎‎‏‎"
+        ],
+        "es": [
+            "Historial de ubicaciones de Google"
+        ],
+        "id": [
+            "Histori Lokasi Google"
+        ],
+        "pt": [
+            "Histórico de localização do Google",
+            "Histórico de localizações da Google"
+        ],
+        "th": [
+            "Google ประวัติตำแหน่ง"
+        ],
+        "ur": [
+            "‏Google مقام کی سرگزشت"
+        ],
+        "vi": [
+            "Lịch sử vị trí trên Google"
+        ]
+    },
+    "com.google.android.gms.supervision": {
+        "default": [
+            "System parental controls"
+        ],
+        "en": [
+            "System parental controls"
+        ],
+        "es": [
+            "Controles parentales del sistema"
+        ],
+        "id": [
+            "Kontrol orang tua sistem"
+        ],
+        "pt": [
+            "Controles da família do sistema",
+            "Controlos parentais do sistema"
+        ],
+        "th": [
+            "การควบคุมระบบโดยผู้ปกครอง"
+        ],
+        "ur": [
+            "سسٹم پیرنٹل کنٹرولز"
+        ],
+        "vi": [
+            "Chế độ kiểm soát của cha mẹ trên hệ thống"
+        ]
+    },
+    "com.google.android.googlequicksearchbox": {
+        "default": [
+            "Google"
+        ],
+        "en": [
+            "Google"
+        ],
+        "es": [
+            "Google"
+        ],
+        "id": [
+            "Google"
+        ],
+        "pt": [
+            "Google"
+        ],
+        "th": [
+            "Google"
+        ],
+        "ur": [
+            "Google"
+        ],
+        "vi": [
+            "Google"
+        ]
+    },
+    "com.google.android.gsf": {
+        "default": [
+            "Google Services Framework"
+        ],
+        "en": [
+            "(F)[Ĝööĝļé ŠéŕVîçéš Fŕåḿéŵöŕķ one two three]",
+            "(M)[Ĝööĝļé ŠéŕVîçéš Fŕåḿéŵöŕķ one two three]",
+            "(N)[Ĝööĝļé ŠéŕVîçéš Fŕåḿéŵöŕķ one two three]",
+            "[Ĝööĝļé ŠéŕVîçéš Fŕåḿéŵöŕķ one two three]",
+            "Google Services Framework"
+        ],
+        "es": [
+            "Framework de servicios de Google",
+            "Marco de los servicios de Google"
+        ],
+        "id": [
+            "Framework Layanan Google"
+        ],
+        "pt": [
+            "Enquadramento dos serviços Google",
+            "Estrutura dos Serviços do Google"
+        ],
+        "th": [
+            "โครงสร้างบริการของ Google"
+        ],
+        "ur": [
+            "‏Google سروسز فریم ورک"
+        ],
+        "vi": [
+            "Khung Dịch vụ của Google"
+        ]
+    },
+    "com.google.android.healthconnect.controller": {
+        "default": [
+            "Health Connect"
+        ],
+        "en": [
+            "(F)[Ĥéåļţĥ Çöññéçţ one two three]",
+            "(M)[Ĥéåļţĥ Çöññéçţ one two three]",
+            "(N)[Ĥéåļţĥ Çöññéçţ one two three]",
+            "[Ĥéåļţĥ Çöññéçţ one two three]",
+            "Health Connect"
+        ],
+        "es": [
+            "Health Connect",
+            "Salud conectada"
+        ],
+        "id": [
+            "Health Connect"
+        ],
+        "pt": [
+            "Conexão Saúde",
+            "Saúde Connect"
+        ],
+        "th": [
+            "Health Connect"
+        ],
+        "ur": [
+            "‫Health Connect ایپ"
+        ],
+        "vi": [
+            "Health Connect"
+        ]
+    },
+    "com.google.android.hotspot2.osulogin": {
+        "default": [
+            "OsuLogin"
+        ],
+        "en": [
+            "(F)[ÖšûĻöĝîñ one two]",
+            "(M)[ÖšûĻöĝîñ one two]",
+            "(N)[ÖšûĻöĝîñ one two]",
+            "[ÖšûĻöĝîñ one two]",
+            "OsuLogin"
+        ],
+        "es": [
+            "OsuLogin"
+        ],
+        "id": [
+            "OsuLogin"
+        ],
+        "pt": [
+            "OsuLogin"
+        ],
+        "th": [
+            "OsuLogin"
+        ],
+        "ur": [
+            "OsuLogin"
+        ],
+        "vi": [
+            "OsuLogin"
+        ]
+    },
+    "com.google.android.inputmethod.latin": {
+        "default": [
+            "Gboard"
+        ]
+    },
+    "com.google.android.marvin.talkback": {
+        "default": [
+            "Android Accessibility Suite"
+        ],
+        "en": [
+            "Android Accessibility Suite"
+        ],
+        "es": [
+            "Suite de Accesibilidad Android"
+        ],
+        "id": [
+            "Android Accessibility Suite"
+        ],
+        "pt": [
+            "Acessibilidade do Android",
+            "Android Accessibility Suite"
+        ],
+        "th": [
+            "การช่วยเหลือพิเศษใน Android"
+        ],
+        "ur": [
+            "‏Android ایکسیسبیلٹی سوئٹ"
+        ],
+        "vi": [
+            "Bộ hỗ trợ tiếp cận của Android"
+        ]
+    },
+    "com.google.android.modulemetadata": {
+        "default": [
+            "Main components"
+        ],
+        "en": [
+            "(F)[Ḿåîñ çöḿþöñéñţš one two three]",
+            "(M)[Ḿåîñ çöḿþöñéñţš one two three]",
+            "(N)[Ḿåîñ çöḿþöñéñţš one two three]",
+            "[Ḿåîñ çöḿþöñéñţš one two three]"
+        ]
+    },
+    "com.google.android.networkstack": {
+        "default": [
+            "Network manager"
+        ],
+        "en": [
+            "(F)[Ñéţŵöŕķ ḿåñåĝéŕ one two three]",
+            "(M)[Ñéţŵöŕķ ḿåñåĝéŕ one two three]",
+            "(N)[Ñéţŵöŕķ ḿåñåĝéŕ one two three]",
+            "[Ñéţŵöŕķ ḿåñåĝéŕ one two three]",
+            "Network manager"
+        ],
+        "es": [
+            "Administrador de redes"
+        ],
+        "id": [
+            "Pengelola jaringan"
+        ],
+        "pt": [
+            "Gerenciador de rede",
+            "Gestor de redes"
+        ],
+        "th": [
+            "ตัวจัดการเครือข่าย"
+        ],
+        "ur": [
+            "نیٹ ورک مینیجر"
+        ],
+        "vi": [
+            "Trình quản lý mạng"
+        ]
+    },
+    "com.google.android.networkstack.tethering": {
+        "default": [
+            "Tethering"
+        ]
+    },
+    "com.google.android.odad": {
+        "default": [
+            "Google Play Protect Service"
+        ],
+        "en": [
+            "Google Play Protect service"
+        ],
+        "es": [
+            "Servicio de Google Play Protect",
+            "Servicio Google Play Protect"
+        ],
+        "id": [
+            "Layanan Google Play Protect"
+        ],
+        "pt": [
+            "Serviço Google Play Protect"
+        ],
+        "th": [
+            "บริการ Google Play Protect"
+        ],
+        "ur": [
+            "Google Play Protect کی سروس"
+        ],
+        "vi": [
+            "Dịch vụ Google Play Protect"
+        ]
+    },
+    "com.google.android.packageinstaller": {
+        "default": [
+            "Package installer"
+        ],
+        "en": [
+            "(F)[Þåçķåĝé îñšţåļļéŕ one two three]",
+            "(M)[Þåçķåĝé îñšţåļļéŕ one two three]",
+            "(N)[Þåçķåĝé îñšţåļļéŕ one two three]",
+            "[Þåçķåĝé îñšţåļļéŕ one two three]",
+            "Package installer"
+        ],
+        "es": [
+            "Instalador de paquetes"
+        ],
+        "id": [
+            "Installer paket"
+        ],
+        "pt": [
+            "Instalador do pacote"
+        ],
+        "th": [
+            "โปรแกรมติดตั้งแพ็กเกจ"
+        ],
+        "ur": [
+            "پیکیج انسٹالر"
+        ],
+        "vi": [
+            "Trình cài đặt gói"
+        ]
+    },
+    "com.google.android.partnersetup": {
+        "default": [
+            "Google Partner Setup"
+        ]
+    },
+    "com.google.android.permissioncontroller": {
+        "default": [
+            "Permission controller"
+        ],
+        "en": [
+            "(F)[Þéŕḿîššîöñ çöñţŕöļļéŕ one two three]",
+            "(M)[Þéŕḿîššîöñ çöñţŕöļļéŕ one two three]",
+            "(N)[Þéŕḿîššîöñ çöñţŕöļļéŕ one two three]",
+            "[Þéŕḿîššîöñ çöñţŕöļļéŕ one two three]",
+            "Permission controller"
+        ],
+        "es": [
+            "Controlador de permisos"
+        ],
+        "id": [
+            "Pengontrol izin"
+        ],
+        "pt": [
+            "Controlador autorizações",
+            "Controlador de permissões"
+        ],
+        "th": [
+            "ตัวควบคุมสิทธิ์"
+        ],
+        "ur": [
+            "اجازت کنٹرولر"
+        ],
+        "vi": [
+            "Trình điều khiển quyền"
+        ]
+    },
+    "com.google.android.photopicker": {
+        "default": [
+            "Photos & videos"
+        ],
+        "en": [
+            "(F)[Þĥöţöš &  Vîðéöš one two three]",
+            "(M)[Þĥöţöš &  Vîðéöš one two three]",
+            "(N)[Þĥöţöš &  Vîðéöš one two three]",
+            "[Þĥöţöš &  Vîðéöš one two three]",
+            "Photos & videos",
+            "Photos and videos"
+        ],
+        "es": [
+            "Fotos y videos",
+            "Fotos y vídeos"
+        ],
+        "id": [
+            "Foto & video"
+        ],
+        "pt": [
+            "Fotos e vídeos"
+        ],
+        "th": [
+            "รูปภาพและวิดีโอ"
+        ],
+        "ur": [
+            "تصاویر اور ویڈیوز"
+        ],
+        "vi": [
+            "Ảnh và video"
+        ]
+    },
+    "com.google.android.printservice.recommendation": {
+        "default": [
+            "Print Service Recommendation Service"
+        ]
+    },
+    "com.google.android.projection.gearhead": {
+        "default": [
+            "Android Auto"
+        ]
+    },
+    "com.google.android.providers.media.module": {
+        "default": [
+            "Media picker"
+        ],
+        "en": [
+            "(F)[Ḿéðîå þîçķéŕ one two]",
+            "(M)[Ḿéðîå þîçķéŕ one two]",
+            "(N)[Ḿéðîå þîçķéŕ one two]",
+            "[Ḿéðîå þîçķéŕ one two]",
+            "Media picker"
+        ],
+        "es": [
+            "Selector de medios"
+        ],
+        "id": [
+            "Pemilih media"
+        ],
+        "pt": [
+            "Seletor de meios",
+            "Seletor de mídia"
+        ],
+        "th": [
+            "เครื่องมือเลือกสื่อ"
+        ],
+        "ur": [
+            "میڈیا منتخب کنندہ"
+        ],
+        "vi": [
+            "Công cụ chọn nội dung đa phương tiện"
+        ]
+    },
+    "com.google.android.rkpdapp": {
+        "default": [
+            "RemoteProvisioner"
+        ],
+        "en": [
+            "(F)[ŔéḿöţéÞŕöVîšîöñéŕ one two three]",
+            "(M)[ŔéḿöţéÞŕöVîšîöñéŕ one two three]",
+            "(N)[ŔéḿöţéÞŕöVîšîöñéŕ one two three]",
+            "[ŔéḿöţéÞŕöVîšîöñéŕ one two three]"
+        ]
+    },
+    "com.google.android.safetycenter.resources": {
+        "default": [
+            "Google Safety Center Resources"
+        ],
+        "en": [
+            "(F)[Ĝööĝļé Šåƒéţý Çéñţéŕ Ŕéšöûŕçéš one two three four]",
+            "(M)[Ĝööĝļé Šåƒéţý Çéñţéŕ Ŕéšöûŕçéš one two three four]",
+            "(N)[Ĝööĝļé Šåƒéţý Çéñţéŕ Ŕéšöûŕçéš one two three four]",
+            "[Ĝööĝļé Šåƒéţý Çéñţéŕ Ŕéšöûŕçéš one two three four]",
+            "Google Safety Center Resources",
+            "Google Safety Centre resources"
+        ],
+        "es": [
+            "Recursos del Centro de seg. de Google",
+            "Recursos del Centro de Seguridad de Google"
+        ],
+        "id": [
+            "Resource Pusat Keamanan Google"
+        ],
+        "pt": [
+            "Centro de segurança da Google: recursos",
+            "Recursos da Central de segurança do Google"
+        ],
+        "th": [
+            "ทรัพยากรศูนย์ความปลอดภัยของ Google"
+        ],
+        "ur": [
+            "‏Google کے حفاظتی مرکز کے وسائل"
+        ],
+        "vi": [
+            "Tài nguyên Trung tâm An toàn của Google"
+        ]
+    },
+    "com.google.android.setupwizard": {
+        "default": [
+            "Android Setup"
+        ],
+        "en": [
+            "Android Setup"
+        ],
+        "es": [
+            "Configuración de Android"
+        ],
+        "id": [
+            "Penyiapan Android"
+        ],
+        "pt": [
+            "Configuração do Android"
+        ],
+        "th": [
+            "การตั้งค่า Android"
+        ],
+        "ur": [
+            "‏Android سیٹ اپ"
+        ],
+        "vi": [
+            "Thiết lập Android"
+        ]
+    },
+    "com.google.android.signature": {
+        "default": [
+            "Signature"
+        ],
+        "en": [
+            "(F)[Šîĝñåţûŕé one two]",
+            "(M)[Šîĝñåţûŕé one two]",
+            "(N)[Šîĝñåţûŕé one two]",
+            "[Šîĝñåţûŕé one two]",
+            "Signature"
+        ],
+        "es": [
+            "Firma"
+        ],
+        "id": [
+            "Tanda Tangan"
+        ],
+        "pt": [
+            "Assinatura"
+        ],
+        "th": [
+            "ลายเซ็น"
+        ],
+        "ur": [
+            "دستخط"
+        ],
+        "vi": [
+            "Chữ ký"
+        ]
+    },
+    "com.google.android.tts": {
+        "default": [
+            "Speech Recognition and Synthesis from Google"
+        ],
+        "en": [
+            "[Šþééçĥ Ŕéçöĝñîţîöñ åñð Šýñţĥéšîš ƒŕöm Ĝööĝļé one two three four five six seven eight nine]",
+            "Speech Recognition and Synthesis from Google",
+            "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‎‏‏‏‎‏‏‎‏‎‏‏‏‏‏‎‏‏‏‎‎‏‎‎‏‏‏‎‎‏‏‎‏‏‏‎‏‎‏‎‎‎‏‏‏‏‏‎‎‏‏‎‎‏‎‏‎‏‏‏‏‏‎‏‎‎‎‎‎‎‏‎‎‎‏‏‏‎‎Speech Recognition and Synthesis from Google‎‏‎‎‏‎"
+        ],
+        "es": [
+            "Reconocimiento y síntesis de voz de Google"
+        ],
+        "id": [
+            "Pengenalan dan Sintesis Ucapan dari Google"
+        ],
+        "pt": [
+            "Reconhecimento e síntese de voz do Google",
+            "Reconhecimento/síntese de voz da Google"
+        ],
+        "th": [
+            "Speech Recognition and Synthesis from Google"
+        ],
+        "ur": [
+            "‏Google کی اسپیچ کی شناخت اور سنتھسز"
+        ],
+        "vi": [
+            "Nhận dạng và tổng hợp giọng nói của Google"
+        ]
+    },
+    "com.google.android.uwb.resources": {
+        "default": [
+            "System UWB Resources"
+        ],
+        "en": [
+            "(F)[Šýšţéḿ ÛŴβ Ŕéšöûŕçéš one two three]",
+            "(M)[Šýšţéḿ ÛŴβ Ŕéšöûŕçéš one two three]",
+            "(N)[Šýšţéḿ ÛŴβ Ŕéšöûŕçéš one two three]",
+            "[Šýšţéḿ ÛŴβ Ŕéšöûŕçéš one two three]"
+        ]
+    },
+    "com.google.android.verifier": {
+        "default": [
+            "Android Developer Verifier"
+        ],
+        "en": [
+            "[Åñðŕöîð Ðévéļöþéŕ Véŕîƒîéŕ one two three]",
+            "Android Developer Verifier",
+            "‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‏‏‎‎‏‎‏‎‎‏‏‎‏‏‏‏‏‏‏‏‎‏‏‎‏‎‎‎‏‎‎‏‏‏‏‏‎‎‏‏‎‏‎‏‏‏‏‏‏‏‎‎‏‎‎‏‏‏‎‎‏‎‎‏‎‎‎‎‎‏‎‏‏‏‏‎‎‏‏‎‏‎Android Developer Verifier‎‏‎‎‏‎"
+        ],
+        "es": [
+            "Android Developer Verifier"
+        ],
+        "id": [
+            "Android Developer Verifier"
+        ],
+        "pt": [
+            "Android Developer Verifier"
+        ],
+        "th": [
+            "Android Developer Verifier"
+        ],
+        "ur": [
+            "Android Developer Verifier"
+        ],
+        "vi": [
+            "Android Developer Verifier"
+        ]
+    },
+    "com.google.android.webview": {
+        "default": [
+            "Android System WebView"
+        ]
+    },
+    "com.google.android.wifi.resources": {
+        "default": [
+            "System Wi-Fi Resources"
+        ],
+        "en": [
+            "(F)[Šýšţéḿ Ŵî-Fî Ŕéšöûŕçéš one two three]",
+            "(M)[Šýšţéḿ Ŵî-Fî Ŕéšöûŕçéš one two three]",
+            "(N)[Šýšţéḿ Ŵî-Fî Ŕéšöûŕçéš one two three]",
+            "[Šýšţéḿ Ŵî-Fî Ŕéšöûŕçéš one two three]",
+            "System Wi-Fi resources"
+        ],
+        "es": [
+            "Recursos Wi‑Fi del sistema"
+        ],
+        "id": [
+            "Resource Wi-Fi Sistem"
+        ],
+        "pt": [
+            "Recursos de Wi-Fi do sistema",
+            "Recursos do Wi-Fi do sistema"
+        ],
+        "th": [
+            "ทรัพยากร Wi-Fi ของระบบ"
+        ],
+        "ur": [
+            "‏Wi-Fi سسٹم کے وسائل"
+        ],
+        "vi": [
+            "Các tài nguyên Wi-Fi của hệ thống"
+        ]
+    },
+    "com.google.android.youtube": {
+        "default": [
+            "YouTube"
+        ],
+        "en": [
+            "YouTube"
+        ],
+        "es": [
+            "YouTube"
+        ],
+        "id": [
+            "YouTube"
+        ],
+        "pt": [
+            "YouTube"
+        ],
+        "th": [
+            "YouTube"
+        ],
+        "ur": [
+            "YouTube"
+        ],
+        "vi": [
+            "YouTube"
+        ]
+    },
+    "com.google.ar.core": {
+        "default": [
+            "ARCore"
+        ]
+    },
+    "com.google.audio.hearing.visualization.accessibility.scribe": {
+        "default": [
+            "Live Transcribe & Sound Notifications"
+        ],
+        "en": [
+            "Live Transcribe & Sound Notifications",
+            "Live Transcribe and Sound Notifications"
+        ],
+        "es": [
+            "Transcripción instantánea y Notificaciones de sonidos"
+        ],
+        "id": [
+            "Transkripsi Instan & Notifikasi Suara"
+        ],
+        "pt": [
+            "Transcrição instantânea e Notificações de sons",
+            "Transcrição instantânea e notificações sonoras"
+        ],
+        "th": [
+            "Live Transcribe และการแจ้งเตือนเสียง"
+        ],
+        "ur": [
+            "لائیو ٹرانسکرائب اور ساؤنڈ نوٹیفیکیشنز"
+        ],
+        "vi": [
+            "Chép lời trực tiếp và Thông báo âm thanh"
+        ]
+    },
+    "com.google.mainline.adservices": {
+        "default": [
+            "Main components"
+        ],
+        "en": [
+            "(F)[Ḿåîñ çöḿþöñéñţš one two three]",
+            "(M)[Ḿåîñ çöḿþöñéñţš one two three]",
+            "(N)[Ḿåîñ çöḿþöñéñţš one two three]",
+            "[Ḿåîñ çöḿþöñéñţš one two three]"
+        ]
+    },
+    "com.google.mainline.telemetry": {
+        "default": [
+            "Support components"
+        ],
+        "en": [
+            "(F)[Šûþþöŕţ çöḿþöñéñţš one two three]",
+            "(M)[Šûþþöŕţ çöḿþöñéñţš one two three]",
+            "(N)[Šûþþöŕţ çöḿþöñéñţš one two three]",
+            "[Šûþþöŕţ çöḿþöñéñţš one two three]"
+        ]
+    },
+    "com.instagram.android": {
+        "default": [
+            "Instagram"
+        ]
+    },
+    "com.iqoo.powersaving": {
+        "default": [
+            "Battery"
+        ],
+        "en": [
+            "Battery"
+        ],
+        "es": [
+            "Batería"
+        ],
+        "id": [
+            "Baterai"
+        ],
+        "pt": [
+            "Bateria"
+        ],
+        "th": [
+            "แบตเตอรี่"
+        ],
+        "ur": [
+            "بیٹری"
+        ],
+        "vi": [
+            "Pin"
+        ]
+    },
+    "com.lemon.lvoverseas": {
+        "default": [
+            "CapCut"
+        ]
+    },
+    "com.microsoft.appmanager": {
+        "default": [
+            "Link to Windows"
+        ],
+        "en": [
+            "Link to Windows"
+        ],
+        "es": [
+            "Enlace a Windows"
+        ],
+        "id": [
+            "Koneksi ke Windows"
+        ],
+        "pt": [
+            "Ligar ao Windows",
+            "Vincular ao Windows"
+        ],
+        "th": [
+            "ลิงก์ไปยัง Windows"
+        ],
+        "ur": [
+            "Windows سے لنک کریں"
+        ],
+        "vi": [
+            "Liên kết với Windows"
+        ]
+    },
+    "com.microsoft.deviceintegrationservice": {
+        "default": [
+            "Device Integration Service"
+        ]
+    },
+    "com.netflix.mediaclient": {
+        "default": [
+            "Netflix"
+        ],
+        "en": [
+            "Netflix"
+        ],
+        "es": [
+            "Netflix"
+        ],
+        "id": [
+            "Netflix"
+        ],
+        "pt": [
+            "Netflix"
+        ],
+        "th": [
+            "Netflix"
+        ],
+        "vi": [
+            "Netflix"
+        ]
+    },
+    "com.qti.ltebc": {
+        "default": [
+            "LTE Broadcast Manager"
+        ],
+        "en": [
+            "(F)[ĻŢÉ βŕöåðçåšţ Ḿåñåĝéŕ one two three]",
+            "(M)[ĻŢÉ βŕöåðçåšţ Ḿåñåĝéŕ one two three]",
+            "(N)[ĻŢÉ βŕöåðçåšţ Ḿåñåĝéŕ one two three]",
+            "[ĻŢÉ βŕöåðçåšţ Ḿåñåĝéŕ one two three]"
+        ]
+    },
+    "com.qti.qcc": {
+        "default": [
+            "QCC"
+        ],
+        "en": [
+            "(F)[qÇÇ one]",
+            "(M)[qÇÇ one]",
+            "(N)[qÇÇ one]",
+            "[qÇÇ one]"
+        ]
+    },
+    "com.qti.snapdragon.qdcm_ff": {
+        "default": [
+            "QDCM-FF"
+        ]
+    },
+    "com.qti.xdivert": {
+        "default": [
+            "Smart-Divert"
+        ]
+    },
+    "com.qualcomm.location": {
+        "default": [
+            "EmergencyLocServices"
+        ]
+    },
+    "com.qualcomm.qti.modemmbnmode": {
+        "default": [
+            "MBN Test"
+        ]
+    },
+    "com.qualcomm.qti.poweroffalarm": {
+        "default": [
+            "PowerOffAlarm"
+        ]
+    },
+    "com.qualcomm.qti.qcolor": {
+        "default": [
+            "QColor"
+        ]
+    },
+    "com.qualcomm.qti.ridemodeaudio": {
+        "default": [
+            "RideMode Recording list"
+        ]
+    },
+    "com.qualcomm.qti.server.qtiwifi": {
+        "default": [
+            "QtiWifiService"
+        ]
+    },
+    "com.qualcomm.qti.simcontacts": {
+        "default": [
+            "SimContacts"
+        ]
+    },
+    "com.qualcomm.qti.voiceai.lifelogger.service": {
+        "default": [
+            "LifeLoggerService"
+        ]
+    },
+    "com.qualcomm.qti.xrcb": {
+        "default": [
+            "XRCB"
+        ],
+        "en": [
+            "(F)[×ŔÇβ one]",
+            "(M)[×ŔÇβ one]",
+            "(N)[×ŔÇβ one]",
+            "[×ŔÇβ one]"
+        ]
+    },
+    "com.qualcomm.qti.xrvd.service": {
+        "default": [
+            "XRVD"
+        ],
+        "en": [
+            "(F)[×ŔνÐ one]",
+            "(M)[×ŔνÐ one]",
+            "(N)[×ŔνÐ one]",
+            "[×ŔνÐ one]"
+        ]
+    },
+    "com.qualcomm.qti.xrwifi": {
+        "default": [
+            "XR Wifi Service"
+        ],
+        "en": [
+            "(F)[×Ŕ Ŵîƒî ŠéŕVîçé one two three]",
+            "(M)[×Ŕ Ŵîƒî ŠéŕVîçé one two three]",
+            "(N)[×Ŕ Ŵîƒî ŠéŕVîçé one two three]",
+            "[×Ŕ Ŵîƒî ŠéŕVîçé one two three]"
+        ]
+    },
+    "com.qualcomm.wfd.service": {
+        "default": [
+            "Wfd Service"
+        ]
+    },
+    "com.ringclip": {
+        "default": [
+            "Ringtone editing"
+        ],
+        "en": [
+            "Ringtone editing"
+        ],
+        "es": [
+            "Edición de tonos de llamada",
+            "Edición del tono de llamada"
+        ],
+        "id": [
+            "Pengeditan nada dering"
+        ],
+        "pt": [
+            "Edição do toque"
+        ],
+        "th": [
+            "การแก้ไขเสียงเรียกเข้า"
+        ],
+        "ur": [
+            "رنگ ٹون میں ترمیم کرنا"
+        ],
+        "vi": [
+            "Chỉnh sửa nhạc chuông"
+        ]
+    },
+    "com.touchscreen.vtstouchscreencheck": {
+        "default": [
+            "VtsTouchscreenCheck"
+        ]
+    },
+    "com.vitastudio.mahjong": {
+        "default": [
+            "Vita Mahjong"
+        ],
+        "en": [
+            "Vita Mahjong"
+        ],
+        "es": [
+            "Vita Mahjong"
+        ],
+        "id": [
+            "Vita Mahjong"
+        ],
+        "pt": [
+            "Vita Mahjong"
+        ],
+        "th": [
+            "Vita Mahjong"
+        ],
+        "ur": [
+            "Vita Mahjong"
+        ],
+        "vi": [
+            "Vita Mahjong"
+        ]
+    },
+    "com.vivo.SmartKey": {
+        "default": [
+            "Quick action"
+        ],
+        "en": [
+            "Quick action"
+        ],
+        "es": [
+            "Acción rápida"
+        ],
+        "id": [
+            "Tindakan cepat"
+        ],
+        "pt": [
+            "Ação rápida"
+        ],
+        "th": [
+            "การดำเนินการด่วน"
+        ],
+        "ur": [
+            "فوری کارروائی"
+        ],
+        "vi": [
+            "Khởi chạy nhanh"
+        ]
+    },
+    "com.vivo.Tips": {
+        "default": [
+            "Tips"
+        ],
+        "en": [
+            "Tips"
+        ],
+        "es": [
+            "Consejos",
+            "Sugerencias"
+        ],
+        "id": [
+            "Tips"
+        ],
+        "pt": [
+            "Dicas",
+            "Sugestões"
+        ],
+        "th": [
+            "เคล็ดลับ"
+        ],
+        "ur": [
+            "تجاویز"
+        ],
+        "vi": [
+            "Mẹo"
+        ]
+    },
+    "com.vivo.abe": {
+        "default": [
+            "Smart Engine"
+        ],
+        "en": [
+            "Smart Engine"
+        ],
+        "es": [
+            "Motor inteligente"
+        ],
+        "id": [
+            "Mesin Pintar"
+        ],
+        "pt": [
+            "Motor inteligente"
+        ],
+        "th": [
+            "กลไกอัจฉริยะ"
+        ],
+        "ur": [
+            "اسمارٹ انجن"
+        ],
+        "vi": [
+            "Công cụ thông minh"
+        ]
+    },
+    "com.vivo.accessibilityenhance": {
+        "default": [
+            "Accessibility Enhance"
+        ]
+    },
+    "com.vivo.ai.agent": {
+        "default": [
+            "智能体服务"
+        ],
+        "en": [
+            "GptAgent"
+        ]
+    },
+    "com.vivo.ai.aie": {
+        "default": [
+            "Smart service"
+        ],
+        "en": [
+            "Smart service"
+        ],
+        "es": [
+            "Servicio inteligente"
+        ],
+        "id": [
+            "Layanan pintar"
+        ],
+        "pt": [
+            "Serviço inteligente"
+        ],
+        "th": [
+            "บริการอัจฉริยะ"
+        ],
+        "ur": [
+            "اسمارٹ ڈیوائس"
+        ],
+        "vi": [
+            "Dịch vụ thông minh"
+        ]
+    },
+    "com.vivo.ai.intellicore": {
+        "default": [
+            "IntelliService"
+        ]
+    },
+    "com.vivo.aiengine": {
+        "default": [
+            "AIEngine"
+        ],
+        "en": [
+            "AIEngine"
+        ]
+    },
+    "com.vivo.alphacamera": {
+        "default": [
+            "AlphaCamera"
+        ]
+    },
+    "com.vivo.appfilter": {
+        "default": [
+            "AppFilter"
+        ],
+        "en": [
+            "AppFilter"
+        ],
+        "es": [
+            "AppFilter"
+        ],
+        "id": [
+            "AppFilter"
+        ],
+        "pt": [
+            "AppFilter"
+        ],
+        "th": [
+            "AppFilter"
+        ],
+        "ur": [
+            "AppFilter"
+        ],
+        "vi": [
+            "AppFilter"
+        ]
+    },
+    "com.vivo.appstore": {
+        "default": [
+            "V-Appstore"
+        ]
+    },
+    "com.vivo.assistant": {
+        "default": [
+            "Jovi Home service engine"
+        ],
+        "en": [
+            "Jovi Home service engine"
+        ],
+        "es": [
+            "Motor de servicio de Jovi Home",
+            "Motor del servicio Jovi Home"
+        ],
+        "id": [
+            "Mesin layanan Jovi Home"
+        ],
+        "pt": [
+            "Mecanismo de serviço do Jovi Home",
+            "Motor de serviços Jovi Home"
+        ],
+        "th": [
+            "กลไกการให้บริการ Jovi Home"
+        ],
+        "ur": [
+            "Jovi Home سروس انجن"
+        ],
+        "vi": [
+            "Công cụ dịch vụ Jovi Home"
+        ]
+    },
+    "com.vivo.assistantfunction": {
+        "default": [
+            "Steps"
+        ],
+        "en": [
+            "Steps"
+        ],
+        "es": [
+            "Pasos"
+        ],
+        "id": [
+            "Langkah"
+        ],
+        "pt": [
+            "Passos"
+        ],
+        "th": [
+            "จำนวนก้าว"
+        ],
+        "ur": [
+            "قدم"
+        ],
+        "vi": [
+            "Số bước"
+        ]
+    },
+    "com.vivo.audiofx": {
+        "default": [
+            "Audio effect"
+        ],
+        "en": [
+            "Audio effect"
+        ],
+        "es": [
+            "Efecto de audio",
+            "Efectos de audio"
+        ],
+        "id": [
+            "Efek audio"
+        ],
+        "pt": [
+            "Efeito áudio",
+            "Efeitos sonoros"
+        ],
+        "th": [
+            "เอฟเฟ็กต์เสียง"
+        ],
+        "ur": [
+            "آڈیو کا اثر"
+        ],
+        "vi": [
+            "Hiệu ứng âm thanh"
+        ]
+    },
+    "com.vivo.backuprestore": {
+        "default": [
+            "Backup and restore"
+        ],
+        "en": [
+            "Backup and restore"
+        ],
+        "es": [
+            "Copia de respaldo y restauración",
+            "Copia de seguridad y restauración"
+        ],
+        "id": [
+            "Cadangkan dan pulihkan"
+        ],
+        "pt": [
+            "Criar cópia de segurança e restaurar",
+            "Fazer backup e restaurar"
+        ],
+        "th": [
+            "สำรองข้อมูลและกู้คืนข้อมูล"
+        ],
+        "ur": [
+            "بیک اپ بنائیں اور بحال کریں"
+        ],
+        "vi": [
+            "Sao lưu và khôi phục"
+        ]
+    },
+    "com.vivo.browser": {
+        "default": [
+            "Browser"
+        ],
+        "en": [
+            "Browser"
+        ],
+        "es": [
+            "Navegador"
+        ],
+        "id": [
+            "Browser"
+        ],
+        "pt": [
+            "Navegador"
+        ],
+        "th": [
+            "เบราว์เซอร์"
+        ],
+        "ur": [
+            "براؤزر"
+        ],
+        "vi": [
+            "Trình duyệt"
+        ]
+    },
+    "com.vivo.calculator": {
+        "default": [
+            "Calculator"
+        ],
+        "en": [
+            "Calculator"
+        ],
+        "es": [
+            "Calculadora"
+        ],
+        "id": [
+            "Kalkulator"
+        ],
+        "pt": [
+            "Calculadora"
+        ],
+        "th": [
+            "เครื่องคิดเลข"
+        ],
+        "ur": [
+            "کیلکولیٹر"
+        ],
+        "vi": [
+            "Máy tính"
+        ]
+    },
+    "com.vivo.card": {
+        "default": [
+            "Smart sidebar"
+        ],
+        "en": [
+            "Smart sidebar"
+        ],
+        "es": [
+            "Barra lateral inteligente"
+        ],
+        "id": [
+            "Bilah samping pintar"
+        ],
+        "pt": [
+            "Barra lateral inteligente"
+        ],
+        "th": [
+            "แถบด้านข้างอัจฉริยะ"
+        ],
+        "ur": [
+            "اسمارٹ سائیڈ بار"
+        ],
+        "vi": [
+            "Thanh bên thông minh"
+        ]
+    },
+    "com.vivo.cardstore": {
+        "default": [
+            "Card center"
+        ],
+        "en": [
+            "Card centre"
+        ],
+        "es": [
+            "Centro de tarjetas"
+        ],
+        "id": [
+            "Pusat kartu"
+        ],
+        "pt": [
+            "Central de cartões",
+            "Centro de cartões"
+        ],
+        "th": [
+            "ศูนย์บัตร"
+        ],
+        "ur": [
+            "کارڈ سنٹر"
+        ],
+        "vi": [
+            "Trung tâm thẻ"
+        ]
+    },
+    "com.vivo.carrierlocation": {
+        "default": [
+            "Carrier Location"
+        ],
+        "en": [
+            "Carrier Location"
+        ],
+        "es": [
+            "Ubicación del operador"
+        ],
+        "id": [
+            "Lokasi Operator"
+        ],
+        "pt": [
+            "Localização da operadora"
+        ],
+        "th": [
+            "Carrier Location"
+        ],
+        "ur": [
+            "کیریئر کا مقام"
+        ],
+        "vi": [
+            "Vị trí nhà mạng"
+        ]
+    },
+    "com.vivo.compass": {
+        "default": [
+            "Compass"
+        ],
+        "en": [
+            "Compass"
+        ],
+        "es": [
+            "Brújula"
+        ],
+        "id": [
+            "Kompas"
+        ],
+        "pt": [
+            "Bússola"
+        ],
+        "th": [
+            "เข็มทิศ"
+        ],
+        "ur": [
+            "کمپاس"
+        ],
+        "vi": [
+            "La bàn"
+        ]
+    },
+    "com.vivo.connbase": {
+        "default": [
+            "Device connection service"
+        ],
+        "en": [
+            "Device connection service"
+        ],
+        "es": [
+            "Servicio de conexión de dispositivos"
+        ],
+        "id": [
+            "Layanan koneksi perangkat"
+        ],
+        "pt": [
+            "Serviço de conexão de dispositivo",
+            "Serviço de ligação de dispositivos"
+        ],
+        "th": [
+            "บริการเชื่อมต่ออุปกรณ์"
+        ],
+        "ur": [
+            "ڈیوائس کنکشن سروس"
+        ],
+        "vi": [
+            "Dịch vụ kết nối thiết bị"
+        ]
+    },
+    "com.vivo.connbase.connectcenter": {
+        "default": [
+            "Connection center"
+        ],
+        "en": [
+            "Connection centre"
+        ],
+        "es": [
+            "Centro de conexiones",
+            "Centro de conexión"
+        ],
+        "id": [
+            "Pusat koneksi"
+        ],
+        "pt": [
+            "Central de conexão",
+            "Centro de ligação"
+        ],
+        "th": [
+            "ศูนย์การเชื่อมต่อ"
+        ],
+        "ur": [
+            "کنیکشن سنٹر"
+        ],
+        "vi": [
+            "Trung tâm kết nối"
+        ]
+    },
+    "com.vivo.connbase.deviceaccessory": {
+        "default": [
+            "VAS Core"
+        ],
+        "en": [
+            "VAS Core"
+        ],
+        "es": [
+            "VAS Core"
+        ],
+        "id": [
+            "VAS Core"
+        ],
+        "pt": [
+            "VAS Core"
+        ],
+        "th": [
+            "VAS Core"
+        ],
+        "ur": [
+            "VAS Core"
+        ],
+        "vi": [
+            "VAS Core"
+        ]
+    },
+    "com.vivo.connbase.sysui": {
+        "default": [
+            "ControlCenter"
+        ]
+    },
+    "com.vivo.cota": {
+        "default": [
+            "COTA"
+        ],
+        "en": [
+            "COTA"
+        ],
+        "es": [
+            "COTA"
+        ],
+        "id": [
+            "COTA"
+        ],
+        "pt": [
+            "COTA"
+        ],
+        "th": [
+            "COTA"
+        ],
+        "ur": [
+            "COTA"
+        ],
+        "vi": [
+            "COTA"
+        ]
+    },
+    "com.vivo.countdownwidget": {
+        "default": [
+            "Timer kit"
+        ],
+        "en": [
+            "Timer kit"
+        ],
+        "es": [
+            "Kit de temporizador"
+        ],
+        "id": [
+            "Kit pengatur waktu"
+        ],
+        "pt": [
+            "Kit de temporizador",
+            "Kit temporizador"
+        ],
+        "th": [
+            "ชุดโปรแกรมตัวจับเวลา"
+        ],
+        "ur": [
+            "ٹائمر کٹ"
+        ],
+        "vi": [
+            "Bộ công cụ bộ hẹn giờ"
+        ]
+    },
+    "com.vivo.crontab": {
+        "default": [
+            "Task timer"
+        ],
+        "en": [
+            "Task timer"
+        ],
+        "es": [
+            "Temporizador de tareas"
+        ],
+        "id": [
+            "Pengatur waktu tugas"
+        ],
+        "pt": [
+            "Temporizador de tarefa",
+            "Temporizador de tarefas"
+        ],
+        "th": [
+            "ตัวจับเวลางาน"
+        ],
+        "ur": [
+            "ٹاسک ٹائمر"
+        ],
+        "vi": [
+            "Hẹn giờ tác vụ"
+        ]
+    },
+    "com.vivo.customtool": {
+        "default": [
+            "VTrust Guard"
+        ]
+    },
+    "com.vivo.daemonService": {
+        "default": [
+            "vivoService"
+        ],
+        "en": [
+            "vivo Service",
+            "vivoService"
+        ],
+        "es": [
+            "Servicio vivo",
+            "vivoService"
+        ],
+        "id": [
+            "Layanan vivo"
+        ],
+        "pt": [
+            "Serviço vivo"
+        ],
+        "th": [
+            "vivoService"
+        ],
+        "ur": [
+            "vivo سروس"
+        ],
+        "vi": [
+            "Dịch vụ vivo"
+        ]
+    },
+    "com.vivo.desktopstickers": {
+        "default": [
+            "Stickers"
+        ],
+        "en": [
+            "Stickers"
+        ],
+        "es": [
+            "Stickers"
+        ],
+        "id": [
+            "Stiker"
+        ],
+        "pt": [
+            "Adesivos",
+            "Autocolantes"
+        ],
+        "th": [
+            "สติ๊กเกอร์"
+        ],
+        "ur": [
+            "اسٹیکرز"
+        ],
+        "vi": [
+            "Nhãn dán"
+        ]
+    },
+    "com.vivo.devicepower": {
+        "default": [
+            "Device battery"
+        ],
+        "en": [
+            "Device battery"
+        ],
+        "es": [
+            "Batería del dispositivo"
+        ],
+        "id": [
+            "Baterai perangkat"
+        ],
+        "pt": [
+            "Bateria do dispositivo"
+        ],
+        "th": [
+            "แบตเตอรี่ของอุปกรณ์"
+        ],
+        "ur": [
+            "ڈیوائس کی بیٹری"
+        ],
+        "vi": [
+            "Pin thiết bị"
+        ]
+    },
+    "com.vivo.doubleinstance": {
+        "default": [
+            "App clone"
+        ],
+        "en": [
+            "App clone"
+        ],
+        "es": [
+            "Clonación de aplicaciones",
+            "Clonar apps"
+        ],
+        "id": [
+            "Klona aplikasi"
+        ],
+        "pt": [
+            "Clonagem de aplicações",
+            "Clone de app"
+        ],
+        "th": [
+            "โคลนแอป"
+        ],
+        "ur": [
+            "ایپ کلون"
+        ],
+        "vi": [
+            "Nhân bản ứng dụng"
+        ]
+    },
+    "com.vivo.doubletimezoneclock": {
+        "default": [
+            "Clock and weather"
+        ],
+        "en": [
+            "Clock and weather"
+        ],
+        "es": [
+            "Reloj y clima",
+            "Reloj y tiempo"
+        ],
+        "id": [
+            "Jam dan cuaca"
+        ],
+        "pt": [
+            "Relógio e clima",
+            "Relógio e Meteorologia"
+        ],
+        "th": [
+            "นาฬิกาและสภาพอากาศ"
+        ],
+        "ur": [
+            "گھڑی اور موسم"
+        ],
+        "vi": [
+            "Đồng hồ và thời tiết"
+        ]
+    },
+    "com.vivo.e2ee": {
+        "default": [
+            "Basic Security Services"
+        ],
+        "es": [
+            "Servicios de seguridad básicos"
+        ],
+        "id": [
+            "Layanan Keamanan Dasar"
+        ],
+        "pt": [
+            "Serviços básicos de segurança"
+        ],
+        "th": [
+            "บริการรักษาความปลอดภัยพื้นฐาน"
+        ],
+        "ur": [
+            "بنیادی سکیورٹی سروسز"
+        ],
+        "vi": [
+            "Dịch vụ bảo mật cơ bản"
+        ]
+    },
+    "com.vivo.easyshare": {
+        "default": [
+            "EasyShare"
+        ],
+        "en": [
+            "EasyShare"
+        ],
+        "es": [
+            "EasyShare"
+        ],
+        "id": [
+            "EasyShare"
+        ],
+        "pt": [
+            "EasyShare"
+        ],
+        "th": [
+            "EasyShare"
+        ],
+        "ur": [
+            "EasyShare"
+        ],
+        "vi": [
+            "EasyShare"
+        ]
+    },
+    "com.vivo.epm": {
+        "default": [
+            "EPM"
+        ]
+    },
+    "com.vivo.exhealth": {
+        "default": [
+            "Origin Health"
+        ],
+        "en": [
+            "Origin Health"
+        ],
+        "es": [
+            "Salud de Origin",
+            "Salud Origin"
+        ],
+        "id": [
+            "Kesehatan Origin"
+        ],
+        "pt": [
+            "Origin Saúde",
+            "Saúde Origin"
+        ],
+        "th": [
+            "Origin Health"
+        ],
+        "ur": [
+            "‏Origin ہیلتھ"
+        ],
+        "vi": [
+            "Sức khỏe Origin"
+        ]
+    },
+    "com.vivo.faceui": {
+        "default": [
+            "FaceUI"
+        ]
+    },
+    "com.vivo.faceunlock": {
+        "default": [
+            "Face settings"
+        ],
+        "en": [
+            "Face settings"
+        ],
+        "es": [
+            "Ajustes del rostro",
+            "Ajustes faciales"
+        ],
+        "id": [
+            "Pengaturan wajah"
+        ],
+        "pt": [
+            "Configurações de rosto",
+            "Definições faciais"
+        ],
+        "th": [
+            "การตั้งค่าใบหน้า"
+        ],
+        "ur": [
+            "چہرے کی ترتیبات"
+        ],
+        "vi": [
+            "Cài đặt khuôn mặt"
+        ]
+    },
+    "com.vivo.feedback": {
+        "default": [
+            "Feedback"
+        ],
+        "en": [
+            "Feedback"
+        ],
+        "es": [
+            "Comentarios"
+        ],
+        "id": [
+            "Umpan balik"
+        ],
+        "pt": [
+            "Comentários",
+            "Feedback"
+        ],
+        "th": [
+            "ข้อคิดเห็น"
+        ],
+        "ur": [
+            "فیڈ بیک"
+        ],
+        "vi": [
+            "Phản hồi"
+        ]
+    },
+    "com.vivo.fingerprint": {
+        "default": [
+            "Fingerprint settings"
+        ],
+        "en": [
+            "Fingerprint settings"
+        ],
+        "es": [
+            "Ajustes de huellas digitales",
+            "Configuración de huella digital"
+        ],
+        "id": [
+            "Pengaturan sidik jari"
+        ],
+        "pt": [
+            "Configurações de impressões digitais",
+            "Definições de impressão digital"
+        ],
+        "th": [
+            "ค่าลายนิ้วมือ"
+        ],
+        "ur": [
+            "انگلی کے نشان کی ترتیبات"
+        ],
+        "vi": [
+            "Cài đặt dấu vân tay"
+        ]
+    },
+    "com.vivo.fingerprintui": {
+        "default": [
+            "FingerprintUI"
+        ],
+        "pt": [
+            "FingerprintUI"
+        ]
+    },
+    "com.vivo.fingerprintvit": {
+        "default": [
+            "FingerprintVit"
+        ]
+    },
+    "com.vivo.floatingball": {
+        "default": [
+            "Easy Touch"
+        ],
+        "en": [
+            "Easy Touch"
+        ],
+        "es": [
+            "Toque fácil"
+        ],
+        "id": [
+            "Sentuhan Mudah"
+        ],
+        "pt": [
+            "Toque fácil"
+        ],
+        "th": [
+            "การแตะอย่างง่าย"
+        ],
+        "ur": [
+            "ایزی ٹچ"
+        ],
+        "vi": [
+            "Nút Home ảo"
+        ]
+    },
+    "com.vivo.frameworkui": {
+        "default": [
+            "FrameworkUI"
+        ]
+    },
+    "com.vivo.fuelsummary": {
+        "default": [
+            "FuelSummary"
+        ]
+    },
+    "com.vivo.gallery": {
+        "default": [
+            "Albums"
+        ],
+        "en": [
+            "Albums"
+        ],
+        "es": [
+            "Álbumes"
+        ],
+        "id": [
+            "Album"
+        ],
+        "pt": [
+            "Álbuns"
+        ],
+        "th": [
+            "อัลบั้ม"
+        ],
+        "ur": [
+            "البمز"
+        ],
+        "vi": [
+            "Album"
+        ]
+    },
+    "com.vivo.gamecube": {
+        "default": [
+            "Ultra Game Mode"
+        ],
+        "en": [
+            "Ultra Game Mode"
+        ],
+        "es": [
+            "Modo Ultra Juego"
+        ],
+        "id": [
+            "Mode Game Ultra"
+        ],
+        "pt": [
+            "Modo Ultra Jogo",
+            "Ultramodo de jogos"
+        ],
+        "th": [
+            "Ultra Game Mode"
+        ],
+        "ur": [
+            "الٹرا گیم موڈ"
+        ],
+        "vi": [
+            "Chế độ siêu trò chơi"
+        ]
+    },
+    "com.vivo.gamewatch": {
+        "default": [
+            "GameWatch"
+        ]
+    },
+    "com.vivo.globalanimation": {
+        "default": [
+            "Global dynamic effects"
+        ],
+        "en": [
+            "Global dynamic effects"
+        ],
+        "es": [
+            "Efectos dinámicos globales"
+        ],
+        "id": [
+            "Efek dinamis global"
+        ],
+        "pt": [
+            "Efeitos dinâmicos globais"
+        ],
+        "th": [
+            "เอฟเฟ็กต์แบบไดนามิกครอบคลุม"
+        ],
+        "ur": [
+            "عالمگیر ڈائنیمک اثرات"
+        ],
+        "vi": [
+            "Hiệu ứng động toàn bộ"
+        ]
+    },
+    "com.vivo.globaldragdrop": {
+        "default": [
+            "Drag & go"
+        ],
+        "en": [
+            "Drag & go"
+        ],
+        "es": [
+            "Arrastrar y acceder"
+        ],
+        "id": [
+            "Seret & lanjutkan"
+        ],
+        "pt": [
+            "Arrastar e avançar",
+            "Arrastar e ir"
+        ],
+        "th": [
+            "ลากและไป"
+        ],
+        "ur": [
+            "گھسیٹیں اور جائیں"
+        ],
+        "vi": [
+            "Kéo và chuyển đi"
+        ]
+    },
+    "com.vivo.healthwidget": {
+        "default": [
+            "Health kit"
+        ],
+        "en": [
+            "Health kit"
+        ],
+        "es": [
+            "Kit de salud"
+        ],
+        "id": [
+            "Kit Kesehatan"
+        ],
+        "pt": [
+            "Kit de saúde"
+        ],
+        "th": [
+            "ชุดโปรแกรมแอปสุขภาพ"
+        ],
+        "ur": [
+            "صحت کی کٹ"
+        ],
+        "vi": [
+            "Bộ công cụ sức khỏe"
+        ]
+    },
+    "com.vivo.hover": {
+        "default": [
+            "Voice isolation floating button"
+        ],
+        "en": [
+            "Voice isolation floating button"
+        ],
+        "es": [
+            "Botón flotante de Aislamiento de voz"
+        ],
+        "id": [
+            "Tombol melayang Isolasi suara"
+        ],
+        "pt": [
+            "Botão flutuante de isolamento de voz"
+        ],
+        "th": [
+            "ปุ่มลอยสำหรับการแยกเสียง"
+        ],
+        "ur": [
+            "آواز کی علیحدگی کا فلوٹنگ بٹن"
+        ],
+        "vi": [
+            "Nút nổi Tách giọng nói"
+        ]
+    },
+    "com.vivo.hybrid": {
+        "default": [
+            "Quick App Frame Service"
+        ],
+        "en": [
+            "Quick App Frame Service"
+        ],
+        "es": [
+            "Servicio de fotogramas de aplicaciones rápidas",
+            "Servicio Marco de aplicaciones rápidas"
+        ],
+        "id": [
+            "Layanan Kerangka Aplikasi Cepat"
+        ],
+        "pt": [
+            "Serviço de Quadros de Apps Rápidos",
+            "Serviço rápido de molduras de aplicações"
+        ],
+        "th": [
+            "บริการจัดการแอปด่วน"
+        ],
+        "ur": [
+            "فوری ایپ فریم سروس"
+        ],
+        "vi": [
+            "Dịch vụ khung ứng dụng nhanh"
+        ]
+    },
+    "com.vivo.imageecokit": {
+        "default": [
+            "ImageEcoKit"
+        ]
+    },
+    "com.vivo.imanager": {
+        "default": [
+            "iManager"
+        ],
+        "en": [
+            "iManager"
+        ],
+        "es": [
+            "iManager"
+        ],
+        "id": [
+            "iManager"
+        ],
+        "pt": [
+            "iManager"
+        ],
+        "th": [
+            "iManager"
+        ],
+        "ur": [
+            "iManager"
+        ],
+        "vi": [
+            "iManager"
+        ]
+    },
+    "com.vivo.livewallpaper.behavior": {
+        "default": [
+            "Wandering Gardens"
+        ],
+        "en": [
+            "Wandering Gardens"
+        ],
+        "es": [
+            "Jardines para deambular",
+            "Paseo por el jardín"
+        ],
+        "id": [
+            "Berkeliling Taman"
+        ],
+        "pt": [
+            "Jardins sinuosos",
+            "Passeio no jardim"
+        ],
+        "th": [
+            "การเดินเล่นในสวน"
+        ],
+        "ur": [
+            "وانڈرنگ گارڈنز"
+        ],
+        "vi": [
+            "Đi dạo trong vườn"
+        ]
+    },
+    "com.vivo.livewallpaper.behavior.resources": {
+        "default": [
+            "WallpaperResources"
+        ]
+    },
+    "com.vivo.livewallpaper.behaviormountain": {
+        "default": [
+            "Mountain Climbing"
+        ],
+        "en": [
+            "Mountain Climbing"
+        ],
+        "es": [
+            "Escalar una montaña",
+            "Montañismo"
+        ],
+        "id": [
+            "Mendaki Gunung"
+        ],
+        "pt": [
+            "Alpinismo",
+            "Montanhismo"
+        ],
+        "th": [
+            "การปีนเขา"
+        ],
+        "ur": [
+            "پہاڑ پر چڑھنا"
+        ],
+        "vi": [
+            "Leo núi"
+        ]
+    },
+    "com.vivo.livewallpaper.box": {
+        "default": [
+            "LiveWallpaper Box"
+        ],
+        "en": [
+            "LiveWallpaper Box"
+        ],
+        "es": [
+            "Caja de fondos de pantalla en vivo",
+            "Cuadro de LiveWallpaper"
+        ],
+        "id": [
+            "Kotak Wallpaper Animasi"
+        ],
+        "pt": [
+            "Caixa de papel de parede em direto",
+            "Caixa de planos de fundo animados"
+        ],
+        "th": [
+            "LiveWallpaper Box"
+        ],
+        "ur": [
+            "LiveWallpaper باکس"
+        ],
+        "vi": [
+            "Hộp hình nền động"
+        ]
+    },
+    "com.vivo.livewallpaper.boxconfig": {
+        "default": [
+            "LiveWallpaperBoxConfig"
+        ]
+    },
+    "com.vivo.minscreen": {
+        "default": [
+            "Mini screen"
+        ],
+        "en": [
+            "Mini screen"
+        ],
+        "es": [
+            "Minipantalla",
+            "Pantalla mini"
+        ],
+        "id": [
+            "Layar mini"
+        ],
+        "pt": [
+            "Mini ecrã",
+            "Minitela"
+        ],
+        "th": [
+            "หน้าจอขนาดเล็ก"
+        ],
+        "ur": [
+            "چھوٹی اسکرین"
+        ],
+        "vi": [
+            "Màn hình mini"
+        ]
+    },
+    "com.vivo.monochromeicons": {
+        "default": [
+            "MonochromeIcons"
+        ]
+    },
+    "com.vivo.motionrecognition": {
+        "default": [
+            "Smart Motion"
+        ],
+        "en": [
+            "Smart Motion"
+        ],
+        "es": [
+            "Movimiento inteligente"
+        ],
+        "id": [
+            "Gerakan Pintar"
+        ],
+        "pt": [
+            "Gestos inteligentes",
+            "Movimento inteligente"
+        ],
+        "th": [
+            "การเคลื่อนไหวอัจฉริยะ"
+        ],
+        "ur": [
+            "اسمارٹ موشن"
+        ],
+        "vi": [
+            "Chuyển động thông minh"
+        ]
+    },
+    "com.vivo.musicmixcard": {
+        "default": [
+            "ControlCenter Play Card"
+        ]
+    },
+    "com.vivo.musicwidgetmix": {
+        "default": [
+            "Origin Player"
+        ],
+        "en": [
+            "Origin Player"
+        ],
+        "es": [
+            "Reproductor de música Origin",
+            "Reproductor Origin"
+        ],
+        "id": [
+            "Pemutar Origin"
+        ],
+        "pt": [
+            "Leitor do Origin",
+            "Reprodutor Origin"
+        ],
+        "th": [
+            "เครื่องเล่น Origin"
+        ],
+        "ur": [
+            "‏Origin پلیئر"
+        ],
+        "vi": [
+            "Trình phát Origin"
+        ]
+    },
+    "com.vivo.myeuiccoverlayapp": {
+        "default": [
+            "MyEuiccOverlayApp"
+        ]
+    },
+    "com.vivo.networkimprove": {
+        "default": [
+            "NetworkImprove"
+        ]
+    },
+    "com.vivo.networkstate": {
+        "default": [
+            "NetworkState"
+        ]
+    },
+    "com.vivo.nightpearl": {
+        "default": [
+            "Always On Display"
+        ],
+        "en": [
+            "Always On Display"
+        ],
+        "es": [
+            "Pantalla Siempre Activa",
+            "Pantalla Siempre Encendida"
+        ],
+        "id": [
+            "Tampilan Selalu Menyala"
+        ],
+        "pt": [
+            "Ecrã Sempre Ligado",
+            "Sempre Exibir"
+        ],
+        "th": [
+            "หน้าจอแสดงเสมอ"
+        ],
+        "ur": [
+            "ہمیشہ ڈسپلے پر"
+        ],
+        "vi": [
+            "Màn hình luôn bật"
+        ]
+    },
+    "com.vivo.notes": {
+        "default": [
+            "Notes"
+        ],
+        "en": [
+            "Notes"
+        ],
+        "es": [
+            "Notas"
+        ],
+        "id": [
+            "Catatan"
+        ],
+        "pt": [
+            "Notas"
+        ],
+        "th": [
+            "โน้ต"
+        ],
+        "ur": [
+            "نوٹس"
+        ],
+        "vi": [
+            "Ghi chú"
+        ]
+    },
+    "com.vivo.omacp": {
+        "default": [
+            "Omacp"
+        ]
+    },
+    "com.vivo.pcsuite": {
+        "default": [
+            "Office Kit"
+        ],
+        "en": [
+            "Office Kit"
+        ],
+        "es": [
+            "Kit de oficina",
+            "Kit Office"
+        ],
+        "id": [
+            "Kit Office"
+        ],
+        "pt": [
+            "Kit Office"
+        ],
+        "th": [
+            "Office Kit"
+        ],
+        "ur": [
+            "آفس کٹ"
+        ],
+        "vi": [
+            "Bộ công cụ Office"
+        ]
+    },
+    "com.vivo.pem": {
+        "default": [
+            "Power Guardian"
+        ],
+        "en": [
+            "Battery manager",
+            "Power guardian"
+        ],
+        "es": [
+            "Guardián de energía",
+            "Protector de energía"
+        ],
+        "id": [
+            "Penjaga daya"
+        ],
+        "pt": [
+            "Guarda-energia",
+            "Guardião da energia"
+        ],
+        "th": [
+            "ระบบป้องกันพลังงาน"
+        ],
+        "ur": [
+            "پاور کا نگراں"
+        ],
+        "vi": [
+            "Bảo vệ điện"
+        ]
+    },
+    "com.vivo.pie": {
+        "default": [
+            "Libra"
+        ]
+    },
+    "com.vivo.privacylauncher": {
+        "default": [
+            "Privacy Launcher"
+        ],
+        "en": [
+            "Privacy Launcher"
+        ],
+        "es": [
+            "Iniciador de privacidad",
+            "Lanzador de privacidad"
+        ],
+        "id": [
+            "Privacy Launcher"
+        ],
+        "pt": [
+            "Iniciador de privacidade",
+            "Inicializador de privacidade"
+        ],
+        "th": [
+            "Privacy Launcher"
+        ],
+        "ur": [
+            "پرائیویسی لانچر"
+        ],
+        "vi": [
+            "Trình chạy quyền riêng tư"
+        ]
+    },
+    "com.vivo.pushservice": {
+        "default": [
+            "Push Engine"
+        ],
+        "en": [
+            "Push Engine"
+        ],
+        "es": [
+            "Motor de notificaciones de inserción",
+            "Motor push"
+        ],
+        "id": [
+            "Mesin Dorong"
+        ],
+        "pt": [
+            "Mecanismo de Push",
+            "Motor push"
+        ],
+        "th": [
+            "กลไกการพุช"
+        ],
+        "ur": [
+            "پش انجن"
+        ],
+        "vi": [
+            "Công cụ đẩy"
+        ]
+    },
+    "com.vivo.recents": {
+        "default": [
+            "Recent background apps"
+        ],
+        "en": [
+            "Recent background apps"
+        ],
+        "es": [
+            "Aplicaciones en segundo plano recientes"
+        ],
+        "id": [
+            "Aplikasi terbaru yang berjalan di latar belakang"
+        ],
+        "pt": [
+            "Apps de segundo plano recentes",
+            "Apps recentes em segundo plano"
+        ],
+        "th": [
+            "แอปในเบื้องหลังล่าสุด"
+        ],
+        "ur": [
+            "حالیہ پس منظر ایپس"
+        ],
+        "vi": [
+            "Ứng dụng chạy ngầm gần đây"
+        ]
+    },
+    "com.vivo.safecenter": {
+        "default": [
+            "Security Center"
+        ],
+        "en": [
+            "Security Centre"
+        ],
+        "es": [
+            "Centro de seguridad"
+        ],
+        "id": [
+            "Pusat Keamanan"
+        ],
+        "pt": [
+            "Centro de segurança"
+        ],
+        "th": [
+            "ศูนย์ความปลอดภัย"
+        ],
+        "ur": [
+            "سکیورٹی سنٹر"
+        ],
+        "vi": [
+            "Trung tâm bảo mật"
+        ]
+    },
+    "com.vivo.screenagent": {
+        "default": [
+            "AI Captions"
+        ],
+        "en": [
+            "AI Captions"
+        ],
+        "es": [
+            "Subtítulos de IA"
+        ],
+        "id": [
+            "AI Subtitle"
+        ],
+        "pt": [
+            "Legendas de IA",
+            "Legendas IA"
+        ],
+        "th": [
+            "AI คำบรรยาย"
+        ],
+        "ur": [
+            "‏AI کیپشنز"
+        ],
+        "vi": [
+            "Phụ đề AI"
+        ]
+    },
+    "com.vivo.seclient": {
+        "default": [
+            "Access Card"
+        ]
+    },
+    "com.vivo.setupwizard": {
+        "default": [
+            "Guide"
+        ],
+        "en": [
+            "Guide"
+        ],
+        "es": [
+            "Guía"
+        ],
+        "id": [
+            "Panduan"
+        ],
+        "pt": [
+            "Guia"
+        ],
+        "th": [
+            "แนะนำการเปิดเครื่อง"
+        ],
+        "ur": [
+            "گائیڈ"
+        ],
+        "vi": [
+            "Hướng dẫn khởi động"
+        ]
+    },
+    "com.vivo.share": {
+        "default": [
+            "vivoshare"
+        ],
+        "en": [
+            "vivoshare"
+        ],
+        "es": [
+            "vivoshare"
+        ],
+        "id": [
+            "vivoshare"
+        ],
+        "pt": [
+            "vivoshare"
+        ],
+        "th": [
+            "vivoshare"
+        ],
+        "ur": [
+            "vivoshare"
+        ],
+        "vi": [
+            "vivoshare"
+        ]
+    },
+    "com.vivo.smartmultiwindow": {
+        "default": [
+            "Multitasking"
+        ],
+        "en": [
+            "Multitasking"
+        ],
+        "es": [
+            "Multitarea"
+        ],
+        "id": [
+            "Multitugas"
+        ],
+        "pt": [
+            "Multitarefas"
+        ],
+        "th": [
+            "การทำงานหลายงานพร้อมกัน"
+        ],
+        "ur": [
+            "ملٹی ٹاسکنگ"
+        ],
+        "vi": [
+            "Đa nhiệm"
+        ]
+    },
+    "com.vivo.smartoffice": {
+        "default": [
+            "vivo DocMaster"
+        ],
+        "en": [
+            "vivo DocMaster"
+        ],
+        "es": [
+            "vivo DocMaster"
+        ],
+        "id": [
+            "vivo DocMaster"
+        ],
+        "pt": [
+            "vivo DocMaster"
+        ],
+        "th": [
+            "vivo DocMaster"
+        ],
+        "ur": [
+            "vivo DocMaster"
+        ],
+        "vi": [
+            "vivo DocMaster"
+        ]
+    },
+    "com.vivo.smartshot": {
+        "default": [
+            "Super screenshot"
+        ],
+        "en": [
+            "Super screenshot"
+        ],
+        "es": [
+            "Supercaptura",
+            "Súper captura de pantalla"
+        ],
+        "id": [
+            "Tangkapan layar super"
+        ],
+        "pt": [
+            "Super captura de ecrã",
+            "Supercaptura de tela"
+        ],
+        "th": [
+            "ภาพหน้าจอแบบพิเศษ"
+        ],
+        "ur": [
+            "سوپر اسکرین شاٹ"
+        ],
+        "vi": [
+            "Siêu ảnh chụp màn hình"
+        ]
+    },
+    "com.vivo.soundrecorder": {
+        "default": [
+            "Recorder"
+        ],
+        "en": [
+            "Recorder"
+        ],
+        "es": [
+            "Grabadora"
+        ],
+        "id": [
+            "Perekam Suara"
+        ],
+        "pt": [
+            "Gravador"
+        ],
+        "th": [
+            "บันทึกเสียง"
+        ],
+        "ur": [
+            "ریکارڈر"
+        ],
+        "vi": [
+            "Trình ghi âm"
+        ]
+    },
+    "com.vivo.sps": {
+        "default": [
+            "SuperProcessSystem"
+        ]
+    },
+    "com.vivo.stepcount": {
+        "default": [
+            "Health Service Engine"
+        ],
+        "en": [
+            "Health Service Engine"
+        ],
+        "es": [
+            "Motor del servicio de Salud",
+            "Motor del servicio Salud"
+        ],
+        "id": [
+            "Mesin Layanan Kesehatan"
+        ],
+        "pt": [
+            "Motor de serviços de saúde"
+        ],
+        "th": [
+            "ระบบบริการด้านสุขภาพ"
+        ],
+        "ur": [
+            "ہیلتھ سروس انجن"
+        ],
+        "vi": [
+            "Công cụ dịch vụ Sức khỏe"
+        ]
+    },
+    "com.vivo.suggestion": {
+        "default": [
+            "AI Next Up"
+        ],
+        "en": [
+            "AI Next Up"
+        ],
+        "es": [
+            "Próximos planes con IA",
+            "Sugerencias con IA"
+        ],
+        "id": [
+            "Pusat Saran AI"
+        ],
+        "pt": [
+            "IA A seguir",
+            "Sugestões IA"
+        ],
+        "th": [
+            "พื้นที่คำแนะนำ AI"
+        ],
+        "ur": [
+            "AI نیکسٹ اپ"
+        ],
+        "vi": [
+            "Dự báo AI"
+        ]
+    },
+    "com.vivo.systemuiplugin": {
+        "default": [
+            "System UI kits"
+        ],
+        "en": [
+            "System UI kits"
+        ],
+        "es": [
+            "Kits de interfaz de usuario del sistema",
+            "Kits de IU del sistema"
+        ],
+        "id": [
+            "Kit UI sistem"
+        ],
+        "pt": [
+            "Kits de IU do sistema"
+        ],
+        "th": [
+            "ชุดโปรแกรม UI ของระบบ"
+        ],
+        "ur": [
+            "سسٹم UI کٹس"
+        ],
+        "vi": [
+            "Bộ công cụ giao diện người dùng hệ thống"
+        ]
+    },
+    "com.vivo.theme.effect": {
+        "default": [
+            "Theme Effects"
+        ],
+        "es": [
+            "Efecto de tema"
+        ],
+        "id": [
+            "Efek Tema"
+        ],
+        "pt": [
+            "Efeito de tema"
+        ],
+        "th": [
+            "เอฟเฟ็กต์ธีม"
+        ],
+        "ur": [
+            "تھیم کا اثر"
+        ],
+        "vi": [
+            "Hiệu ứng chủ đề"
+        ]
+    },
+    "com.vivo.timerwidget": {
+        "default": [
+            "Clock kit"
+        ],
+        "en": [
+            "Clock kit"
+        ],
+        "es": [
+            "Kit de Reloj",
+            "Kit Reloj"
+        ],
+        "id": [
+            "Kit Jam"
+        ],
+        "pt": [
+            "Kit de relógio",
+            "Kit do relógio"
+        ],
+        "th": [
+            "ชุดโปรแกรมนาฬิกา"
+        ],
+        "ur": [
+            "گھڑی کٹ"
+        ],
+        "vi": [
+            "Bộ công cụ đồng hồ"
+        ]
+    },
+    "com.vivo.tws.vivotws": {
+        "default": [
+            "TWS"
+        ]
+    },
+    "com.vivo.upnpserver": {
+        "default": [
+            "Screen Mirroring"
+        ],
+        "en": [
+            "Screen Mirroring"
+        ],
+        "es": [
+            "Duplicación de pantalla",
+            "Duplicado de pantalla"
+        ],
+        "id": [
+            "Pencerminan Layar"
+        ],
+        "pt": [
+            "Espelhamento da tela",
+            "Espelhamento do ecrã"
+        ],
+        "th": [
+            "การสะท้อนหน้าจอ"
+        ],
+        "ur": [
+            "اسکرین مررنگ"
+        ],
+        "vi": [
+            "Phản chiếu màn hình"
+        ]
+    },
+    "com.vivo.upslide": {
+        "default": [
+            "System navigation"
+        ],
+        "en": [
+            "System navigation"
+        ],
+        "es": [
+            "Navegación del sistema"
+        ],
+        "id": [
+            "Navigasi sistem"
+        ],
+        "pt": [
+            "Navegação no sistema"
+        ],
+        "th": [
+            "การนำทางของระบบ"
+        ],
+        "ur": [
+            "سسٹم نیویگیشن"
+        ],
+        "vi": [
+            "Điều hướng hệ thống"
+        ]
+    },
+    "com.vivo.vdfs": {
+        "default": [
+            "mdfs"
+        ],
+        "en": [
+            "Cross-device usage (mdfs)",
+            "mdfs"
+        ],
+        "es": [
+            "Uso en varios dispositivos (mdfs)",
+            "Uso multidispositivo (mdfs)"
+        ],
+        "id": [
+            "Penggunaan lintas perangkat (mdfs)"
+        ],
+        "pt": [
+            "Uso entre dispositivos (mdfs)",
+            "Utilização entre dispositivos (mdfs)"
+        ],
+        "th": [
+            "การใช้งานข้ามอุปกรณ์ (mdfs)"
+        ],
+        "ur": [
+            "کراس ڈیوائس استعمال (mdfs)"
+        ],
+        "vi": [
+            "Sử dụng giữa nhiều thiết bị (mdfs)"
+        ]
+    },
+    "com.vivo.vhome": {
+        "default": [
+            "Smart Remote"
+        ],
+        "en": [
+            "Smart Remote"
+        ],
+        "es": [
+            "Control remoto inteligente",
+            "Mando"
+        ],
+        "id": [
+            "Smart Remote"
+        ],
+        "pt": [
+            "Controlo remoto inteligente",
+            "Remoto"
+        ],
+        "th": [
+            "รีโมทอัจฉริยะ"
+        ],
+        "ur": [
+            "اسمارٹ ریموٹ"
+        ],
+        "vi": [
+            "Điều khiển thông minh"
+        ]
+    },
+    "com.vivo.vibrator4d": {
+        "default": [
+            "vibrator4d"
+        ]
+    },
+    "com.vivo.video.floating": {
+        "default": [
+            "Face beauty for video call"
+        ],
+        "en": [
+            "Face beauty for video call"
+        ],
+        "es": [
+            "Belleza de rostro para videollamada",
+            "Belleza facial para videollamadas"
+        ],
+        "id": [
+            "Panggilan video wajah cantik"
+        ],
+        "pt": [
+            "Beleza facial para chamada de vídeo",
+            "Embelezamento para chamada de vídeo"
+        ],
+        "th": [
+            "โทรผ่านวิดีโอแบบใบหน้าสวย"
+        ],
+        "ur": [
+            "ویڈیو کال کے لیے خوبصورت چہرہ"
+        ],
+        "vi": [
+            "Làm đẹp khuôn mặt khi gọi video"
+        ]
+    },
+    "com.vivo.videoeditor": {
+        "default": [
+            "Video editing"
+        ],
+        "en": [
+            "Video editing"
+        ],
+        "es": [
+            "Edición de video",
+            "Edición de vídeo"
+        ],
+        "id": [
+            "Pengeditan video"
+        ],
+        "pt": [
+            "Edição de vídeo"
+        ],
+        "th": [
+            "การแก้ไขวิดีโอ"
+        ],
+        "ur": [
+            "ویڈیو میں ترمیم کرنا"
+        ],
+        "vi": [
+            "Biên tập video"
+        ]
+    },
+    "com.vivo.vivo3rdalgoservice": {
+        "default": [
+            "ImageAlgoService"
+        ]
+    },
+    "com.vivo.vmdri": {
+        "default": [
+            "Connection center"
+        ],
+        "en": [
+            "Connection centre"
+        ],
+        "es": [
+            "Centro de conexiones",
+            "Centro de conexión"
+        ],
+        "id": [
+            "Pusat koneksi"
+        ],
+        "pt": [
+            "Central de conexão",
+            "Centro de ligação"
+        ],
+        "th": [
+            "ศูนย์การเชื่อมต่อ"
+        ],
+        "ur": [
+            "کنیکشن سنٹر"
+        ],
+        "vi": [
+            "Trung tâm kết nối"
+        ]
+    },
+    "com.vivo.vtouch": {
+        "default": [
+            "Scan"
+        ],
+        "en": [
+            "Scan"
+        ],
+        "es": [
+            "Escanear"
+        ],
+        "id": [
+            "Pindai"
+        ],
+        "pt": [
+            "Ler",
+            "Verificar"
+        ],
+        "th": [
+            "สแกน"
+        ],
+        "ur": [
+            "اسکین کریں"
+        ],
+        "vi": [
+            "Quét"
+        ]
+    },
+    "com.vivo.weather": {
+        "default": [
+            "Weather"
+        ],
+        "en": [
+            "Weather"
+        ],
+        "es": [
+            "Clima",
+            "Tiempo"
+        ],
+        "id": [
+            "Cuaca"
+        ],
+        "pt": [
+            "Clima",
+            "Meteorologia"
+        ],
+        "th": [
+            "สภาพอากาศ"
+        ],
+        "ur": [
+            "موسم"
+        ],
+        "vi": [
+            "Thời tiết"
+        ]
+    },
+    "com.vivo.weather.provider": {
+        "default": [
+            "Weather storage"
+        ],
+        "en": [
+            "Weather storage"
+        ],
+        "es": [
+            "Proveedor de pronóstico del tiempo",
+            "Proveedor del tiempo"
+        ],
+        "id": [
+            "Penyimpanan informasi cuaca"
+        ],
+        "pt": [
+            "Fornecedor de meteorologia",
+            "Prestador de serviços de clima"
+        ],
+        "th": [
+            "ที่จัดเก็บข้อมูลพยากรณ์อากาศ"
+        ],
+        "ur": [
+            "موسم اسٹوریج"
+        ],
+        "vi": [
+            "Lưu trữ thời tiết"
+        ]
+    },
+    "com.vivo.website.gdpr": {
+        "default": [
+            "vivo.com"
+        ]
+    },
+    "com.vivo.widget.cleanspeed": {
+        "default": [
+            "Cleanup kit"
+        ],
+        "en": [
+            "Cleanup kit"
+        ],
+        "es": [
+            "Kit de limpieza",
+            "Kit Limpieza"
+        ],
+        "id": [
+            "Kit pembersihan"
+        ],
+        "pt": [
+            "Kit de limpeza"
+        ],
+        "th": [
+            "ชุดโปรแกรมล้างข้อมูล"
+        ],
+        "ur": [
+            "صفائی کی کٹ"
+        ],
+        "vi": [
+            "Bộ công cụ dọn dẹp"
+        ]
+    },
+    "com.vivo.widget.gallery": {
+        "default": [
+            "Album highlights"
+        ],
+        "en": [
+            "Album highlights"
+        ],
+        "es": [
+            "Contenido destacado de Álbum",
+            "Mejores momentos del álbum"
+        ],
+        "id": [
+            "Sorotan album"
+        ],
+        "pt": [
+            "Destaques do Álbum"
+        ],
+        "th": [
+            "ไฮไลท์ของอัลบั้ม"
+        ],
+        "ur": [
+            "البم کی جھلکیاں"
+        ],
+        "vi": [
+            "Điểm nổi bật của album"
+        ]
+    },
+    "com.vivo.widgetweather": {
+        "default": [
+            "Weather kit"
+        ],
+        "en": [
+            "Weather kit"
+        ],
+        "es": [
+            "Kit de Clima",
+            "Kit Tiempo"
+        ],
+        "id": [
+            "Kit cuaca"
+        ],
+        "pt": [
+            "Componentes de Clima",
+            "Kit de meteorologia"
+        ],
+        "th": [
+            "ชุดโปรแกรมสภาพอากาศ"
+        ],
+        "ur": [
+            "موسم کٹ"
+        ],
+        "vi": [
+            "Bộ công cụ thời tiết"
+        ]
+    },
+    "com.vivo.xspace": {
+        "default": [
+            "Private space"
+        ],
+        "en": [
+            "Private space"
+        ],
+        "es": [
+            "Espacio privado"
+        ],
+        "id": [
+            "Ruang pribadi"
+        ],
+        "pt": [
+            "Espaço privado"
+        ],
+        "th": [
+            "พื้นที่ส่วนตัว"
+        ],
+        "ur": [
+            "نجی جگہ"
+        ],
+        "vi": [
+            "Không gian riêng tư"
+        ]
+    },
+    "com.vivotouchscreen.synadeltadiff": {
+        "default": [
+            "VtsTouchscreenDeltaTest"
+        ]
+    },
+    "com.vos.as.vit": {
+        "default": [
+            "AfterSale Service"
+        ]
+    },
+    "com.vos.user.vit": {
+        "default": [
+            "Engineer Menu"
+        ]
+    },
+    "com.zhiliaoapp.musically": {
+        "default": [
+            "TikTok"
+        ]
+    },
+    "vivo.app.adaptiveui.plugin": {
+        "default": [
+            "AdaptiveUiPlugin"
+        ]
+    }
+}

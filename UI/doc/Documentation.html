@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AURA QA - Documentation</title>
+  <!-- Markdown Parser (local) -->
+  <script src="./marked.min.js"></script>
+  <!-- Doc data (one script per .md, loads into window.DOCS_DATA) -->
+  <script src="./quickstart.js"></script>
+  <script src="./installation.js"></script>
+  <script src="./configuration.js"></script>
+  <script src="./pipeline.js"></script>
+  <script src="./artifacts.js"></script>
+  <script src="./behavior.js"></script>
+  <script src="./metrics.js"></script>
+  <script src="./architecture.js"></script>
+  <script src="./troubleshooting.js"></script>
+  <style>
+    /* ==========================================================================
+       DESIGN TOKENS (Tema Blender Dark - mismo que la app principal)
+    ========================================================================== */
+    :root {
+      --bg-app: #333333;
+      --bg-panel: #2e2e2e;
+      --bg-input: #202020;
+      --bg-terminal: #151515;
+      --accent-blue: #4a90e2;
+      --accent-blue-hover: #5585cc;
+      --text-primary: #e0e0e0;
+      --text-muted: #888888;
+      --border-color: #1a1a1a;
+      --border-soft: #2d2d2d;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --font-mono: monospace;
+      --fs-sm: 11px;
+      --fs-md: 12px;
+      --radius-standard: 6px;
+      --radius-compact: 4px;
+      --s1: 4px;
+      --s2: 8px;
+      --s3: 10px;
+      --s4: 12px;
+      --transition-fast: 0.15s ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Sin scrollbars en toda la ventana */
+    * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    *::-webkit-scrollbar {
+      display: none;
+      width: 0;
+      height: 0;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-app);
+      color: var(--text-primary);
+      font-size: 13px;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* ==========================================================================
+       TITLEBAR (igual que la app principal)
+    ========================================================================== */
+    .titlebar {
+      flex: 0 0 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--bg-terminal);
+      user-select: none;
+      z-index: 1000;
+    }
+    .titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: var(--s2);
+      padding-left: var(--s2);
+    }
+    .titlebar-logo {
+      flex-shrink: 0;
+      opacity: 0.9;
+    }
+    .titlebar-title {
+      font-size: var(--fs-sm);
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+    .titlebar-right {
+      display: flex;
+      align-items: center;
+      gap: var(--s2);
+    }
+    .titlebar-controls {
+      display: flex;
+      align-items: center;
+    }
+    .titlebar-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    .titlebar-btn:hover {
+      background-color: var(--bg-input);
+      color: var(--text-primary);
+    }
+    .titlebar-btn-close:hover {
+      background-color: var(--accent-danger);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       LAYOUT
+    ========================================================================== */
+    .layout {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      width: 220px;
+      min-width: 220px;
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border-soft);
+      overflow-y: auto;
+      padding: var(--s3) 0;
+    }
+    .sidebar h3 {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: var(--s2) var(--s4);
+    }
+    .sidebar a {
+      display: block;
+      padding: 7px var(--s4);
+      font-size: var(--fs-md);
+      color: var(--text-primary);
+      border-left: 3px solid transparent;
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all var(--transition-fast);
+    }
+    .sidebar a:hover {
+      background: var(--bg-input);
+      color: #ffffff;
+    }
+    .sidebar a.active {
+      color: var(--accent-blue);
+      border-left-color: var(--accent-blue);
+      background: var(--bg-input);
+      font-weight: 600;
+    }
+
+    /* Content Area */
+    .content {
+      flex: 1;
+      min-width: 0;
+      overflow-y: auto;
+      padding: 28px 40px;
+    }
+    .content-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Quick Start Header & Visual Grid */
+    .qs-hero {
+      background: var(--bg-terminal);
+      color: var(--text-primary);
+      padding: 22px 26px;
+      border-radius: var(--radius-standard);
+      margin-bottom: 22px;
+      border: 1px solid var(--border-soft);
+    }
+    .qs-hero h1 {
+      border: none !important;
+      color: var(--text-primary) !important;
+      font-size: 20px !important;
+      margin-bottom: 6px !important;
+      padding: 0 !important;
+      font-weight: 700;
+    }
+    .qs-hero p {
+      color: var(--text-muted) !important;
+      font-size: var(--fs-md);
+      margin: 0 !important;
+    }
+
+    .qs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 18px 0 28px;
+    }
+    .qs-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-compact);
+      padding: 16px;
+      transition: border-color var(--transition-fast);
+    }
+    .qs-card:hover {
+      border-color: var(--accent-blue);
+    }
+    .qs-card-num {
+      width: 26px;
+      height: 26px;
+      background: var(--bg-input);
+      color: var(--accent-blue);
+      border-radius: var(--radius-compact);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 10px;
+      font-family: var(--font-mono);
+    }
+    .qs-card-title {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .qs-card-desc {
+      font-size: var(--fs-sm);
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Clean Markdown Styles */
+    .content h1 {
+      font-size: 20px;
+      color: var(--text-primary);
+      margin: 0 0 16px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 8px;
+    }
+    .content h2 {
+      font-size: 15px;
+      color: var(--text-primary);
+      margin: 26px 0 12px;
+      font-weight: 600;
+    }
+    .content h3 {
+      font-size: 13px;
+      color: var(--text-primary);
+      margin: 18px 0 8px;
+      font-weight: 600;
+    }
+    .content p {
+      margin: 8px 0 12px;
+      color: var(--text-primary);
+    }
+    .content ul, .content ol {
+      margin: 8px 0 16px 20px;
+      color: var(--text-primary);
+    }
+    .content code {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: var(--bg-input);
+      padding: 2px 5px;
+      border-radius: var(--radius-compact);
+      color: var(--accent-blue);
+      border: 1px solid var(--border-soft);
+    }
+    .content pre {
+      background: var(--bg-terminal);
+      color: var(--text-primary);
+      border-radius: var(--radius-compact);
+      padding: 14px 16px;
+      overflow-x: auto;
+      margin: 12px 0 16px;
+      border: 1px solid var(--border-soft);
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+      color: var(--text-primary);
+      border: none;
+    }
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-md);
+      margin: 16px 0;
+    }
+    .content th {
+      text-align: left;
+      background: var(--bg-panel);
+      padding: 8px 12px;
+      border: 1px solid var(--border-soft);
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .content td {
+      padding: 8px 12px;
+      border: 1px solid var(--border-soft);
+      color: var(--text-primary);
+    }
+    .content blockquote {
+      border-left: 3px solid var(--accent-blue);
+      background: var(--bg-panel);
+      padding: 10px 14px;
+      margin: 16px 0;
+      color: var(--text-primary);
+      border-radius: 0 var(--radius-compact) var(--radius-compact) 0;
+      font-size: var(--fs-md);
+    }
+    .content a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+    .content a:hover {
+      text-decoration: underline;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE
+    ========================================================================== */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    .table-wrap table {
+      margin: 0;
+      min-width: 560px;
+    }
+
+    @media (max-width: 900px) {
+      .content {
+        padding: 20px 24px;
+      }
+      .qs-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .layout {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+        min-width: 0;
+        max-height: 130px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-soft);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 2px;
+        padding: var(--s1) var(--s2);
+      }
+      .sidebar h3 {
+        width: 100%;
+        padding: var(--s1) var(--s2) 0;
+      }
+      .sidebar a {
+        border-left: none;
+        border-radius: var(--radius-compact);
+        padding: 5px 10px;
+        font-size: var(--fs-sm);
+      }
+      .sidebar a.active {
+        background: var(--accent-blue);
+        color: #ffffff;
+      }
+      .content {
+        padding: 16px 14px;
+      }
+      .content h1 {
+        font-size: 17px;
+      }
+      .content h2 {
+        font-size: 14px;
+      }
+      .qs-hero {
+        padding: 16px 18px;
+      }
+      .qs-hero h1 {
+        font-size: 16px;
+      }
+      .qs-grid {
+        grid-template-columns: 1fr;
+      }
+      .content pre {
+        padding: 10px 12px;
+        font-size: 11px;
+      }
+      .content table {
+        font-size: var(--fs-sm);
+      }
+      .content th, .content td {
+        padding: 6px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="titlebar" id="titlebar">
+  <div class="titlebar-left">
+    <img src="../vendor/aura_logo.svg" alt="" width="18" height="18" class="titlebar-logo">
+    <span class="titlebar-title">AURA QA &mdash; Documentation</span>
+  </div>
+  <div class="titlebar-right">
+    <div class="titlebar-controls">
+      <button type="button" class="titlebar-btn" id="btn-docs-min" title="Minimize"><svg width="10" height="10" viewBox="0 0 10 10"><line x1="1" y1="5" x2="9" y2="5" stroke="currentColor" stroke-width="1"/></svg></button>
+      <button type="button" class="titlebar-btn" id="btn-docs-max" title="Maximize"><svg width="10" height="10" viewBox="0 0 10 10"><rect x="1" y="1" width="8" height="8" stroke="currentColor" stroke-width="1" fill="none"/></svg></button>
+      <button type="button" class="titlebar-btn titlebar-btn-close" id="btn-docs-close" title="Close"><svg width="10" height="10" viewBox="0 0 10 10"><line x1="1" y1="1" x2="9" y2="9" stroke="currentColor" stroke-width="1"/><line x1="9" y1="1" x2="1" y2="9" stroke="currentColor" stroke-width="1"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="content" id="content"><div class="content-inner" id="content-inner"></div></div>
+</div>
+
+<script>
+// Generate navigation menu
+function initMenu() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.innerHTML = '<h3>Documentation</h3>';
+
+  const docs = window.DOCS_DATA || {};
+  Object.keys(docs).forEach(key => {
+    const a = document.createElement('a');
+    a.textContent = key.toUpperCase();
+    a.dataset.key = key;
+    a.onclick = () => renderDoc(key);
+    sidebar.appendChild(a);
+  });
+}
+
+// Wrap tables in a scrollable container so they don't break the layout
+function wrapTables(container) {
+  container.querySelectorAll('table').forEach(table => {
+    if (table.parentElement.classList.contains('table-wrap')) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'table-wrap';
+    table.parentNode.insertBefore(wrap, table);
+    wrap.appendChild(table);
+  });
+}
+
+// Render selected document
+function renderDoc(key) {
+  document.querySelectorAll('.sidebar a').forEach(a => {
+    a.classList.toggle('active', a.dataset.key === key);
+  });
+
+  const rawMarkdown = window.DOCS_DATA[key];
+  const container = document.getElementById('content-inner');
+
+  if (!rawMarkdown) return;
+
+  if (key === 'quickstart') {
+    // Specialized layout for Quick Start
+    const markdownHtml = marked.parse(rawMarkdown);
+    container.innerHTML = `
+      <div class="qs-hero">
+        <h1>Quick Start: FENNIX 2</h1>
+        <p>Overview and execution workflow for the inspection and linguistic QA pipeline.</p>
+      </div>
+
+      <div class="qs-grid">
+        <div class="qs-card">
+          <div class="qs-card-num">01</div>
+          <div class="qs-card-title">Verification</div>
+          <div class="qs-card-desc">Verify ADB connectivity and global BlueCode service in system PATH.</div>
+        </div>
+        <div class="qs-card">
+          <div class="qs-card-num">02</div>
+          <div class="qs-card-title">Initialization</div>
+          <div class="qs-card-desc">Deploy and initialize the uiautomator2 agent on the target Android device.</div>
+        </div>
+        <div class="qs-card">
+          <div class="qs-card-num">03</div>
+          <div class="qs-card-title">Execution</div>
+          <div class="qs-card-desc">Launch the full inspection pipeline via plk.bat phoenix.</div>
+        </div>
+      </div>
+
+      <div>${markdownHtml}</div>
+    `;
+  } else {
+    // Standard rendering for other Markdown files
+    container.innerHTML = marked.parse(rawMarkdown);
+  }
+
+  wrapTables(container);
+  document.getElementById('content').scrollTop = 0;
+}
+
+function hasPywebview() {
+  return !!(window.pywebview && window.pywebview.api);
+}
+
+// Initial load
+window.onload = () => {
+  initMenu();
+  renderDoc('quickstart');
+
+  // --- Window controls (frameless) ---
+  const btnMin = document.getElementById('btn-docs-min');
+  const btnMax = document.getElementById('btn-docs-max');
+  const btnClose = document.getElementById('btn-docs-close');
+
+  if (btnMin) btnMin.addEventListener('click', () => { if (hasPywebview()) window.pywebview.api.docsMinimize(); });
+  if (btnMax) btnMax.addEventListener('click', () => { if (hasPywebview()) window.pywebview.api.docsMaximize(); });
+  if (btnClose) btnClose.addEventListener('click', () => { if (hasPywebview()) window.pywebview.api.closeDocs(); });
+
+  // --- Drag window from titlebar (frameless) ---
+  const titlebar = document.getElementById('titlebar');
+  if (titlebar) {
+    titlebar.addEventListener('mousedown', function (e) {
+      if (e.button !== 0) return;
+      if (e.target.closest('button')) return;
+      if (!hasPywebview() || !window.pywebview.api.docsMoveBy) return;
+      e.preventDefault();
+      let lastX = e.screenX, lastY = e.screenY;
+      let pending = null, rafId = 0;
+      function flush() {
+        rafId = 0;
+        if (!pending) return;
+        const dx = pending.x - lastX;
+        const dy = pending.y - lastY;
+        lastX = pending.x;
+        lastY = pending.y;
+        pending = null;
+        if (dx !== 0 || dy !== 0) window.pywebview.api.docsMoveBy(dx, dy);
+      }
+      function onMove(ev) {
+        pending = { x: ev.screenX, y: ev.screenY };
+        if (!rafId) rafId = requestAnimationFrame(flush);
+      }
+      function onUp() {
+        document.removeEventListener('mousemove', onMove, true);
+        document.removeEventListener('mouseup', onUp, true);
+        if (rafId) { cancelAnimationFrame(rafId); flush(); }
+      }
+      document.addEventListener('mousemove', onMove, true);
+      document.addEventListener('mouseup', onUp, true);
+    });
+  }
+};
+</script>
+
+</body>
+</html>

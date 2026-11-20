@@ -1,0 +1,136 @@
+﻿// ============================================================
+// UI/i18n/patch.js  —  NUEVO. Cargar DESPUÉS de los 7 idiomas y ANTES de app.js.
+// Añade las claves que faltaban en I18N_DATA (run.status.*, dev.*, device.os
+// con template, sidebar.toggle) para que ningún widget muestre la clave cruda.
+// ============================================================
+window.I18N_DATA = window.I18N_DATA || {};
+(function (D) {
+  const add = (lang, obj) => { D[lang] = Object.assign(D[lang] || {}, obj); };
+  const runStatus = (idle, running, done, error, cancelled) => ({
+    'run.status.idle': idle, 'run.status.running': running, 'run.status.done': done,
+    'run.status.error': error, 'run.status.cancelled': cancelled
+  });
+  const dev = (none, unknown, error, connected, android) => ({
+    'dev.none': none, 'dev.unknown': unknown, 'dev.error': error,
+    'dev.connected': connected, 'dev.android': android, 'device.os': android
+  });
+  const ss = (title, copy, noBridge, noDest, copyErr, copyDone, copyBtn, copyProgress, copyStarting, copyBusy, startLabel, folderPh) => ({
+    'ss.title': title, 'ss.copy': copy, 'ss.copyNoBridge': noBridge,
+    'ss.copyNoDest': noDest, 'ss.copyErr': copyErr, 'ss.copyDone': copyDone,
+    'ss.copyBtn': copyBtn, 'ss.copyProgress': copyProgress,
+    'ss.copyStarting': copyStarting, 'ss.copyBusy': copyBusy,
+    'ss.startLabel': startLabel, 'ss.folderPlaceholder': folderPh
+  });
+  add('en', Object.assign(runStatus('Idle', 'Running', 'Done', 'Error', 'Cancelled'),
+    dev('No device', 'Unknown', 'Error', 'Connected', 'Android {0}'),
+    ss('Select screenshot folder', 'Copy into project (unstructure)',
+      'Copying only works inside the AURA QA window.',
+      'Set the output folder first.',
+      'Could not copy the folder: {0}',
+      'Copied into {0}',
+      'Copy into project (unstructure)',
+      '{0}% — {1}',
+      'Starting copy…',
+      'Wait for the screenshot copy to finish.',
+      'Start from screenshot',
+      'Select a folder'),
+    { 'sidebar.toggle': 'Toggle sidebar' }));
+  add('es', Object.assign(runStatus('En reposo', 'Ejecutando', 'Completado', 'Error', 'Cancelado'),
+    dev('Sin dispositivo', 'Desconocido', 'Error', 'Conectado', 'Android {0}'),
+    ss('Elegir carpeta de screenshots', 'Copiar en el proyecto (unstructure)',
+      'La copia solo funciona dentro de la ventana de AURA QA.',
+      'Define primero la carpeta de salida.',
+      'No se pudo copiar la carpeta: {0}',
+      'Copiado en {0}',
+      'Copiar en el proyecto (unstructure)',
+      '{0}% — {1}',
+      'Iniciando copia…',
+      'Espera a que termine la copia de screenshots.',
+      'Iniciar desde screenshot',
+      'Selecciona una carpeta'),
+    { 'sidebar.toggle': 'Alternar menú' }));
+  add('id', Object.assign(runStatus('Siaga', 'Berjalan', 'Selesai', 'Error', 'Dibatalkan'),
+    dev('Tidak ada perangkat', 'Tidak diketahui', 'Error', 'Terhubung', 'Android {0}'),
+    ss('Pilih folder screenshot', 'Salin ke proyek (unstructure)',
+      'Menyalin hanya berfungsi di dalam jendela AURA QA.',
+      'Tentukan folder keluaran terlebih dahulu.',
+      'Folder tidak dapat disalin: {0}',
+      'Disalin ke {0}',
+      'Salin ke proyek (unstructure)',
+      '{0}% — {1}',
+      'Memulai penyalinan…',
+      'Tunggu hingga penyalinan screenshot selesai.',
+      'Mulai dari screenshot',
+      'Pilih folder'),
+    { 'sidebar.toggle': 'Alihkan bilah sisi' }));
+  add('pt', Object.assign(runStatus('Em repouso', 'Executando', 'Concluído', 'Erro', 'Cancelado'),
+    dev('Sem dispositivo', 'Desconhecido', 'Erro', 'Conectado', 'Android {0}'),
+    ss('Selecionar pasta de screenshots', 'Copiar no projeto (unstructure)',
+      'A cópia só funciona dentro da janela do AURA QA.',
+      'Defina primeiro a pasta de saída.',
+      'Não foi possível copiar a pasta: {0}',
+      'Copiado para {0}',
+      'Copiar no projeto (unstructure)',
+      '{0}% — {1}',
+      'Iniciando cópia…',
+      'Aguarde a cópia dos screenshots terminar.',
+      'Iniciar a partir de screenshot',
+      'Selecionar uma pasta'),
+    { 'sidebar.toggle': 'Alternar barra lateral' }));
+  add('th', Object.assign(runStatus('ว่าง', 'กำลังทำงาน', 'เสร็จสิ้น', 'ข้อผิดพลาด', 'ยกเลิก'),
+    dev('ไม่มีอุปกรณ์', 'ไม่ทราบ', 'ข้อผิดพลาด', 'เชื่อมต่อแล้ว', 'Android {0}'),
+    ss('เลือกโฟลเดอร์ screenshot', 'คัดลอกไปยังโปรเจกต์ (unstructure)',
+      'การคัดลอกทำงานได้เฉพาะในหน้าต่าง AURA QA',
+      'กำหนดโฟลเดอร์ผลลัพธ์ก่อน',
+      'คัดลอกโฟลเดอร์ไม่สำเร็จ: {0}',
+      'คัดลอกไปยัง {0}',
+      'คัดลอกไปยังโปรเจกต์ (unstructure)',
+      '{0}% — {1}',
+      'กำลังคัดลอก…',
+      'รอก่อนการคัดลอก screenshot จะสำเร็จ',
+      'เริ่มจาก screenshot',
+      'เลือกโฟลเดอร์'),
+    { 'sidebar.toggle': 'สลับแถบด้านข้าง' }));
+  add('ur', Object.assign(runStatus('غیر فعال', 'جاری', 'مکمل', 'خرابی', 'منسوخ'),
+    dev('کوئی ڈیوائس نہیں', 'نامعلوم', 'خرابی', 'منسلک', 'Android {0}'),
+    ss('اسکرین شاٹ فولڈر منتخب کریں', 'پروجیکٹ میں کاپی کریں (unstructure)',
+      'کاپی صرف AURA QA ونڈو کے اندر کام کرتا ہے۔',
+      'پہلے آؤٹ پٹ فولڈر مقرر کریں۔',
+      'فولڈر کاپی نہیں ہو سکا: {0}',
+      '{0} میں کاپی ہو گیا',
+      'پروجیکٹ میں کاپی کریں (unstructure)',
+      '{0}% — {1}',
+      'کاپی شروع ہو رہی ہے…',
+      'اسکرین شاٹ کاپی مکمل ہونے کا انتظار کریں۔',
+      'اسکرین شاٹ سے شروع کریں',
+      'فولڈر منتخب کریں'),
+    { 'sidebar.toggle': 'سائیڈبار ٹوگل کریں' }));
+  add('vi', Object.assign(runStatus('Nghỉ', 'Đang chạy', 'Hoàn thành', 'Lỗi', 'Đã hủy'),
+    dev('Không có thiết bị', 'Không xác định', 'Lỗi', 'Đã kết nối', 'Android {0}'),
+    ss('Chọn thư mục screenshot', 'Sao chép vào dự án (unstructure)',
+      'Sao chép chỉ hoạt động trong cửa sổ AURA QA.',
+      'Hãy chọn thư mục đầu ra trước.',
+      'Không thể sao chép thư mục: {0}',
+      'Đã sao chép vào {0}',
+      'Sao chép vào dự án (unstructure)',
+      '{0}% — {1}',
+      'Đang bắt đầu sao chép…',
+      'Hãy chờ sao chép screenshot hoàn tất.',
+      'Bắt đầu từ screenshot',
+      'Chọn thư mục'),
+    { 'sidebar.toggle': 'Chuyển đổi thanh bên' }));
+  add('zh', Object.assign(runStatus('空闲', '运行中', '完成', '错误', '已取消'),
+    dev('无设备', '未知', '错误', '已连接', 'Android {0}'),
+    ss('选择截图文件夹', '复制到项目 (unstructure)',
+      '复制仅在 AURA QA 窗口内可用。',
+      '请先设置输出文件夹。',
+      '无法复制文件夹: {0}',
+      '已复制到 {0}',
+      '复制到项目 (unstructure)',
+      '{0}% — {1}',
+      '开始复制…',
+      '请等待截图复制完成。',
+      '从截图开始',
+      '选择文件夹'),
+    { 'sidebar.toggle': '切换侧边栏' }));
+})(window.I18N_DATA);
