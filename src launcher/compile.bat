@@ -1,1 +1,0 @@
-c++ -O -Wall -mwindows -o launcher.exe main.cpp icon.o -lwinmm -lgdiplus

@@ -1,3 +1,0 @@
-[  1] No hay tarjetas SIM insertadas | ViewGroup |  | 
-[  2] No hay tarjetas SIM insertadas | ViewGroup |  | 
-[  3] Preguntas frecuentes           | ViewGroup |  | 
