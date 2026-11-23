@@ -1,4 +1,4 @@
-﻿window.I18N_DATA = window.I18N_DATA || {};
+window.I18N_DATA = window.I18N_DATA || {};
 window.I18N_DATA["th"] = {
     "run.config": "การตั้งค่าการทดสอบ",
     "run.stages": "ขั้นตอน",
@@ -32,8 +32,13 @@ window.I18N_DATA["th"] = {
     "run.pkg.filter.unselected": "ไม่ตรงกััน",
     "run.stop": "หยุด",
     "run.tab.packages": "แพ็กเกจ",
+    "run.tab.config": "เตรียม",
     "run.tab.crawl": "สำรวจ",
     "run.tab.logs": "QA Logs",
+    "run.config.running": "กำลังตั้งค่าอุปกรณ์…",
+    "run.config.ready": "อุปกรณ์พร้อม",
+    "run.config.error": "ข้อผิดพลาดในการตั้งค่า",
+    "run.config.idle": "รอการดำเนินการ…",
     "run.crawl.screenshot": "ภาพหน้าจอ",
     "run.crawl.nodes": "โหนดที่ตรวจพบ",
     "run.crawl.noNodes": "ยังไม่มีโหนดที่ตรวจพบ",
@@ -472,6 +477,7 @@ window.I18N_DATA["th"] = {
     "dc.popup.warn": "การตั่่่งค่าอาจลั่่มเหลว หากค่าใดไม่่ถุ่ึกนำไปใช้ ให้่ตั่่่งค่าดว่่่งตนเอง:",
     "dc.popup.manual": "ดีบั๊ก USB, ตื่่่่นอยู่, แสดงการสัััมผัััส และสเกลอนิเมชั่่่น: การตั่่่งค่า \u2192 ตััััวเลื่ือกนัััักพััััฒนา.",
     "dc.popup.continue": "ดำเนิิินการต่่่อ",
+    "dc.apply": "ใช้",
     "dc.reset": "รี้เซ็่็ต",
     "dc.tip.usbDebug": "การตั่่่งค่า \u2192 ตััััวเลื่ือกนัััักพััััฒนา \u2192 ดีบั๊ก USB \u2192 ON",
     "dc.tip.stayOn": "การตั่่่งค่า \u2192 ตััััวเลื่ือกนัััักพััััฒนา \u2192 ตื่่่่นอยู่ \u2192 ON",
@@ -481,4 +487,11 @@ window.I18N_DATA["th"] = {
     "dc.tip.windowAnim": "การตั่่่งค่า \u2192 ตััััวเลื่ือกนัััักพััััฒนา \u2192 สเกลอนิเมชั่่่นหน่าจอ \u2192 OFF",
     "dc.tip.transitionAnim": "การตั่่่งค่า \u2192 ตััััวเลื่ือกนัััักพััััฒนา \u2192 สเกลอนิเมชั่่่นเปลี่่่ย่นผ่่่าน \u2192 OFF",
     "dc.tip.animatorScale": "การตั่่่งค่า \u2192 ตััััวเลื่ือกนัััักพััััฒนา \u2192 สเกลเวลาอนิเมเตอร่ \u2192 OFF"
+,
+    "dc.skip.title": "ขา้มการเตรียมอุปกรณ์",
+    "dc.skip.body": "Risk: crawl/QA stages perform automated interactions (taps, scrolls, waits). If the screen turns off, the orientation changes, or animations cause unexpected delays, the tests may fail or produce inconsistent results.",
+    "dc.fail.title": "Configuration incomplete",
+    "dc.fail.body": "Some settings could not be applied. If a value is not applied, you can set it manually in Settings > Developer options",
+    "dc.fail.view": "View",
+    "dc.fail.continue": "Continue anyway"
 ,};

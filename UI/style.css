@@ -951,7 +951,7 @@ cursor: pointer;
 .dc-btn.is-loading > svg:first-child { display: none; }
 .dc-btn.is-loading .dc-spinner {
 display: block;
-animation: spin 0.8s linear infinite;
+animation: spin 1.2s linear infinite;
 }
 
 /* ---- Popup reutilizable (popup.js) ---- */
@@ -3136,7 +3136,7 @@ margin-bottom: 0;
 }
 .run-stage-cards {
 display: grid;
-grid-template-columns: repeat(5, 1fr);
+grid-template-columns: repeat(4, 1fr);
 gap: var(--s3);
 }
 .run-stage-card {
@@ -3587,6 +3587,211 @@ color: var(--text-muted);
 font-style: italic;
 padding: var(--s2);
 }
+/* ---- Run Console: Prepare (#run-pane-config) ---- */
+#run-pane-config {
+  font-family: var(--font-sans);
+  background-color: var(--bg-input);
+  margin: calc(-1 * var(--s2));
+  min-height: calc(100% + 2 * var(--s2));
+  box-sizing: border-box;
+}
+
+#run-pane-config.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.run-config-pane {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s2) var(--s3);
+}
+
+.run-config-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  padding-bottom: var(--s2);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.run-config-left {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-width: 0;
+}
+
+.run-config-title {
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.run-config-sep {
+  width: 1px;
+  height: 14px;
+  background-color: var(--border-soft);
+  flex-shrink: 0;
+}
+
+.run-config-status {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.run-config-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+
+.run-config-state svg {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+}
+
+.run-config-state-active { color: var(--accent-blue); }
+.run-config-state-active .spin { animation: spin 2.4s linear infinite; transform-origin: center; }
+.run-config-state-idle { color: var(--text-muted); }
+.run-config-state-warn { color: var(--accent-warn); }
+.run-config-state-ok { color: var(--accent-green); }
+.run-config-state-error { color: var(--accent-danger); }
+
+#run-pane-config .dc-actions {
+  border-left: none;
+  padding: 0;
+}
+
+#run-pane-config .dc-btn {
+  width: 26px;
+  height: 26px;
+  background-color: var(--bg-terminal);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-compact);
+  color: var(--text-muted);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+#run-pane-config .dc-btn:not(:disabled):hover {
+  color: var(--text-primary);
+  border-color: var(--accent-blue);
+}
+
+#run-pane-config .dc-btn-text {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 6px 14px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-compact);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+#run-pane-config .dc-btn-text:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+#run-pane-config .dc-btn-text:not(:disabled):hover {
+  color: var(--text-muted);
+  border-color: var(--border-color);
+  background-color: var(--bg-input);
+}
+
+#run-pane-config .dc-btn-text.is-loading span { visibility: hidden; }
+#run-pane-config .dc-btn-text.is-loading .dc-spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -7px;
+  margin-top: -7px;
+}
+
+.run-config-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px var(--s4);
+  transition: opacity var(--transition-fast);
+}
+
+.run-config-list.is-disabled {
+  opacity: 0.45;
+}
+
+@media (max-width: 720px) {
+  .run-config-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.run-config-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: 5px var(--s2);
+  background-color: var(--bg-terminal);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-compact);
+  min-width: 0;
+  transition: border-color var(--transition-fast);
+}
+
+.run-config-row:hover {
+  border-color: var(--border-soft);
+}
+
+.run-config-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.run-config-row.is-ok .run-config-dot { background-color: var(--accent-green); }
+.run-config-row.is-fail .run-config-dot { background-color: var(--accent-warn); }
+
+.run-config-key {
+  font-size: var(--fs-sm);
+  color: var(--text-primary);
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.run-config-val {
+  font-size: var(--fs-sm);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.run-config-row.is-ok .run-config-val { color: var(--accent-green); }
+.run-config-row.is-fail .run-config-val { color: var(--accent-warn); }
+
+.run-config-target {
+  font-size: var(--fs-xs);
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 .run-pkg-toolbar {
 display: flex;
 align-items: center;
@@ -3772,6 +3977,7 @@ max-width: 100%;
 }
 #run-pane-crawl {
 height: 100%;
+contain: content;
 }
 .run-crawl-shot {
 flex-shrink: 0;

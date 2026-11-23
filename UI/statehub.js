@@ -348,6 +348,21 @@
       background: var(--bg-input); display: grid; place-items: center;
       font-size: var(--fs-md); font-weight: 700; font-variant-numeric: tabular-nums;
       position: relative; z-index: 1;
+      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1), height 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tel-ring-in svg {
+      animation: ringSvgIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes ringSvgIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .tel-ring-in.ring-pct-in {
+      animation: ringPctIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes ringPctIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
     }
     .tel-ring.tel-indet::before {
       content: '';
@@ -358,7 +373,10 @@
       animation: spin 0.9s linear infinite;
     }
     .tel-ring-full .tel-ring-in {
-      width: 78px; height: 78px;
+      width: 86.8px; height: 86.8px;
+    }
+    .tel-ring-done .tel-ring-in {
+      width: 82.4px; height: 82.4px;
     }
     .tel-ring-full .tel-ring-in svg {
       width: 56px; height: 56px;
@@ -408,7 +426,7 @@
   `;
   document.head.appendChild(style);
 
-  const STAGES = ['config', 'listing', 'crawl', 'qa', 'autoexport'];
+  const STAGES = ['listing', 'crawl', 'qa', 'autoexport'];
 
   const hub = {
     device: {
@@ -911,7 +929,10 @@
   let _elBase = -1;
   let _elBaseAt = 0;
   let _durListing = null, _durCrawl = null, _durQa = null, _durAutoexport = null;
+  let _configStart = null;
   let _ringFull = false;
+  let _ringDone = false;
+  let _ringAnimActive = false;
   let _ringAnimRaf = null;
 
   function _ringStartAnim() {
@@ -998,9 +1019,9 @@
     }
     const pctEl = el('tel-pct');
     if (pctEl) {
-      pctEl.textContent = '0%';
       const svg = pctEl.querySelector('svg');
       if (svg) svg.remove();
+      if (!_ringFull) pctEl.textContent = '0%';
     }
   }
 
@@ -1073,22 +1094,47 @@
     const real = c.current || 0;
     const dp = _computeDp(c);
 
-    const fullMode = running && (c.stage === 'config' || c.stage === 'listing' || c.stage === 'crawl');
+    const effectiveStage = c.stage || 'config';
+    const isFullStage = (effectiveStage === 'config' || effectiveStage === 'listing' || effectiveStage === 'crawl');
+    const isDoneFull = isFullStage && status === 'done';
+    const isFullActive = isFullStage && !isDoneFull;
     const ring = el('tel-ring');
     const tc = el('tel-count');
     const tp = el('tel-pkg');
 
-    if (fullMode && !_ringFull) {
+    if (isFullActive && !_ringFull) {
       _ringFull = true;
-      if (ring) ring.classList.add('tel-ring-full');
+      if (ring) { ring.classList.add('tel-ring-full'); ring.classList.remove('tel-ring-done'); }
       if (tc) tc.hidden = true;
       if (tp) tp.hidden = true;
-      _ringStartAnim();
-    } else if (!fullMode && _ringFull) {
+      const pctEl = el('tel-pct');
+      if (pctEl) pctEl.textContent = '';
+    } else if (isDoneFull && !_ringDone) {
+      _ringDone = true;
       _ringFull = false;
-      if (ring) ring.classList.remove('tel-ring-full');
+      if (ring) { ring.classList.add('tel-ring-done'); ring.classList.remove('tel-ring-full'); }
+      if (tc) tc.hidden = true;
+      if (tp) tp.hidden = true;
+    } else if (!isFullStage && (_ringFull || _ringDone)) {
+      _ringFull = false;
+      _ringDone = false;
+      if (ring) { ring.classList.remove('tel-ring-full'); ring.classList.remove('tel-ring-done'); }
       if (tc) tc.hidden = false;
       if (tp) tp.hidden = false;
+      _ringStopAnim();
+      const pctEl = el('tel-pct');
+      if (pctEl) {
+        pctEl.classList.remove('ring-pct-in');
+        void pctEl.offsetWidth;
+        pctEl.classList.add('ring-pct-in');
+      }
+    }
+
+    if (isFullActive && running && !_ringAnimActive) {
+      _ringAnimActive = true;
+      _ringStartAnim();
+    } else if ((!isFullActive || !running) && _ringAnimActive) {
+      _ringAnimActive = false;
       _ringStopAnim();
     }
 
@@ -1102,7 +1148,7 @@
 
     if (!_ringFull) {
       let pctText;
-      if (status === 'done') pctText = '100%';
+      if (status === 'done') pctText = (isFullStage && effectiveStage !== 'crawl') ? '' : '100%';
       else if (running && total) pctText = Math.round(Math.min(100, (dp / total) * 100)) + '%';
       else if (running) pctText = '';
       else pctText = '0%';
@@ -1375,7 +1421,8 @@
     const now = Date.now();
 
     if (state === 'active') {
-      hub.run.times[step] = { start: now, end: null };
+      if (step === 'config') _configStart = now;
+      hub.run.times[step] = { start: (step === 'listing' && _configStart) ? _configStart : now, end: null };
       if (step === 'listing') _durListing = null;
       else if (step === 'crawl') _durCrawl = null;
       else if (step === 'qa') _durQa = null;
@@ -1431,6 +1478,10 @@
   wrapFn('runClear', () => {
     hub.run.times = {};
     _durListing = null; _durCrawl = null; _durQa = null; _durAutoexport = null;
+    _configStart = null;
+    _ringFull = false;
+    _ringDone = false;
+    _ringAnimActive = false;
   });
 
   document.addEventListener('shown.bs.tab', setCtx);

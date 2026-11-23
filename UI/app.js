@@ -731,41 +731,82 @@ const DC_FMT = {
 
 const dcEsc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+let dcLastData = { connected: false, checks: [] };
+
 function dcRender(data) {
-  const strip = document.getElementById('dc-strip');
-  const btnApply = document.getElementById('dc-apply');
-  const btnReset = document.getElementById('dc-reset');
-  if (!strip) return;
+  dcLastData = data || { connected: false, checks: [] };
+  const checks = dcLastData.checks || [];
 
-  strip.innerHTML = '';
+  const pillStrip = document.getElementById('dc-strip');
+  if (pillStrip) {
+    pillStrip.innerHTML = '';
+    checks.forEach(c => {
+      const state = c.pass === true ? 'ok' : c.pass === false ? 'fail' : 'none';
+      const cell = document.createElement('div');
+      cell.className = 'dc-cell is-' + state;
 
-  data.checks.forEach(c => {
-    const state = c.pass === true ? 'ok' : c.pass === false ? 'fail' : 'none';
-    const cell = document.createElement('div');
-    cell.className = 'dc-cell is-' + state;
+      const displayVal = DC_FMT[c.id]
+        ? DC_FMT[c.id](c.value)
+        : (c.value !== null && c.value !== undefined && c.value !== 'null' ? c.value : '\u2014');
 
-    const displayVal = DC_FMT[c.id]
-      ? DC_FMT[c.id](c.value)
-      : (c.value !== null && c.value !== undefined && c.value !== 'null' ? c.value : '\u2014');
+      const details = [
+        c.label || c.id,
+        'Valor le\u00eddo: ' + (c.value != null ? c.value : 'sin respuesta'),
+        c.error ? 'Error: ' + c.error : '',
+        c.tip ? tAny(c.tip) : '',
+        'La lectura del ajuste no confirma su efecto visual.'
+      ];
+      cell.title = details.filter(Boolean).join('\n');
 
-    const details = [
-      c.label || c.id,
-      'Valor le\u00eddo: ' + (c.value != null ? c.value : 'sin respuesta'),
-      c.error ? 'Error: ' + c.error : '',
-      c.tip ? tAny(c.tip) : '',
-      'La lectura del ajuste no confirma su efecto visual.'
-    ];
-    cell.title = details.filter(Boolean).join('\n');
+      cell.innerHTML =
+        '<span class="dc-cell-label">' + dcEsc(tAny(DC_SHORT[c.id] || c.id)) + '</span>' +
+        '<span class="dc-cell-value">' + dcEsc(displayVal) + '</span>';
 
-    cell.innerHTML =
-      '<span class="dc-cell-label">' + dcEsc(tAny(DC_SHORT[c.id] || c.id)) + '</span>' +
-      '<span class="dc-cell-value">' + dcEsc(displayVal) + '</span>';
+      pillStrip.appendChild(cell);
+    });
+  }
 
-    strip.appendChild(cell);
+  const prepStrip = document.getElementById('dc-strip-prepare');
+  if (prepStrip) {
+    prepStrip.innerHTML = '';
+    checks.forEach(c => {
+      const state = c.pass === true ? 'ok' : c.pass === false ? 'fail' : 'none';
+      const row = document.createElement('div');
+      row.className = 'run-config-row is-' + state;
+
+      const displayVal = DC_FMT[c.id]
+        ? DC_FMT[c.id](c.value)
+        : (c.value !== null && c.value !== undefined && c.value !== 'null' ? c.value : '\u2014');
+      const targetVal = c.target != null && DC_FMT[c.id]
+        ? DC_FMT[c.id](c.target)
+        : (c.target != null ? c.target : '');
+
+      const details = [
+        c.label || c.id,
+        'Valor le\u00eddo: ' + (c.value != null ? c.value : 'sin respuesta'),
+        targetVal ? 'Valor esperado: ' + targetVal : '',
+        c.error ? 'Error: ' + c.error : '',
+        c.tip ? tAny(c.tip) : '',
+        'La lectura del ajuste no confirma su efecto visual.'
+      ];
+      row.title = details.filter(Boolean).join('\n');
+
+      const showTarget = c.pass === false && targetVal;
+      row.innerHTML =
+        '<span class="run-config-dot"></span>' +
+        '<span class="run-config-key">' + dcEsc(tAny(DC_SHORT[c.id] || c.id)) + '</span>' +
+        '<span class="run-config-val">' + dcEsc(displayVal) + '</span>' +
+        (showTarget ? '<span class="run-config-target">\u2192 ' + dcEsc(targetVal) + '</span>' : '');
+
+      prepStrip.appendChild(row);
+    });
+  }
+  if (typeof runRenderConfigPane === 'function') runRenderConfigPane();
+
+  ['dc-apply', 'dc-apply-prepare', 'dc-reset', 'dc-reset-prepare'].forEach(id => {
+    const b = document.getElementById(id);
+    if (b) b.disabled = !data.connected;
   });
-
-  if (btnApply) btnApply.disabled = !data.connected;
-  if (btnReset) btnReset.disabled = !data.connected;
 }
 
 let dcOperationInProgress = false;
@@ -778,10 +819,10 @@ function dcShowError(message) {
 }
 
 function dcSetButtonsDisabled(disabled) {
-  const a = document.getElementById('dc-apply');
-  const r = document.getElementById('dc-reset');
-  if (a) a.disabled = disabled;
-  if (r) r.disabled = disabled;
+  ['dc-apply', 'dc-apply-prepare', 'dc-reset', 'dc-reset-prepare'].forEach(id => {
+    const b = document.getElementById(id);
+    if (b) b.disabled = disabled;
+  });
 }
 
 async function dcApiCall(method) {
@@ -876,10 +917,41 @@ async function dcRunOperation(method, btn) {
   if (btnApply) btnApply.addEventListener('click', () => confirmOp('applyDeviceChecks', btnApply));
   if (btnReset) btnReset.addEventListener('click', () => confirmOp('resetDeviceChecks', btnReset));
 
+  const btnApplyP = document.getElementById('dc-apply-prepare');
+  const btnResetP = document.getElementById('dc-reset-prepare');
+  if (btnApplyP) btnApplyP.addEventListener('click', () => confirmOp('applyDeviceChecks', btnApplyP));
+  if (btnResetP) btnResetP.addEventListener('click', () => confirmOp('resetDeviceChecks', btnResetP));
+
+  const cfgToggle = document.getElementById('run-stage-config');
+  const cfgList = document.getElementById('dc-strip-prepare');
+  if (cfgToggle && cfgList) {
+    const syncCfgDim = () => cfgList.classList.toggle('is-disabled', !cfgToggle.checked);
+    cfgToggle.addEventListener('change', async function () {
+      if (!this.checked && typeof window.Popup === 'object' && window.Popup.confirm) {
+        const res = await window.Popup.confirm({
+          title: tAny('dc.skip.title'),
+          body: tAny('dc.skip.body'),
+          okLabel: tAny('dc.popup.continue'),
+          cancelLabel: tAny('psdns.popup.dismiss')
+        });
+        if (res !== 'ok') {
+          this.checked = true;
+          return;
+        }
+      }
+      syncCfgDim();
+    });
+    syncCfgDim();
+  }
+
   // Load checks when the device tab is shown
   document.querySelectorAll('button[data-bs-target="#pane-device"]').forEach(btn => {
     btn.addEventListener('shown.bs.tab', () => dcLoad());
   });
+
+  // Load checks when the Prepare console tab is shown
+  const prepTab = document.querySelector('.run-console-tab[data-tab="config"]');
+  if (prepTab) prepTab.addEventListener('click', () => dcLoad());
 
   dcLoad();
   window.dcLoad = dcLoad;
@@ -2485,6 +2557,7 @@ function runRenderLivePanesNow() {
   runRenderSummaryPane();
   runRenderResultsPane();
   runRenderExportPane();
+  runRenderConfigPane();
 }
 
 function runRenderLivePanes() {
@@ -2498,6 +2571,44 @@ function runRenderLivePanes() {
 
   if (window.requestAnimationFrame) requestAnimationFrame(cb);
   else setTimeout(cb, 80);
+}
+
+function runRenderConfigPane() {
+  const pane = document.getElementById('run-pane-config');
+  if (!pane) return;
+  const st = runState;
+  const isConfigStage = st.stage === 'config';
+  const running = st.status === 'running';
+  const statusEl = pane.querySelector('.run-config-status');
+  if (!statusEl) return;
+
+  const connected = Boolean(dcLastData && dcLastData.connected);
+  const checks = Array.isArray(dcLastData && dcLastData.checks) ? dcLastData.checks : [];
+  const pendingCount = checks.filter(c => c.pass === false).length;
+
+  let cls, icon, text;
+  if (running && isConfigStage) {
+    cls = 'run-config-state-active';
+    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="spin"><line x1="12" y1="3" x2="12" y2="7" opacity="1"/><line x1="12" y1="3" x2="12" y2="7" opacity="0.15" transform="rotate(45 12 12)"/><line x1="12" y1="3" x2="12" y2="7" opacity="0.2" transform="rotate(90 12 12)"/><line x1="12" y1="3" x2="12" y2="7" opacity="0.3" transform="rotate(135 12 12)"/><line x1="12" y1="3" x2="12" y2="7" opacity="0.45" transform="rotate(180 12 12)"/><line x1="12" y1="3" x2="12" y2="7" opacity="0.6" transform="rotate(225 12 12)"/><line x1="12" y1="3" x2="12" y2="7" opacity="0.8" transform="rotate(270 12 12)"/><line x1="12" y1="3" x2="12" y2="7" opacity="0.95" transform="rotate(315 12 12)"/></svg>';
+    text = tAny('run.config.running');
+  } else if (st.status === 'error') {
+    cls = 'run-config-state-error';
+    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>';
+    text = tAny('run.config.error');
+  } else if (!connected) {
+    cls = 'run-config-state-idle';
+    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>';
+    text = tAny('dev.none');
+  } else if (pendingCount > 0) {
+    cls = 'run-config-state-warn';
+    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>';
+    text = pendingCount + ' pending';
+  } else {
+    cls = 'run-config-state-ok';
+    icon = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>';
+    text = tAny('dev.connected');
+  }
+  statusEl.innerHTML = '<div class="run-config-state ' + cls + '">' + icon + '<span>' + qaEsc(text) + '</span></div>';
 }
 
 // Tarea 3: estado de ejecución al abrir un proyecto.
@@ -2714,6 +2825,36 @@ window.onPipelineLog = function (ev) {
 window.onPipelineStep = function (step, state) {
   runSetStep(step, state);
   if (state === 'active') runState.stage = step;
+
+  if (step === 'config' && state === 'active') {
+    runSwitchTab('config');
+  }
+
+  if (step === 'config' && state === 'done') {
+    const proceed = () => {
+      const checks = Array.isArray(dcLastData && dcLastData.checks) ? dcLastData.checks : [];
+      const failed = checks.filter(c => c.pass === false);
+      if (failed.length > 0 && typeof window.Popup === 'object' && window.Popup.confirm) {
+        window.Popup.confirm({
+          title: tAny('dc.fail.title'),
+          body: tAny('dc.fail.body'),
+          okLabel: tAny('dc.fail.continue'),
+          cancelLabel: tAny('dc.fail.view'),
+          dismissable: false
+        }).then(function (res) {
+          if (res === 'ok') runSwitchTab('packages');
+        });
+      } else {
+        runSwitchTab('packages');
+      }
+    };
+    if (typeof dcLoad === 'function') dcLoad(true).then(proceed);
+    else proceed();
+  }
+
+  if (step === 'listing' && state === 'active') {
+    runSwitchTab('packages');
+  }
 
   if (step === 'crawl') {
     if (state === 'active') {
@@ -3109,14 +3250,19 @@ function runSwitchTab(name) {
   document.querySelectorAll('.run-console-pane').forEach(p => p.classList.toggle('active', p.id === 'run-pane-' + name));
   const isPkg = name === 'packages';
   const isLogs = name === 'logs';
+  const isConfig = name === 'config';
   const autoWrap = document.getElementById('run-autoscroll-wrap');
   const psdnsWrap = document.getElementById('run-psdns-wrap');
   const psdnsBtn = document.getElementById('run-psdns-update-btn');
   if (autoWrap) autoWrap.hidden = !isLogs;
   if (psdnsWrap) psdnsWrap.hidden = !isPkg;
   if (psdnsBtn) psdnsBtn.hidden = !isPkg;
+  if (isConfig) {
+    runRenderConfigPane();
+    if (typeof dcLoad === 'function') dcLoad();
+  }
 }
-runSwitchTab('packages');
+runSwitchTab('config');
 runRenderPackagesPane();
 
 function runCrawlStartPoll() {
