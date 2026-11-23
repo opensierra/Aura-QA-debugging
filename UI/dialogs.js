@@ -982,6 +982,13 @@
     setTimeout(() => { aboutRoot.hidden = true; }, 200);
   }
 
+  const aboutVersionEl = document.getElementById('about-version');
+  if (aboutVersionEl) {
+    fetch('version.json').then(r => r.ok ? r.json() : null).then(d => {
+      if (d && d.commit) aboutVersionEl.textContent = `BETA-${d.version} · ${d.commit.toUpperCase()} · BUILD ${d.date}${d.time || ''}`;
+    }).catch(() => {});
+  }
+
   if (aboutRoot) {
     aboutRoot.addEventListener('mousedown', e => {
       if (e.target === aboutRoot) aboutClose();
